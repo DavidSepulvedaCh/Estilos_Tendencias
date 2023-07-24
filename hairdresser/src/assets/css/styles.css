@@ -67,6 +67,11 @@ header ul li a:hover {
     border-bottom: 1px solid #9c7822;
 }
 
+.active {
+    color: #9c7822;
+    border-bottom: 1px solid #9c7822;
+}
+
 /* LOGO */
 header #logo a {
     display: flex;

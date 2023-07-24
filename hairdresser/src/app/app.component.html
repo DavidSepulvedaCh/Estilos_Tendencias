@@ -1,10 +1,10 @@
 <header>
     <ul>
-        <li><a [routerLink]="['/home']">INICIO</a></li>
-        <li><a [routerLink]="['/products']">PRODUCTOS</a></li>
-        <li id="logo"><a href="#"><img src="../assets/css/logo2.png" alt="Logo"></a></li>
-        <li><a [routerLink]="['/services']">SERVICIOS</a></li>
-        <li><a [routerLink]="['/contact']">CONTACTO</a></li>
+        <li><a [routerLink]="['/home']" [routerLinkActive]="['active']">INICIO</a></li>
+        <li><a [routerLink]="['/products']" [routerLinkActive]="['active']">PRODUCTOS</a></li>
+        <li id="logo"><a [routerLink]="['/home']"><img src="../assets/css/img/logo2.png" alt="Logo"></a></li>
+        <li><a [routerLink]="['/services']" [routerLinkActive]="['active']">SERVICIOS</a></li>
+        <li><a [routerLink]="['/contact']" [routerLinkActive]="['active']">CONTACTO</a></li>
     </ul>
 </header>
 
