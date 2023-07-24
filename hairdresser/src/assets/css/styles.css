@@ -1,0 +1,105 @@
+/* IMPORTANDO FUENTES */
+@font-face {
+    font-family: "yanone";
+    src: url('fonts/yanone.ttf');
+}
+
+@font-face {
+    font-family: "cursiva";
+    src: url('fonts/NyghtSerif-LightItalic.ttf');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "yanone", "Opens-Sans", Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    background: #E5E7E9;
+    background-attachment: fixed;
+}
+
+.clearfix {
+    float: none;
+    clear: both;
+}
+
+/* Nav-Bar */
+
+header {
+    width: 100%;
+    height: 90px;
+    background: #000000e0;
+    position: fixed;
+    display: block;
+    text-transform: uppercase;
+}
+
+header ul {
+    display: flex;
+    /* Cambiamos a flexbox para alinear los elementos horizontalmente */
+    justify-content: center;
+    /* Alineamos los elementos horizontalmente */
+    align-items: center;
+    /* Alineamos los elementos verticalmente en el centro */
+    height: inherit;
+}
+
+header ul li {
+    list-style: none;
+    /* Quitamos los puntos de la lista */
+    margin: 0 15px;
+    /* Espacio entre los elementos */
+}
+
+header ul li a {
+    color: #fff;
+    text-decoration: none;
+    transition: all 300ms;
+    padding: 10px 20px;
+    /* Espacio interno para los enlaces */
+}
+
+header ul li a:hover {
+    color: #9c7822;
+    border-bottom: 1px solid #9c7822;
+}
+
+/* LOGO */
+header #logo a {
+    display: flex;
+    align-items: center;
+}
+
+header #logo img {
+    width: 90px;
+    height: 90px;
+    margin-right: 10px;
+    transition: transform 500ms, opacity 500ms;
+}
+
+header #logo a:hover {
+    transform: scale(1.2);
+    border-bottom: none;
+    background: transparent;
+}
+
+
+/* Content */
+
+#content {
+    width: 100%;
+    margin: 0 auto;
+    background: #fff;
+    min-height: 500px;
+}
+
+
+/* Footer */
+
+footer {
+    width: 90%;
+    margin: 0 auto;
+}

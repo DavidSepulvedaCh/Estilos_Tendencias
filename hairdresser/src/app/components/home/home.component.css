@@ -1,0 +1,113 @@
+/*BANNER */
+#banner {
+    width: 100%;
+    margin: 0 auto;
+    background: url("banner.jpg") rgba(0, 0, 0, 0.75);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-blend-mode: darken;
+    background-position: center;
+    padding: 100px 50px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+}
+
+#banner .information {
+    text-align: center;
+}
+
+#banner .information h1 {
+    color: #fff;
+    font-size: 45px;
+}
+
+.information p {
+    color: #fff;
+    text-align: justify;
+}
+
+/* ABOUT */
+#about .container {
+    width: 95%;
+    display: flex;
+    margin: 50px auto;
+}
+
+#about #picture {
+    width: 40%;
+    height: auto;
+}
+
+#about #picture img {
+    width: 100%;
+    height: 350px;
+    border-radius: 8px;
+    border: none;
+}
+
+#about .information {
+    flex: 1;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#about .information h1 {
+    color: #000;
+    font-size: 45px;
+    margin-bottom: 25px;
+}
+
+#about .information p {
+    color: #000;
+    text-align: justify;
+}
+
+
+/* galery */
+
+.galery {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f0f0;
+}
+
+.pictures {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 900px;
+}
+
+.grid-item {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease, transform 0.5s ease;
+}
+
+.grid-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+
+}
+
+.grid-item:hover {
+    cursor: pointer;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px);
+    /* Hacemos que la imagen se eleve 5px en hover */
+}

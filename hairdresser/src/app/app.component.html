@@ -1,0 +1,17 @@
+<header>
+    <ul>
+        <li><a [routerLink]="['/home']">INICIO</a></li>
+        <li><a [routerLink]="['/products']">PRODUCTOS</a></li>
+        <li id="logo"><a href="#"><img src="../assets/css/logo2.png" alt="Logo"></a></li>
+        <li><a [routerLink]="['/services']">SERVICIOS</a></li>
+        <li><a [routerLink]="['/contact']">CONTACTO</a></li>
+    </ul>
+</header>
+
+<section id="content">
+    <router-outlet></router-outlet>
+</section>
+
+<footer>
+    Estilos & Tendencias Peluqueria &copy;
+</footer>

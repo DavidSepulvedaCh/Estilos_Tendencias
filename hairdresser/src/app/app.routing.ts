@@ -1,0 +1,20 @@
+import { ModuleWithProviders } from "@angular/core";
+import { Routes, RouterModule } from "@angular/router";
+
+import { HomeComponent } from './components/home/home.component';
+import { ProductsComponent } from './components/products/products.component';
+import { WorksComponent } from './components/works/works.component';
+import { ContactComponent } from './components/contact/contact.component';
+import { CreateComponent } from './components/create/create.component';
+
+const appRoutes: Routes = [
+    { path: "", component: HomeComponent },
+    { path: "products", component: ProductsComponent },
+    { path: "services", component: WorksComponent },
+    { path: "contact", component: ContactComponent },
+    { path: "create", component: CreateComponent },
+    { path: "**", component: HomeComponent }
+];
+
+export const appRoutingProviders: any[] = [];
+export const routing: ModuleWithProviders<RouterModule> = RouterModule.forRoot(appRoutes);
