@@ -1,3 +1,8 @@
+@font-face {
+    font-family: "cursiva";
+    src: url('../../../assets/css/fonts/NyghtSerif-LightItalic.ttf');
+}
+
 /* Estilos para el banner */
 .banner {
     width: 100%;

@@ -105,6 +105,45 @@ header #logo a:hover {
 /* Footer */
 
 footer {
-    width: 90%;
+    background: #000;
+    width: 100%;
     margin: 0 auto;
+    color: #fff;
+}
+
+footer .container {
+    padding: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+footer .container h2 {
+    margin-bottom: 25px;
+}
+
+footer .container .contact #location {
+    font-size: 20px;
+}
+
+footer .container .contact #location i {
+    color: aqua;
+}
+
+footer .container .contact #phone {
+    font-size: 20px;
+}
+
+footer .container .contact #a {
+    font-size: 20px;
+    color: aqua;
+}
+
+footer .container img {
+    width: 250px;
+}
+
+footer #dev {
+    text-align: center;
+    color: #5e5e5e;
 }
