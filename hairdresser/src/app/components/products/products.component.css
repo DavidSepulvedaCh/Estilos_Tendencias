@@ -1,13 +1,8 @@
-@font-face {
-    font-family: "cursiva";
-    src: url('../../../assets/css/fonts/NyghtSerif-LightItalic.ttf');
-}
-
 /* Estilos para el banner */
 .banner {
     width: 100%;
     height: 500px;
-    background: url("../../../assets/css/img/products_banner.jpg") rgba(0, 0, 0, 0.75);
+    background: url("../../../assets/css/img/banner.jpg") rgba(0, 0, 0, 0.75);
     background-size: cover;
     background-repeat: no-repeat;
     background-blend-mode: darken;
@@ -56,108 +51,74 @@
     padding: 8px 15px;
     transition: background-color 0.3s ease;
     cursor: pointer;
+    background-color: transparent;
+    /* Fondo transparente por defecto */
 }
 
 .nav li:hover {
-    background-color: #EAA300;
+    background-color: #9c7822;
     color: #fff;
-    border-bottom: 1px solid #EAA300;
+    border-bottom: 1px solid #9c7822;
+    padding-bottom: 7px;
+    /* Añadir padding inferior igual al ancho del borde */
 }
 
-#active {
-    border-bottom: 1px solid #EAA300;
+.nav .active {
+    background-color: #9c7822;
+    color: #fff;
+    border-bottom: 1px solid #9c7822;
+    padding-bottom: 7px;
+    /* Añadir padding inferior igual al ancho del borde */
 }
+
 
 
 /* information */
 
-.content .information {
-    text-align: justify;
-    padding-bottom: 50px;
-}
-
-
-/* productos */
-
-.content .products {
+.products {
     display: flex;
     flex-wrap: wrap;
-    margin-bottom: 20px;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
 }
 
-.content .products .product {
-    padding: 8px;
-    margin: 20px auto;
-    width: 28%;
-    height: 300px;
-    background: #0000007a;
-    background-blend-mode: darken;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    border-radius: 0px 15px 0px 15px;
-    position: relative;
-    transition: transform 0.3s ease;
+.product {
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.2s;
+    width: 25%;
     cursor: pointer;
 }
 
-.content .products .product .titleProduct {
-    display: flex;
-    color: #f0f3f4;
-    font-size: 1.5;
-    align-content: flex-end;
-    text-align: end;
-    justify-content: flex-end;
-    margin: 8px;
+.product:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 }
 
-.content .products .product .description {
-    visibility: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: justify;
-    padding: 5px;
+.product img {
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+.product h2 {
+    font-size: 1.5em;
     margin-top: 10px;
 }
 
-.content .products .product .price {
-    position: absolute;
-    bottom: 18%;
-    left: 0;
-    right: 0;
-    color: #f0f3f4;
-    font-size: 1em;
-    text-align: center;
-    margin: 0;
+.product .description {
+    font-size: 0.9em;
+    color: #666;
+    margin-top: 10px;
 }
 
-.content .products .product .priceCOP {
-    display: flex;
-    justify-content: center;
-    position: absolute;
-    bottom: 5%;
-    left: 0;
-    right: 0;
-    color: #fff;
-    font-weight: 600;
-}
-
-.content .products .product .priceCOP i {
-    margin: 18px;
-    font-size: 25px;
-    color: #f0f3f4;
-    text-align: center;
-    margin: 0 10px;
-}
-
-.content .products .product:hover {
-    background-color: rgba(2, 2, 2, 0.856);
-    transform: translateY(-5px);
-    box-shadow: 0.1px 1px 1px 2px #922a2125;
-}
-
-.content .products .product:hover .description {
-    visibility: visible;
-    color: #f0f3f4;
+.product .price {
+    font-size: 1.2em;
+    color: #EAA300;
+    margin-top: 10px;
+    font-weight: bold;
 }
