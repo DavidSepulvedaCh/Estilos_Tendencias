@@ -35,23 +35,20 @@ header {
     position: fixed;
     display: block;
     text-transform: uppercase;
+    z-index: 1;
 }
 
 header ul {
     display: flex;
-    /* Cambiamos a flexbox para alinear los elementos horizontalmente */
     justify-content: center;
-    /* Alineamos los elementos horizontalmente */
     align-items: center;
-    /* Alineamos los elementos verticalmente en el centro */
     height: inherit;
+    position: static;
 }
 
 header ul li {
     list-style: none;
-    /* Quitamos los puntos de la lista */
     margin: 0 15px;
-    /* Espacio entre los elementos */
 }
 
 header ul li a {
@@ -63,11 +60,6 @@ header ul li a {
 }
 
 header ul li a:hover {
-    color: #9c7822;
-    border-bottom: 1px solid #9c7822;
-}
-
-.active {
     color: #9c7822;
     border-bottom: 1px solid #9c7822;
 }
@@ -105,45 +97,42 @@ header #logo a:hover {
 /* Footer */
 
 footer {
-    background: #000;
     width: 100%;
     margin: 0 auto;
+    background: #000;
     color: #fff;
 }
 
-footer .container {
-    padding: 25px;
+footer .content {
+    width: 90%;
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-footer .container h2 {
-    margin-bottom: 25px;
+footer #dev {
+    text-align: center;
+    align-items: center;
+    color: #a3a3a3;
+    font-size: 16px;
 }
 
-footer .container .contact #location {
-    font-size: 20px;
-}
-
-footer .container .contact #location i {
-    color: aqua;
-}
-
-footer .container .contact #phone {
-    font-size: 20px;
-}
-
-footer .container .contact #a {
-    font-size: 20px;
-    color: aqua;
-}
-
-footer .container img {
+footer .content .colR img {
     width: 250px;
 }
 
-footer #dev {
-    text-align: center;
-    color: #5e5e5e;
+footer .content .colL ul {
+    list-style: none;
+    margin-left: 25px;
+}
+
+footer .content .colL li {
+    padding: 8px;
+}
+
+footer .content .colL i {
+    color: #9c7822;
+    font-size: 20px;
+    margin-right: 25px;
 }

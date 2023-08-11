@@ -1,10 +1,10 @@
 <header>
     <ul>
-        <li><a [routerLink]="['/home']" [routerLinkActive]="['active']">INICIO</a></li>
-        <li><a [routerLink]="['/products']" [routerLinkActive]="['active']">PRODUCTOS</a></li>
-        <li id="logo"><a [routerLink]="['/home']"><img src="../assets/css/img/logo2.png" alt="Logo"></a></li>
-        <li><a [routerLink]="['/services']" [routerLinkActive]="['active']">SERVICIOS</a></li>
-        <li><a [routerLink]="['/contact']" [routerLinkActive]="['active']">CONTACTO</a></li>
+        <li><a [routerLink]="['/home']">INICIO</a></li>
+        <li><a [routerLink]="['/products']">PRODUCTOS</a></li>
+        <li id="logo"><a href="#"><img src="../assets/css/img/logo2.png" alt="Logo"></a></li>
+        <li><a [routerLink]="['/services']">SERVICIOS</a></li>
+        <li><a [routerLink]="['/contact']">CONTACTO</a></li>
     </ul>
 </header>
 
@@ -13,20 +13,19 @@
 </section>
 
 <footer>
-    <section class="container">
-        <div class="information">
-            <h2>SALON DE BELLEZA ESTILOS & TENDENCIAS</h2>
-            <div class="contact">
-                <p id="location"><i class="fa-solid fa-location-pin"></i>La Carrera, Cáchira Norte de Santander</p>
-                <p id="phone"><i class="fa-brands fa-square-whatsapp"></i> +57 322 3126 566</p>
-                <p id="socialNetwork">@estilos_tendencias</p>
-                <a href="https://www.linkedin.com/in/david-leonardo-sep%C3%BAlveda-21303a255/" target="_blank">
-                    <i class="fa-brands fa-linkedin" id="linkedin"></i>
-                </a>
-
-            </div>
+    <section class="content">
+        <div class="colL">
+            <h2>Estilos & Tendencias &reg;</h2>
+            <i class="fa-solid fa-location-pin"></i>
+            <ul>
+                <li><a><i class="fa fa-phone"></i>+57 322 3126 617</a></li>
+                <li><a><i class="fa fa-map-pin"></i>La Carrera, Norte de Santander</a></li>
+                <li><a><i class="fa fa-brands fa-instagram"></i>@estilos_tendencias</a></li>
+            </ul>
         </div>
-        <img src="../assets/css/img/logo2.png" alt="logo">
+        <div class="colR">
+            <img src="../assets/css/img/logo2.png" alt="">
+        </div>
     </section>
-    <p id="dev">Desarrollado por David Sepulveda 2023 &copy;</p>
+    <p id="dev">Desarrollado por: David Sepúlveda 2023&copy;</p>
 </footer>
