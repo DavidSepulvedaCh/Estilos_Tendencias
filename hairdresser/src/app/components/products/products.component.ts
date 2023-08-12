@@ -1,51 +1,49 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Product } from 'src/app/models/product';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
-  selector: 'app-products',
+  selector: 'products',
   templateUrl: './products.component.html',
-  styleUrls: ['./products.component.css']
+  styleUrls: ['./products.component.css'],
+  providers: [ProductService]
 })
-export class ProductsComponent {
+export class ProductsComponent implements OnInit {
 
-  products = [
-    {
-      id: 1,
-      type: 'Keratinas',
-      name: 'Producto 1',
-      description: 'Descripción del Producto 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-      price: '$19.99',
-      imageUrl: '../../../assets/css/img/imagen1.jpg'
-    },
-    {
-      id: 2,
-      type: 'Barberia',
-      name: 'Producto 2',
-      description: 'Descripción del Producto 2. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-      price: '$24.99',
-      imageUrl: '../../../assets/css/img/imagen2.jpg'
-    },
-    {
-      id: 2,
-      type: 'Shampoos',
-      name: 'Producto 2',
-      description: 'Descripción del Producto 2. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-      price: '$24.99',
-      imageUrl: '../../../assets/css/img/imagen3.jpg'
-    },
-  ];
+  public products: Array<Product> = [];
+  public uniqueCategories: string[] = []; // Agrega esta línea
 
-  activeCategory: string | null = null; // Categoría inicial (mostrar todos los productos)
+  constructor(
+    private _productService: ProductService
+  ) { }
+
+  ngOnInit(): void {
+    this.products = this._productService.getProduct();
+    this.uniqueCategories = this.getUniqueCategories(); // Agrega esta línea
+  }
+
+  activeCategory: string | null = null;
   activeId: boolean = false;
+
   changeCategory(category: string | null): void {
     this.activeCategory = category;
     this.activeId = !this.activeId;
   }
 
-  filteredProducts(): any[] {
-    if (this.activeCategory === null) {
-      return this.products; // Mostrar todos los productos
-    } else {
-      return this.products.filter(product => product.type === this.activeCategory);
-    }
+  filteredProducts(): Array<Product> {
+    return this.activeCategory === null
+      ? this.products
+      : this.products.filter(product => product.category === this.activeCategory);
+  }
+
+  // Nueva función para obtener categorías únicas
+  getUniqueCategories(): string[] {
+    const categoriesSet = new Set<string>();
+    this.products.forEach(product => {
+      if (product.category) {
+        categoriesSet.add(product.category);
+      }
+    });
+    return Array.from(categoriesSet);
   }
 }

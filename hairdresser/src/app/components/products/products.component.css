@@ -1,8 +1,8 @@
 /* Estilos para el banner */
 .banner {
     width: 100%;
-    height: 500px;
-    background: url("../../../assets/css/img/banner.jpg") rgba(0, 0, 0, 0.75);
+    height: 650px;
+    background: url("../../../assets/css/img/banner_productos.jpg") rgba(0, 0, 0, 0.75);
     background-size: cover;
     background-repeat: no-repeat;
     background-blend-mode: darken;
@@ -52,7 +52,6 @@
     transition: background-color 0.3s ease;
     cursor: pointer;
     background-color: transparent;
-    /* Fondo transparente por defecto */
 }
 
 .nav li:hover {
@@ -60,7 +59,6 @@
     color: #fff;
     border-bottom: 1px solid #9c7822;
     padding-bottom: 7px;
-    /* Añadir padding inferior igual al ancho del borde */
 }
 
 .nav .active {
@@ -68,19 +66,17 @@
     color: #fff;
     border-bottom: 1px solid #9c7822;
     padding-bottom: 7px;
-    /* Añadir padding inferior igual al ancho del borde */
 }
 
 
 
 /* information */
-
 .products {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
     padding: 20px;
+    align-items: stretch;
 }
 
 .product {
@@ -114,6 +110,10 @@
     font-size: 0.9em;
     color: #666;
     margin-top: 10px;
+    text-align: justify;
+    max-lines: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .product .price {

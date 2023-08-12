@@ -9,11 +9,12 @@
     <div class="nav">
         <ul>
             <li (click)="changeCategory(null)" [ngClass]="{'active': activeCategory === null}">Todos</li>
-            <li *ngFor="let product of products" (click)="changeCategory(product.type)"
-                [ngClass]="{'active': activeCategory === product.type}">
-                {{ product.type }}
+            <li *ngFor="let category of uniqueCategories" (click)="changeCategory(category)"
+                [ngClass]="{'active': activeCategory === category}">
+                {{ category }}
             </li>
         </ul>
+
 
 
     </div>
@@ -26,10 +27,10 @@
     </div>
     <div class="products">
         <div *ngFor="let product of filteredProducts()" class="product">
-            <img [src]="product.imageUrl" alt="{{ product.name }}">
+            <img [src]="product.image" alt="{{ product.name }}">
             <h2>{{ product.name }}</h2>
             <p class="description">{{ product.description }}</p>
-            <p class="price">{{ product.price }}</p>
+            <p class="price">$ {{ product.price }} COP</p>
         </div>
     </div>
 
