@@ -3,7 +3,7 @@
 
 Este proyecto consiste en una aplicación web para una peluquería, que muestra información sobre la peluquería, los servicios que ofrece, productos disponibles y más. Además, incluye un panel de administración y un carrito de compras. **Actualmente se encuentra en desarrollo.** [MEAN STACK] <br>
 
-![home Estilos&Tendencias](https://res.cloudinary.com/dwfh4s7tu/image/upload/v1701729985/Estilos_Tendencias_rbeagy.png)
+![home Estilos&Tendencias](https://res.cloudinary.com/dwfh4s7tu/image/upload/v1701730633/Estilos_Tendencias_k6d3xl.png)
 
 ## Tecnologías Utilizadas 
 
