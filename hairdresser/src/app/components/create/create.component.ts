@@ -1,16 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import { Router } from '@angular/router'; // Importa Router
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
-  selector: 'app-create',
+  selector: 'create',
   templateUrl: './create.component.html',
-  styleUrls: ['./create.component.css']
+  styleUrls: ['./create.component.css'],
+  providers: [AuthService],
 })
 export class CreateComponent implements OnInit {
   loginForm!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private authService: AuthService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -21,10 +27,19 @@ export class CreateComponent implements OnInit {
 
   onSubmit() {
     if (this.loginForm.valid) {
-      // Aquí puedes enviar los datos del formulario al servidor o realizar la lógica de autenticación
       const formData = this.loginForm.value;
-      console.log('Datos de inicio de sesión:', formData);
-      // Llamar a un servicio para autenticar o realizar la lógica de inicio de sesión
+
+      this.authService.login(formData).subscribe(
+        (response) => {
+          this.authService.saveToken(response.tokenUsuario);
+          window.alert("Login exitoso");
+
+          this.router.navigate(['/contact']);
+        },
+        (error) => {
+          window.alert("Error al ingresar");
+        }
+      );
     }
   }
 }

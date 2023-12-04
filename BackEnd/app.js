@@ -2,6 +2,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 const morgan = require('morgan');
+const cors = require('cors'); // Importar cors
+
 
 // Archivos de rutas
 const product_routes = require('./routes/product');
@@ -13,13 +15,12 @@ app.use(bodyParser.json());
 app.use(morgan("dev")); //combined --> todo mas a detalle sobre las peticiones al server
 
 // Configuración de CORS
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Headers', 'Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method');
-    res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
-    res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE');
-    next();
-});
+app.use(cors({
+    origin: '*',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    preflightContinue: false,
+    optionsSuccessStatus: 204
+}));
 
 // Rutas
 app.use('/api/product', product_routes);

@@ -14,13 +14,14 @@ const multiparMidelware = multipart({ uploadDir: './uploads' });
 // Rutas públicas (sin autenticación)
 router.get('/', ProductController.home);
 router.get('/test', ProductController.test);
+router.get('/getProducts', ProductController.getAllProducts);
+
 
 // Rutas protegidas (requieren autenticación)
 router.use(verificarToken);
 
 router.post('/save-product', ProductController.saveProduct);
 router.get('/products/:id?', ProductController.getProduct);
-router.post('/getProducts', ProductController.getAllProducts);
 router.put('/update-product/:id', ProductController.updateProduct);
 router.delete('/delete-product/:id', ProductController.deleteProduct);
 
