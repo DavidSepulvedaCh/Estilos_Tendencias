@@ -87,7 +87,7 @@ var controller = {
         const productID = req.params.id;
         var fileName = 'img no subida...';
         try {
-            if (req.file) { // Assuming multer middleware is used to process file uploads
+            if (req.file) {
                 var filePath = req.file.path;
                 var fileSplit = filePath.split('\\');
                 fileName = fileSplit[fileSplit.length - 1];
@@ -110,6 +110,22 @@ var controller = {
             return res.status(500).send({ "message": e.message });
         }
     }
+}
+
+function verificarToken(req, res, next) {
+    const token = req.headers['authorization'];
+
+    if (!token) {
+        return res.status(401).send({ message: 'Acceso denegado. Token no proporcionado.' });
+    }
+
+    jwt.verify(token, JWT_SECRET, (err, decoded) => {
+        if (err) {
+            return res.status(403).send({ message: 'Token inválido.' });
+        }
+        req.userId = decoded.userId;
+        next();
+    });
 }
 
 module.exports = controller;

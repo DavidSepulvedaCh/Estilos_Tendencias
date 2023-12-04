@@ -1,23 +1,18 @@
-'use strict';
-
 const express = require('express');
 const bodyParser = require('body-parser');
-
 const app = express();
+const morgan = require('morgan');
 
-//archivos rutas
+// Archivos de rutas
 const product_routes = require('./routes/product');
+const user_routes = require('./routes/user'); // Importa las rutas de usuario
 
+// Middlewares
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(morgan("dev")); //combined --> todo mas a detalle sobre las peticiones al server
 
-//midelwares -> capa que se ejcuta antes de ejecutar un controlador
-app.use(bodyParser.urlencoded({ extended: false })); // configuracion para convertir en JSON las REQ RES
-app.use(bodyParser.json()); // cualquier tipo de peticion se convierte a JSON
-
-//cors
-
-
-
-// Configurar cabeceras y cors
+// Configuración de CORS
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Headers', 'Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method');
@@ -26,9 +21,8 @@ app.use((req, res, next) => {
     next();
 });
 
-
-//rutas
-app.use('/api', product_routes);
-
+// Rutas
+app.use('/api/product', product_routes);
+app.use('/api/user', user_routes);
 
 module.exports = app;
