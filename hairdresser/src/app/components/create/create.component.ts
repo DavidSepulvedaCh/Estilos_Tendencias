@@ -11,6 +11,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class CreateComponent implements OnInit {
   loginForm!: FormGroup;
+  public username = "";
 
   constructor(
     private formBuilder: FormBuilder,
@@ -32,9 +33,17 @@ export class CreateComponent implements OnInit {
       this.authService.login(formData).subscribe(
         (response) => {
           this.authService.saveToken(response.tokenUsuario);
-          window.alert("Login exitoso");
 
-          this.router.navigate(['/contact']);
+          this.authService.getUserInfo().subscribe(
+            (userInfo) => {
+              this.username = userInfo.username;
+            },
+            (error) => {
+            }
+          );
+
+          window.alert("Login exitoso");
+          this.router.navigate(['/admin-panel']);
         },
         (error) => {
           window.alert("Error al ingresar");

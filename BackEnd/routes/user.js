@@ -11,6 +11,6 @@ router.post('/register', UserController.register);
 router.post('/login', UserController.login);
 
 router.use(verificarToken);
-router.get('/information', UserController.userInformation);
+router.post('/information', UserController.userInformation);
 
 module.exports = router;

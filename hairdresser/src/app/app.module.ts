@@ -13,6 +13,8 @@ import { ProductsComponent } from './components/products/products.component';
 import { WorksComponent } from './components/works/works.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { CreateComponent } from './components/create/create.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import { CreateComponent } from './components/create/create.component';
     ProductsComponent,
     WorksComponent,
     ContactComponent,
-    CreateComponent
+    CreateComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +34,8 @@ import { CreateComponent } from './components/create/create.component';
     HttpClientModule
   ],
   providers: [
-    appRoutingProviders
+    appRoutingProviders,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })

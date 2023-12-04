@@ -2,10 +2,11 @@ import { Injectable } from "@angular/core";
 import { Product } from "../models/product";
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from "src/environment/environment";
 
 @Injectable()
 export class ProductService {
-    private apiURL = "http://localhost:3000/api/product/getProducts";
+    private apiURL = environment.apiUrl;
 
     public Products: Array<Product>;
 
@@ -14,7 +15,7 @@ export class ProductService {
     }
 
     getProducts(): Observable<Product> {
-        return this.http.get<Product>(this.apiURL);
+        return this.http.get<Product>(`${this.apiURL}/product/getProducts`);
     }
 
 }

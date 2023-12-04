@@ -1,0 +1,64 @@
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar {
+    background-color: #000;
+    color: #fff;
+    width: 250px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.logo {
+    max-width: 100px;
+    margin-bottom: 10px;
+}
+
+.sidebar ul.menu {
+    list-style: none;
+    padding: 0;
+    margin-bottom: auto;
+}
+
+.sidebar ul.menu li {
+    margin-bottom: 10px;
+}
+
+.sidebar ul.menu li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.sidebar ul.menu li a:hover {
+    text-decoration: underline;
+}
+
+.logout {
+    text-align: center;
+}
+
+.logout a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.logout a:hover {
+    text-decoration: underline;
+}
+
+#nombreUsuario {
+    color: #9c7822;
+    font-weight: bold;
+}
+
+.main-content {
+    margin: 30px;
+}

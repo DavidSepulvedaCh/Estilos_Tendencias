@@ -55,7 +55,7 @@ const controller = {
         const userId = req.userId;
 
         try {
-            const user = await User.findById(userId).exec();
+            const user = await User.findById(userId).select('-password').exec();
 
             if (!user) {
                 return res.status(404).send({ message: 'Usuario no encontrado.' });
@@ -66,6 +66,7 @@ const controller = {
             return res.status(500).send({ message: 'Error al obtener información del usuario.', error: err });
         }
     }
+
 };
 
 

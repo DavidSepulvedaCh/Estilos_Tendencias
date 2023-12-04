@@ -6,6 +6,8 @@ import { ProductsComponent } from './components/products/products.component';
 import { WorksComponent } from './components/works/works.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { CreateComponent } from './components/create/create.component';
+import { DashboardComponent } from "./components/dashboard/dashboard.component";
+
 
 const appRoutes: Routes = [
     { path: "", component: HomeComponent },
@@ -13,6 +15,7 @@ const appRoutes: Routes = [
     { path: "services", component: WorksComponent },
     { path: "contact", component: ContactComponent },
     { path: "create", component: CreateComponent },
+    { path: "admin-panel", component: DashboardComponent },
     { path: "**", component: HomeComponent }
 ];
 
