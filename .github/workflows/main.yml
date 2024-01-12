@@ -43,14 +43,14 @@ jobs:
       - name: Copy Environment Files
         run: |
           echo "export const environment = {" > $GITHUB_WORKSPACE/hairdresser/src/app/environments/environment.ts
-          echo "  production: false," >> src/app/environments/environment.ts
-          echo "  apiUrl: ''" >> src/app/environments/environment.ts
-          echo "};" >> src/app/environments/environment.ts
+          echo "  production: false," >> $GITHUB_WORKSPACE/hairdresser/src/app/environments/environment.ts
+          echo "  apiUrl: ''" >> $GITHUB_WORKSPACE/hairdresser/src/app/environments/environment.ts
+          echo "};" >> $GITHUB_WORKSPACE/hairdresser/src/app/environments/environment.ts
 
           echo "export const environment = {" > $GITHUB_WORKSPACE/hairdresser/src/app/environments/environment.prod.ts
-          echo "  production: true," >> src/app/environments/environment.prod.ts
-          echo "  apiUrl: '${{secrets.BACKEND_URL}}'" >> src/app/environments/environment.prod.ts
-          echo "};" >> src/app/environments/environment.prod.ts
+          echo "  production: true," >> $GITHUB_WORKSPACE/hairdresser/src/app/environments/environment.prod.ts
+          echo "  apiUrl: '${{secrets.BACKEND_URL}}'" >> $GITHUB_WORKSPACE/hairdresser/src/app/environments/environment.prod.ts
+          echo "};" >> $GITHUB_WORKSPACE/hairdresser/src/app/environments/environment.prod.ts
         
       - name: Debug Info
         run: |
