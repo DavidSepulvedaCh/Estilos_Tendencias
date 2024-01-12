@@ -49,7 +49,14 @@ jobs:
           echo "  apiUrl: '${{ secrets.BACKEND_URL }}'" >> src/app/environments/environment.prod.ts
           echo "};" >> src/app/environments/environment.prod.ts
         
-  
+
+      - name: Print Environment.prod.ts
+        run: cat src/app/environments/environment.prod.ts
+
+      - name: List files in src/app/environments
+        run: ls -la src/app/environments
+      
+        
 
       # Build app production
       - name: build app bundle
