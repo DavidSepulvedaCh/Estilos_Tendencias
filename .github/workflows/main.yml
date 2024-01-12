@@ -50,7 +50,7 @@ jobs:
           echo "export const environment = {" > $GITHUB_WORKSPACE/hairdresser/src/environments/environment.prod.ts
           echo "  production: true," >> $GITHUB_WORKSPACE/hairdresser/src/environments/environment.prod.ts
           echo "  apiUrl: '${{secrets.BACKEND_URL}}'" >> $GITHUB_WORKSPACE/hairdresser/src/environments/environment.prod.ts
-          echo "};" >> $GITHUB_WORKSPACE/hairdresser/src/app/environments/environment.prod.ts
+          echo "};" >> $GITHUB_WORKSPACE/hairdresser/src/environments/environment.prod.ts
         
       - name: Debug Info
         run: |
