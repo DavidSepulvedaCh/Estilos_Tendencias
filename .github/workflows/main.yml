@@ -36,6 +36,11 @@ jobs:
       - name: Setup Environment Directory
         run: |
           mkdir -p src/app/environments
+
+      - name: Debug Info
+        run: |
+          ls -la $GITHUB_WORKSPACE/hairdresser/src/app/environments/
+        
         
       - name: Copy Environment Files
         run: |
