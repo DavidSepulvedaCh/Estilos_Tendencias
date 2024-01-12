@@ -33,12 +33,17 @@ jobs:
           cd $GITHUB_WORKSPACE/hairdresser
           npm i
       
+      - name: Setup Environment Directory
+        run: |
+          mkdir -p src/app/environments
+        
       - name: Copy Environment Files
         run: |
-          echo "export const environment = {" > src/environments/environment.prod.ts
-          echo "  production: true," >> src/environments/environment.prod.ts
-          echo "  apiUrl: '${{ secrets.BACKEND_URL }}'" >> src/environments/environment.prod.ts
-          echo "};" >> src/environments/environment.prod.ts
+          echo "export const environment = {" > src/app/environments/environment.prod.ts
+          echo "  production: true," >> src/app/environments/environment.prod.ts
+          echo "  apiUrl: '${{ secrets.BACKEND_URL }}'" >> src/app/environments/environment.prod.ts
+          echo "};" >> src/app/environments/environment.prod.ts
+        
   
 
       # Build app production
