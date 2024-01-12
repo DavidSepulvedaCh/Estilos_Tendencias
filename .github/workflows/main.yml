@@ -36,6 +36,9 @@ jobs:
       - name: Setup Environment Directory
         run: |
           mkdir -p src/app/environments
+      
+      - name: Verify Environment Directory
+        run: ls -la src/app/environments/
         
       - name: Copy Environment Files
         run: |
