@@ -45,7 +45,7 @@ jobs:
           echo "export const environment = {" > $GITHUB_WORKSPACE/hairdresser/src/environments/environment.ts
           echo "  production: false," >> $GITHUB_WORKSPACE/hairdresser/src/environments/environment.ts
           echo "  apiUrl: ''" >> $GITHUB_WORKSPACE/hairdresser/src/environments/environment.ts
-          echo "};" >> $GITHUB_WORKSPACE/hairdresser/src/app/environments/environment.ts
+          echo "};" >> $GITHUB_WORKSPACE/hairdresser/src/environments/environment.ts
 
           echo "export const environment = {" > $GITHUB_WORKSPACE/hairdresser/src/environments/environment.prod.ts
           echo "  production: true," >> $GITHUB_WORKSPACE/hairdresser/src/environments/environment.prod.ts
