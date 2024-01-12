@@ -49,6 +49,10 @@ jobs:
           echo "  apiUrl: '${{secrets.BACKEND_URL}}'" >> src/app/environments/environment.prod.ts
           echo "};" >> src/app/environments/environment.prod.ts
         
+      - name: Debug Info
+        run: |
+          ls -la $GITHUB_WORKSPACE/hairdresser/src/app/environments/
+          
 
       - name: Print Environment.prod.ts
         run: cat src/app/environments/environment.prod.ts
