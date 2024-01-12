@@ -56,15 +56,6 @@ jobs:
         run: |
           ls -la $GITHUB_WORKSPACE/hairdresser/src/app/environments/
           
-
-      - name: Print Environment.prod.ts
-        run: cat src/app/environments/environment.prod.ts
-
-      - name: List files in src/app/environments
-        run: ls -la src/app/environments
-      
-        
-
       # Build app production
       - name: build app bundle
         run: |
