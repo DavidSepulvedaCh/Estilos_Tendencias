@@ -29,11 +29,15 @@ jobs:
 
       # Install dependencies
       - name: Install deps
-        run: npm i
+        run: |
+          cd $GITHUB_WORKSPACE/hairdresser
+          npm i
 
       # Build app production
       - name: build app bundle
-        run: npm run build:prod
+        run: |
+          cd $GITHUB_WORKSPACE/hairdresser
+          npm run build:prod
 
       # Deploy to GitPages
       - name: deploy to pages
