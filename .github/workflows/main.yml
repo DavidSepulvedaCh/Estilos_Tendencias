@@ -46,7 +46,7 @@ jobs:
 
           echo "export const environment = {" > src/app/environments/environment.prod.ts
           echo "  production: true," >> src/app/environments/environment.prod.ts
-          echo "  apiUrl: '${{ secrets.BACKEND_URL }}'" >> src/app/environments/environment.prod.ts
+          echo "  apiUrl: '${{secrets.BACKEND_URL}}'" >> src/app/environments/environment.prod.ts
           echo "};" >> src/app/environments/environment.prod.ts
         
 
