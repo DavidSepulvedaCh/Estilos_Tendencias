@@ -1,71 +1,41 @@
 name: Angular-CI
 
-# Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
   build:
-    # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout
         uses: actions/checkout@v3
 
-      # Septup NodeJs
-      - name: septup nodejs
+      - name: Set Working Directory
+        run: cd $GITHUB_WORKSPACE/hairdresser
+
+      - name: Setup NodeJs
         uses: actions/setup-node@v4.0.1
         with:
           node-version: "18"
 
-      # Install dependencies
-      - name: Install deps
-        run: |
-          cd $GITHUB_WORKSPACE/hairdresser
-          npm i
-      
-      - name: Setup Environment Directory
-        run: |
-          mkdir -p src/app/environments
-        
+      - name: Install Dependencies
+        run: npm install
+
       - name: Copy Environment Files
         run: |
-          echo "export const environment = {" > src/app/environments/environment.ts
-          echo "  production: false," >> src/app/environments/environment.ts
-          echo "  apiUrl: ''" >> src/app/environments/environment.ts
-          echo "};" >> src/app/environments/environment.ts
-
           echo "export const environment = {" > src/app/environments/environment.prod.ts
           echo "  production: true," >> src/app/environments/environment.prod.ts
           echo "  apiUrl: '${{secrets.BACKEND_URL}}'" >> src/app/environments/environment.prod.ts
           echo "};" >> src/app/environments/environment.prod.ts
-        
 
-      - name: Print Environment.prod.ts
-        run: cat src/app/environments/environment.prod.ts
+      - name: Build Production
+        run: npm run build:prod
 
-      - name: List files in src/app/environments
-        run: ls -la src/app/environments
-      
-        
-
-      # Build app production
-      - name: build app bundle
-        run: |
-          cd $GITHUB_WORKSPACE/hairdresser
-          npm run build:prod
-
-      # Deploy to GitPages
-      - name: deploy to pages
+      - name: Deploy to GitPages
         uses: crazy-max/ghaction-github-pages@v4.0.0
         with:
           build_dir: dist/hairdresser
