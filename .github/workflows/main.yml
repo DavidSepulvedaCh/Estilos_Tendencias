@@ -62,6 +62,10 @@ jobs:
           cd $GITHUB_WORKSPACE/hairdresser
           npm run build:prod
 
+      - name: Verify Build Directory
+        run: ls -la $GITHUB_WORKSPACE/hairdresser/dist/hairdresser
+        
+
       # Deploy to GitPages
       - name: deploy to pages
         uses: crazy-max/ghaction-github-pages@v4.0.0
