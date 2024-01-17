@@ -12,8 +12,6 @@ const multipart = require('connect-multiparty');
 const multiparMidelware = multipart({ uploadDir: './uploads' });
 
 // Rutas públicas (sin autenticación)
-router.get('/', ProductController.home);
-router.get('/test', ProductController.test);
 router.get('/getProducts', ProductController.getAllProducts);
 
 

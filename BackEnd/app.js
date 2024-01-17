@@ -7,7 +7,8 @@ const cors = require('cors'); // Importar cors
 
 // Archivos de rutas
 const product_routes = require('./routes/product');
-const user_routes = require('./routes/user'); // Importa las rutas de usuario
+const user_routes = require('./routes/user');
+const shopping_routes = require('./routes/shopping');
 
 // Middlewares
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -25,5 +26,6 @@ app.use(cors({
 // Rutas
 app.use('/api/product', product_routes);
 app.use('/api/user', user_routes);
+app.use('/api/shopping', shopping_routes);
 
 module.exports = app;

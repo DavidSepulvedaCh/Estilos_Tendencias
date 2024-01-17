@@ -3,17 +3,6 @@
 const Product = require('../models/product');
 
 var controller = {
-    home: function (req, res) {
-        return res.status(200).send({
-            "message": "Esta es la home"
-        });
-    },
-
-    test: function (req, res) {
-        return res.status(200).send({
-            "message": "Pagina de prueba"
-        });
-    },
 
     saveProduct: async function (req, res) {
 
@@ -112,20 +101,5 @@ var controller = {
     }
 }
 
-function verificarToken(req, res, next) {
-    const token = req.headers['authorization'];
-
-    if (!token) {
-        return res.status(401).send({ message: 'Acceso denegado. Token no proporcionado.' });
-    }
-
-    jwt.verify(token, JWT_SECRET, (err, decoded) => {
-        if (err) {
-            return res.status(403).send({ message: 'Token inválido.' });
-        }
-        req.userId = decoded.userId;
-        next();
-    });
-}
 
 module.exports = controller;
