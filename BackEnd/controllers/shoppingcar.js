@@ -89,7 +89,61 @@ var controller = {
         }
     },
 
-    deleteProductCar: async function (req, res) { }
+    deleteProductCar: async function (req, res) {
+        const { email, productID, quantity, isAll } = req.body;
+
+        try {
+            if (!email || (isAll === undefined && !productID)) {
+                return res.status(400).send({ "success": false, "message": "Todos los campos son requeridos." });
+            }
+
+            // Buscar el carrito por email antes de realizar las operaciones
+            let existingItem = await ShoppingCar.findOne({ email });
+
+            if (!existingItem) {
+                return res.status(404).send({ "success": false, "message": "Usuario no encontrado o carrito vacío" });
+            }
+
+            let updateQuery;
+
+            if (isAll) {
+                // Eliminar todo el registro del carrito
+                await ShoppingCar.deleteOne({ email });
+                return res.status(200).send({ "success": true, "message": "Carrito eliminado correctamente" });
+            } else if (productID) {
+                const productIndex = existingItem.products.findIndex(p => p._id.toString() === productID.toString());
+
+                if (productIndex !== -1) {
+                    if (quantity && quantity > 0 && quantity < existingItem.products[productIndex].quantity) {
+                        // Reducir la cantidad del producto en lugar de eliminarlo completamente
+                        existingItem.products[productIndex].quantity -= quantity;
+                        updateQuery = { $set: { products: existingItem.products } };
+                    } else {
+                        // Eliminar completamente el producto
+                        existingItem.products.splice(productIndex, 1);
+                        updateQuery = { $set: { products: existingItem.products } };
+                    }
+                } else {
+                    return res.status(404).send({ "success": false, "message": "Producto no encontrado en el carrito" });
+                }
+            }
+
+            // Actualizar la cantidad global del carrito
+            existingItem.quantity = existingItem.products.reduce((total, product) => total + product.quantity, 0);
+            existingItem.total = existingItem.products.reduce((total, product) => total + product.quantity * product.price, 0);
+            await existingItem.save();
+
+
+            // Actualizar el documento en la base de datos
+            await ShoppingCar.findOneAndUpdate({ email }, updateQuery);
+
+            return res.status(200).send({ "success": true, "message": "Producto(s) eliminado(s) correctamente del carrito" });
+        } catch (error) {
+            console.error(error);
+            return res.status(500).send({ "success": false, "message": "Error interno del servidor" });
+        }
+    }
+
 }
 
 module.exports = controller;
