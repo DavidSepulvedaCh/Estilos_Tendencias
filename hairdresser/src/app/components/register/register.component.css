@@ -1,3 +1,4 @@
+/* Estilos generales */
 .content {
     display: flex;
     justify-content: center;
@@ -5,22 +6,28 @@
     height: 100vh;
     background:
         linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-        url('../../../../assets/css/img/banner_login.jpg');
+        url('../../../assets/css/img/banner_login.jpg');
     background-size: cover;
     color: #fff;
 }
 
 .centered-form {
-    max-width: 500px;
+    max-width: 600px;
     padding: 30px;
-    width: 400px;
     border-radius: 10px;
     background-color: rgba(255, 255, 255, 0.9);
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    margin-top: 70px;
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
 }
 
 .form-group {
-    margin-bottom: 20px;
+    flex: 1;
+    margin: 10px;
 }
 
 label {
@@ -30,6 +37,7 @@ label {
     color: #333;
 }
 
+input[type="text"],
 input[type="email"],
 input[type="password"] {
     width: 100%;
@@ -44,7 +52,7 @@ button {
     padding: 12px;
     border: none;
     border-radius: 5px;
-    background-color: #9c7822;
+    background-color: #3498db;
     color: #fff;
     font-size: 16px;
     cursor: pointer;
@@ -64,18 +72,31 @@ button:disabled {
 .links a {
     color: #333;
     text-decoration: none;
-    font-size: 16px;
+    font-size: 14px;
 }
 
 .links a:hover {
     text-decoration: underline;
 }
 
-#btnRegister {
-    padding: 5px 0;
+
+/* Agrega estilos generales para los mensajes de error */
+.error-message {
+    position: absolute;
+    top: 80px;
+    left: 15px;
+    z-index: 1000;
+    color: #fff;
+    background-color: #e74c3c;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    margin: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: top 0.5s ease;
 }
 
-#btnRegister span {
-    margin-left: 5px;
-    font-weight: 600;
+/* Agrega estilos específicos para el mensaje de campos de confirmación no coincidentes */
+.error-message.password-mismatch {
+    background-color: #f39c12;
 }

@@ -1,0 +1,71 @@
+<section class="content">
+    <form [formGroup]="registerForm" (ngSubmit)="onRegisterSubmit()" class="centered-form">
+        <div class="form-row">
+            <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" formControlName="nombre" />
+            </div>
+            <div class="form-group">
+                <label for="apellido">Apellido:</label>
+                <input type="text" id="apellido" formControlName="apellido" />
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="correo">Correo:</label>
+                <input type="email" id="correo" formControlName="correo" />
+            </div>
+            <div class="form-group">
+                <label for="confirmarCorreo">Confirmar Correo:</label>
+                <input type="email" id="confirmarCorreo" formControlName="confirmarCorreo" />
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="clave">Clave:</label>
+                <input type="password" id="clave" formControlName="clave" />
+            </div>
+            <div class="form-group">
+                <label for="confirmarClave">Confirmar Clave:</label>
+                <input type="password" id="confirmarClave" formControlName="confirmarClave" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label>
+                <input type="checkbox" formControlName="aceptarTyC" /> Aceptar Términos y Condiciones
+            </label>
+        </div>
+        <div class="form-group">
+            <button type="submit" [disabled]="registerForm.invalid">Registrarse</button>
+        </div>
+        <div class="form-group links">
+            <p>
+                ¿Ya tienes una cuenta? <a href="/login">Inicia sesión aquí</a>
+            </p>
+        </div>
+    </form>
+</section>
+
+
+<div class="error-message" *ngIf="registerForm.get('correo')?.hasError('email') && registerForm.get('correo')?.touched">
+    Correo electrónico inválido
+</div>
+<div class="error-message"
+    *ngIf="registerForm.get('confirmarCorreo')?.hasError('email') && registerForm.get('confirmarCorreo')?.touched">
+    Confirmación de correo electrónico inválida
+</div>
+<div class="error-message"
+    *ngIf="registerForm.get('clave')?.hasError('minlength') && registerForm.get('clave')?.touched">
+    La clave debe tener al menos 6 caracteres
+</div>
+<div class="error-message"
+    *ngIf="registerForm.get('confirmarClave')?.hasError('minlength') && registerForm.get('confirmarClave')?.touched">
+    La confirmación de la clave debe tener al menos 6 caracteres
+</div>
+<div class="error-message" *ngIf="!registerForm.get('aceptarTyC')?.value && registerForm.get('aceptarTyC')?.touched">
+    Debes aceptar los Términos y Condiciones
+</div>
+<div class="error-message password-mismatch"
+    *ngIf="registerForm.hasError('passwordMismatch') && (registerForm.get('confirmarClave')?.touched || registerForm.get('confirmarCorreo')?.touched)">
+    Los campos de confirmación no coinciden
+</div>
