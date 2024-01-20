@@ -1,12 +1,14 @@
 <ng-container *ngIf="!isInAdminPanel()">
     <header>
         <ul>
+
+            <li id="logo"><a href="#"><img [src]="logoBanner" alt="Logo"></a></li>
             <li><a [routerLink]="['/home']">INICIO</a></li>
             <li><a [routerLink]="['/products']">PRODUCTOS</a></li>
-            <li id="logo"><a href="#"><img src="../assets/css/img/logo2.png" alt="Logo"></a></li>
             <li><a [routerLink]="['/services']">SERVICIOS</a></li>
             <li><a [routerLink]="['/contact']">CONTACTO</a></li>
         </ul>
+        <a href="" id="btnLogin" [routerLink]="['/create']">Ingresar</a>
     </header>
 </ng-container>
 
@@ -16,21 +18,21 @@
 </section>
 
 <ng-container *ngIf="!isInAdminPanel()">
-    <footer>
-        <section class="content">
-            <div class="colL">
-                <h2>Estilos & Tendencias &reg;</h2>
-                <i class="fa-solid fa-location-pin"></i>
-                <ul>
-                    <li><a><i class="fa fa-phone"></i>+57 322 3126 617</a></li>
-                    <li><a><i class="fa fa-map-pin"></i>La Carrera, Norte de Santander</a></li>
-                    <li><a><i class="fa fa-brands fa-instagram"></i>@estilos_tendencias</a></li>
-                </ul>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-info">
+                <p id="name">💈 Estilos & Tendencias 💈</p>
+                <p id="role">Salon de belleza y Barberia</p>
             </div>
-            <div class="colR">
-                <img src="../assets/css/img/logo2.png" alt="">
+            <div class="footer-links">
+                <a target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+                <a href="https://github.com/DavidSepulvedaCh/Estilos_Tendencias" target="_blank" class="social-icon"><i
+                        class="fab fa-github"></i></a>
+                <a target="_blank" class="social-icon"><i class="fa fa-facebook"></i></a>
             </div>
-        </section>
-        <p id="dev">Desarrollado por: David Sepúlveda 2023&copy;</p>
+        </div>
+        <div class="footer-copyright">
+            <p>&copy; Desarrollado por: @DavidSepulvedaCh 2024. Todos los derechos reservados.</p>
+        </div>
     </footer>
 </ng-container>

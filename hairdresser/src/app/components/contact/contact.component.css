@@ -20,7 +20,7 @@
 
 .content {
     width: 90%;
-    margin: 0 auto;
+    margin: 40px auto;
 }
 
 .banner h1 {
@@ -30,4 +30,61 @@
 
 .banner p {
     font-size: 1.2em;
+}
+
+/* Contacto */
+
+.content .title {
+    font-size: 25px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.contactList,
+.socialList {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    margin: 15px auto;
+}
+
+.contactList li,
+.socialList li {
+    padding: 15px 40px;
+    list-style: none;
+}
+
+.contactList li a,
+.socialList li a {
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+    transition: all 300ms;
+
+}
+
+.contactList li a:hover,
+.socialList li a:hover {
+    text-shadow: 0 0 5px #000000b6;
+}
+
+.contactList li a i,
+.socialList li a i {
+    margin-right: 10px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+/* MAPA */
+#map {
+    text-align: center;
+    justify-content: center;
+    margin: 20px auto;
+}
+
+#map iframe {
+    width: 70%;
+    height: 500px;
+    margin: auto;
+    border: none;
 }
