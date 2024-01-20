@@ -7,14 +7,14 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
   images = [
-    '/assets/css/img/imagen1.jpg',
-    '/assets/css/img/imagen2.jpg',
-    '/assets/css/img/imagen3.jpg',
-    '/assets/css/img/imagen4.jpg',
-    '/assets/css/img/imagen5.jpg',
-    '/assets/css/img/imagen6.jpg',
+    'https://res.cloudinary.com/dwfh4s7tu/image/upload/v1705770525/imagen1_max66y.jpg',
+    'https://res.cloudinary.com/dwfh4s7tu/image/upload/v1705770527/imagen2_edwoya.jpg',
+    'https://res.cloudinary.com/dwfh4s7tu/image/upload/v1705770541/imagen3_uv0zmk.jpg',
+    'https://res.cloudinary.com/dwfh4s7tu/image/upload/v1705770543/imagen4_gvnxvw.jpg',
+    'https://res.cloudinary.com/dwfh4s7tu/image/upload/v1705770521/imagen5_hnft1o.jpg',
+    'https://res.cloudinary.com/dwfh4s7tu/image/upload/v1705770545/imagen6_wpqkeo.jpg',
   ];
 
-  logoBanner = '/assets/css/img/logo2.png';
-  picture = '/assets/css/img/picture.jpg';
+  logoBanner = 'https://res.cloudinary.com/dwfh4s7tu/image/upload/v1705770522/logo2_gwgtgz.png';
+  picture = 'https://res.cloudinary.com/dwfh4s7tu/image/upload/v1705770543/picture_qw6z9k.jpg';
 }
