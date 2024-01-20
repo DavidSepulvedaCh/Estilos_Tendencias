@@ -9,7 +9,7 @@ import { Router, NavigationEnd } from '@angular/router';
 })
 export class AppComponent implements OnInit {
   title = 'Estilos & Tendencias';
-  logoBanner = '/assets/css/img/logo2.png';
+  logoBanner = 'https://res.cloudinary.com/dwfh4s7tu/image/upload/v1705770522/logo2_gwgtgz.png';
   isLoading: boolean = true;
 
 
