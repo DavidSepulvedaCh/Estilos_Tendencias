@@ -44,3 +44,7 @@ Luego ingresa la siguiente dirección en tu navegador: `http://localhost:4200` y
 ## Contribuciones 📝
 
 Las contribuciones son siempre bienvenidas. Si encuentras algún problema o tienes alguna sugerencia, no dudes en abrir un issue o enviar un pull request.
+
+##
+>[!NOTE]
+> Las imagenes que se ven en la web son extraidas de https://unsplash.com/
