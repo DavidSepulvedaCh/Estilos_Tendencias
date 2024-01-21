@@ -12,6 +12,22 @@
     </header>
 </ng-container>
 
+<ng-container *ngIf="!isInAdminPanel()">
+    <section class="socials">
+        <div class="btnsSocial">
+            <a class="btnsSocial_btn"><i class="fa fa-facebook"></i>
+                <p>Facebook</p>
+            </a>
+            <a class="btnsSocial_btn"><i class="fa fa-instagram"></i>
+                <p>Instagram</p>
+            </a>
+            <a class="btnsSocial_btn"><i class="fa fa-whatsapp"></i>
+                <p>WhatsApp</p>
+            </a>
+        </div>
+    </section>
+</ng-container>
+
 
 <section id="content">
     <router-outlet></router-outlet>

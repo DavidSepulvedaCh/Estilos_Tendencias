@@ -6,6 +6,21 @@
 </section>
 
 <div class="content">
-    <h1 id="title">Tenemos las siguientes categorías donde podemos atenderte</h1>
+    <p id="description">En Estilos & Tendencias ofrecemos diversos servicios de peluquería y barbería para nuestros
+        clientes. A continuación, selecciona el tipo de filtro de tu preferencia.</p>
+    <div class="peluquera-services">
 
+        <div class="filter-buttons">
+            <button (click)="filterServices('mujer')">Dama</button>
+            <button (click)="filterServices('hombre')">Caballero</button>
+        </div>
+
+        <div class="service-grid">
+            <div class="service-item" *ngFor="let service of filteredServices">
+                <p id="name">{{ service.name }}</p>
+                <img [src]="service.imageUrl" alt="{{ service.name }}" />
+                <p>{{ service.description }}</p>
+            </div>
+        </div>
+    </div>
 </div>

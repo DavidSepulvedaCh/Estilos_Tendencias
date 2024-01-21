@@ -109,7 +109,7 @@ header #logo a:hover {
 #content {
     width: 100%;
     margin: 0 auto;
-    background: #fff;
+    background: #e7e7e7;
     min-height: 500px;
 }
 
@@ -188,7 +188,50 @@ header #logo a:hover {
     font-family: Helvetica, sans-serif;
 }
 
-/* Media Query para pantallas pequeñas */
+
+.btnsSocial {
+    position: fixed;
+    top: 50%;
+    left: -10px;
+    transform: translate(0, -50%);
+}
+
+.btnsSocial_btn {
+    background: rgba(219, 219, 219, 0.527);
+    width: 60px;
+    height: 50px;
+    box-shadow: 0 0px 5px rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    text-decoration: none;
+    color: #000;
+    transition: all 0.3s ease;
+    font-size: 18px;
+    backdrop-filter: blur(10px);
+}
+
+.btnsSocial_btn p {
+    display: none;
+}
+
+.btnsSocial_btn:hover p {
+    display: block;
+}
+
+.btnsSocial_btn:hover {
+    cursor: pointer;
+    width: 100%;
+    padding: 0 10px;
+}
+
+
+.btnsSocial_btn+.btnsSocial_btn {
+    margin-top: 10px;
+}
+
+
 @media (max-width: 768px) {
     .footer-content {
         padding: 0 20px;

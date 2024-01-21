@@ -16,6 +16,7 @@ import { CreateComponent } from './components/create/create.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AuthService } from './services/auth.service';
 import { RegisterComponent } from './components/register/register.component';
+import { ProductsListComponent } from './components/admin/products/products-list/products-list.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { RegisterComponent } from './components/register/register.component';
     ContactComponent,
     CreateComponent,
     DashboardComponent,
-    RegisterComponent
+    RegisterComponent,
+    ProductsListComponent
   ],
   imports: [
     BrowserModule,
