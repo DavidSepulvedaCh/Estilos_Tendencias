@@ -33,50 +33,71 @@
 }
 
 /* Contacto */
-
-.content .title {
-    font-size: 25px;
-    font-weight: 600;
-    margin-bottom: 20px;
-}
-
-.contactList,
-.socialList {
+.content {
+    width: 90%;
     display: flex;
-    text-align: center;
-    justify-content: center;
-    margin: 15px auto;
+    margin: 40px auto;
+    justify-content: space-around;
+    padding: 10px;
 }
 
-.contactList li,
-.socialList li {
-    padding: 15px 40px;
-    list-style: none;
+.content .right {
+    padding: 10px;
+    width: 45%;
 }
 
-.contactList li a,
-.socialList li a {
+.content .left {
+    padding: 20px;
+    width: 45%;
+}
+
+.btns_contact {
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin: 25px auto;
+}
+
+.btns_contact a {
     text-decoration: none;
-    color: black;
-    font-size: 20px;
-    transition: all 300ms;
-    padding: 15px 40px;
-}
-
-.contactList li a:hover,
-.socialList li a:hover {
-    text-shadow: 0 0 5px #000000b6;
-    background: rgba(165, 165, 165, 0.733);
+    font-size: 18px;
+    padding: 8px 15px;
     border-radius: 10px;
+    background: #ccccccaf;
     backdrop-filter: blur(10px);
+    margin: 10px;
+    color: #fff;
+    font-weight: 600;
 }
 
-
-.contactList li a i,
-.socialList li a i {
+.btns_contact i {
     margin-right: 10px;
-    font-size: 20px;
-    font-weight: 600;
+}
+
+#instagram {
+    background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+}
+
+#facebook {
+    background: linear-gradient(135deg, #599ef8fa, #1877f2, #1876f2c2);
+}
+
+#whatsapp {
+    background: linear-gradient(135deg, #25d366, #25d366);
+}
+
+#gmail {
+    background: linear-gradient(135deg, #dd4b39, #dd4b39);
+
+}
+
+.location {
+    margin: 20px 0;
+}
+
+.location p {
+    padding: 5px;
 }
 
 /* MAPA */
@@ -87,8 +108,25 @@
 }
 
 #map iframe {
-    width: 70%;
+    width: 90%;
     height: 500px;
     margin: auto;
     border: none;
+    border-radius: 8px;
+}
+
+@media screen and (max-width: 850px) {
+    .banner {
+        padding: 80px 20px;
+    }
+
+    .content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .content .right,
+    .content .left {
+        width: 100%;
+    }
 }

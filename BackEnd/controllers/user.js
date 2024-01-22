@@ -26,7 +26,7 @@ const controller = {
             const userRegister = await user.save();
             const token = generateToken(userRegister._id);
 
-            return res.status(200).send({ message: 'Usuario registrado exitosamente', tokenUsuario: token });
+            return res.status(200).send({ message: 'Usuario registrado exitosamente' });
         } catch (err) {
             console.error('Error:', err);
             return res.status(500).send({ message: 'Error al registrar el usuario.', err });

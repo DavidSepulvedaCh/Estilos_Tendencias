@@ -5,7 +5,7 @@
     </div>
 </section>
 
-<div class="content">
+<section class="content">
     <p id="description">En Estilos & Tendencias ofrecemos diversos servicios de peluquería y barbería para nuestros
         clientes. A continuación, selecciona el tipo de filtro de tu preferencia.</p>
     <div class="peluquera-services">
@@ -15,12 +15,19 @@
             <button (click)="filterServices('hombre')">Caballero</button>
         </div>
 
-        <div class="service-grid">
-            <div class="service-item" *ngFor="let service of filteredServices">
-                <p id="name">{{ service.name }}</p>
-                <img [src]="service.imageUrl" alt="{{ service.name }}" />
-                <p>{{ service.description }}</p>
-            </div>
+        <div class="cardsContainer">
+            <ng-container *ngFor="let service of filteredServices">
+                <div class="card">
+                    <div class="face front">
+                        <img [src]="service.imageUrl" alt="{{ service.name }}" />
+                        <h3 id="name">{{ service.name }}</h3>
+                    </div>
+                    <div class="face back">
+                        <h3>{{service.name}}</h3>
+                        <p>{{ service.description }}</p>
+                    </div>
+                </div>
+            </ng-container>
         </div>
     </div>
-</div>
+</section>

@@ -39,7 +39,7 @@
     margin: 20px auto;
 }
 
-.content .service-grid {
+.content .cardsContainer {
     display: flex;
     flex-wrap: wrap;
     width: 90%;
@@ -48,29 +48,76 @@
     align-items: flex-start;
 }
 
-.service-item {
-    flex: 0 0 calc(33.33% - 20px);
-    box-sizing: border-box;
-    background: #ffffff83;
-    padding: 10px 20px;
+.card {
+    position: relative;
+    width: 300px;
+    height: 350px;
     margin: 10px;
-    border-radius: 10px 0 10px 0;
-    box-shadow: 0 0 5px #d3d3d3;
+}
+
+.card .face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: .5s;
+}
+
+.card .front {
+    transform: perspective(600px) rotateY(0deg);
+    box-shadow: 0 0 5px #00000088;
+}
+
+
+.card .front img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card .front h3 {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    color: #fff;
+    background: #000000a4;
     text-align: center;
 }
 
-.service-item img {
-    height: 200px;
-    width: 100%;
-    border-radius: 10px 0 10px 0;
+.card .back {
+    transform: perspective(600px) rotateY(180deg);
+    background: #000000;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    box-shadow: 0 0 5px #00000088;
 }
 
-.service-item #name {
-    font-size: 25px;
-    font-weight: 600;
-    margin-bottom: 5px;
+.card .back h3 {
+    font-size: 30px;
+    margin: 20px auto;
+    letter-spacing: 2px;
 }
 
+.card .back p {
+    letter-spacing: 1px;
+}
+
+.card:hover .front {
+    cursor: pointer;
+    transform: perspective(600px) rotateY(180deg);
+}
+
+.card:hover .back {
+    cursor: pointer;
+    transform: perspective(600px) rotateY(360deg);
+}
 
 .filter-buttons {
     margin: 20px auto;
@@ -78,25 +125,29 @@
     text-align: center;
 }
 
-hr {
-    border: none;
-    height: 1px;
-    background-color: #ccc;
-    margin: 0;
-}
-
 .filter-buttons button {
-    padding: 8px 16px;
-    margin: 0 10px;
-    font-size: 1em;
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
     cursor: pointer;
-    background-color: #ecc100;
-    color: #ffffff;
-    border: none;
+    border: 2px solid #00000088;
+    color: #000000a4;
+    background-color: transparent;
     border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 0 10px;
 }
 
 .filter-buttons button:hover {
-    background-color: #cca700e0;
-    box-shadow: 0 0 5px #d3d3d365;
+    background-color: #00000088;
+    color: #ffffff;
+    transform: scale(1.1);
+}
+
+.filter-buttons button:active {
+    transform: scale(0.9);
 }

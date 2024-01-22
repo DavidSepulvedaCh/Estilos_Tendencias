@@ -6,26 +6,26 @@
 </section>
 
 <section class="content">
-    <div class="contactInfo">
-        <p class="title">Nos puedes contactar en los siguientes enlaces</p>
-        <ul class="contactList">
-            <li><a href=""><i class="fa fa-phone"></i> +57 123 4567 890</a></li>
-            <li><a href=""><i class="fa fa-envelope"></i> estilos.tendencias@example.com</a></li>
-        </ul>
-    </div>
-    <div class="social">
-        <p class="title">Tambien nos puede seguir en nuestras redes sociales</p>
-        <ul class="socialList">
-            <li><a href="https://www.instagram.com/" target="_blank"><i class="fa fa-instagram"></i>
-                    @estilos_tendencias</a></li>
-            <li><a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook"></i> Salon Estilos &
-                    Tendecias</a></li>
-        </ul>
-    </div>
-    <div id="map">
-        <iframe [src]="mapUrl" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    </div>
+    <div class="left">
+        <h3>Nos puedes contactar en los siguientes enlaces:</h3>
+        <div class="btns_contact">
+            <a href="" id="instagram"><i class="fa fa-instagram"></i>@estilos_tendencias</a>
+            <a href="" id="facebook"><i class="fa fa-facebook"></i>Estilos & Tendencias</a>
+            <a href="" id="whatsapp"><i class="fa fa-whatsapp"></i>+57 123 4567 890</a>
+            <a href="" id="gmail"><i class="fa fa-envelope"></i>estilos.tendencias@example.com</a>
+        </div>
+        <h3>Ven presencialmente y visítanos en nuestras sucursales ubicadas en:</h3>
+        <div class="location">
+            <p>📍 Bucaramanga, Santander, Colombia💈</p>
+            <p>📍 Cáchira, Norte de Santander, Colombia💈</p>
+            <p>📍 Corregimiento La Carrera, Cáchira, Norte de Santander, Colombia💈</p>
+        </div>
 
-
-
+    </div>
+    <div class="right">
+        <div id="map">
+            <iframe [src]="mapUrl" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </div>
 </section>

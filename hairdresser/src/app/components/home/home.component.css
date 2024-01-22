@@ -1,4 +1,4 @@
-/*BANNER */
+/* BANNER */
 #banner {
     width: 100%;
     margin: 0 auto;
@@ -53,60 +53,91 @@
     border: none;
 }
 
-#about .information {
-    flex: 1;
-    padding: 0 20px;
+#about .information-instagram .posts-container {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
 
-#about .information h1 {
+#about .information-instagram .post {
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    width: calc(33.33% - 20px);
+    padding: 15px;
+    background: #b8b8b8a4;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+
+}
+
+#about .information-instagram .user-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#about .information-instagram .user-info img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin: 10px 15px 0 0;
+    padding: 1px;
+    border: 2px dashed rgb(88, 2, 67);
+}
+
+#about .information-instagram .user-info h1 {
     color: #000;
-    font-size: 45px;
-    margin-bottom: 25px;
+    font-size: 24px;
+    margin: 0;
 }
 
-#about .information p {
+#about .information-instagram .post-content {
+    position: relative;
+}
+
+#about .information-instagram .post-content img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+#about .information-instagram #description {
     color: #000;
     text-align: justify;
+    margin-bottom: 15px;
 }
 
-
-/* galery */
-
-.galery {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-color: #f0f0f0;
+#about .information-instagram #title-post {
+    font-weight: 600;
+    font-size: 20px;
+    text-align: center;
+    margin: 0 auto 10px auto;
 }
 
-.pictures {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    max-width: 900px;
-}
+@media screen and (max-width: 868px) {
+    #banner {
+        padding: 80px 20px;
+        /* Ajusta el padding para dispositivos más pequeños */
+    }
 
-.grid-item {
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.3s ease, transform 0.5s ease;
-}
+    #about .container {
+        flex-direction: column;
+        /* Cambia a disposición de columna para dispositivos más pequeños */
+        align-items: center;
+    }
 
-.grid-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    #about #picture {
+        width: 100%;
+        /* Ocupa el ancho completo para dispositivos más pequeños */
+    }
 
-}
+    #about .information-instagram .post {
+        width: 100%;
+        /* Ocupa el ancho completo para dispositivos más pequeños */
+    }
 
-.grid-item:hover {
-    cursor: pointer;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-    transform: translateY(-5px);
-    /* Hacemos que la imagen se eleve 5px en hover */
+    #about .information-instagram .user-info img {
+        margin-right: 0;
+        /* Elimina el margen derecho para dispositivos más pequeños */
+    }
 }

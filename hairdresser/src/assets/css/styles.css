@@ -194,6 +194,7 @@ header #logo a:hover {
     top: 50%;
     left: -10px;
     transform: translate(0, -50%);
+    z-index: 1;
 }
 
 .btnsSocial_btn {
@@ -226,6 +227,20 @@ header #logo a:hover {
     padding: 0 10px;
 }
 
+#facebook:hover {
+    background: linear-gradient(135deg, #599ef8fa, #1877f2, #1876f2c2);
+    color: #fff;
+}
+
+#instagram:hover {
+    background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+    color: #fff;
+}
+
+#whatsapp:hover {
+    background: linear-gradient(135deg, #25d366, #25d366);
+    color: #fff;
+}
 
 .btnsSocial_btn+.btnsSocial_btn {
     margin-top: 10px;

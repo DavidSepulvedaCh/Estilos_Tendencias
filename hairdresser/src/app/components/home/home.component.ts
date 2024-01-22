@@ -6,15 +6,27 @@ import { Component } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-  images = [
-    'https://res.cloudinary.com/dwfh4s7tu/image/upload/v1705770525/imagen1_max66y.jpg',
-    'https://res.cloudinary.com/dwfh4s7tu/image/upload/v1705770527/imagen2_edwoya.jpg',
-    'https://res.cloudinary.com/dwfh4s7tu/image/upload/v1705770541/imagen3_uv0zmk.jpg',
-    'https://res.cloudinary.com/dwfh4s7tu/image/upload/v1705770543/imagen4_gvnxvw.jpg',
-    'https://res.cloudinary.com/dwfh4s7tu/image/upload/v1705770521/imagen5_hnft1o.jpg',
-    'https://res.cloudinary.com/dwfh4s7tu/image/upload/v1705770545/imagen6_wpqkeo.jpg',
+
+  posts = [
+    {
+      "image": "https://res.cloudinary.com/dwfh4s7tu/image/upload/v1705770525/imagen1_max66y.jpg",
+      "category": "Instalaciones",
+      "description": "Tenemos las mejores instalaciones para que tengas una experiencia única."
+    },
+    {
+      "image": "https://res.cloudinary.com/dwfh4s7tu/image/upload/v1705770527/imagen2_edwoya.jpg",
+      "category": "Tienda",
+      "description": "Contamos con la sección de tienda, donde ofrecemos productos para tu cuidado de imagen."
+    },
+    {
+      "image": "https://res.cloudinary.com/dwfh4s7tu/image/upload/v1705770521/imagen5_hnft1o.jpg",
+      "category": "Profesionales",
+      "description": "Tenemos a los mejores barberos y estilistas a disposición tuya."
+    }
   ];
 
+
+  logo = 'https://res.cloudinary.com/dwfh4s7tu/image/upload/v1705881980/logo_gscciq.png';
   logoBanner = 'https://res.cloudinary.com/dwfh4s7tu/image/upload/v1705770522/logo2_gwgtgz.png';
   picture = 'https://res.cloudinary.com/dwfh4s7tu/image/upload/v1705770543/picture_qw6z9k.jpg';
 }
