@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { routing, appRoutingProviders } from './app.routing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -12,10 +13,10 @@ import { HomeComponent } from './components/home/home.component';
 import { ProductsComponent } from './components/products/products.component';
 import { WorksComponent } from './components/works/works.component';
 import { ContactComponent } from './components/contact/contact.component';
-import { CreateComponent } from './components/create/create.component';
+import { CreateComponent } from './components/auth/create/create.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AuthService } from './services/auth.service';
-import { RegisterComponent } from './components/register/register.component';
+import { RegisterComponent } from './components/auth/register/register.component';
 import { ProductsListComponent } from './components/admin/products/products-list/products-list.component';
 
 @NgModule({
@@ -28,14 +29,16 @@ import { ProductsListComponent } from './components/admin/products/products-list
     CreateComponent,
     DashboardComponent,
     RegisterComponent,
-    ProductsListComponent
+    ProductsListComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     routing,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [
     appRoutingProviders,

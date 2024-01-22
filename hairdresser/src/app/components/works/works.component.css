@@ -91,7 +91,8 @@
 
 .card .back {
     transform: perspective(600px) rotateY(180deg);
-    background: #000000;
+    background: #00000086;
+    backdrop-filter: blur(10px);
     color: #fff;
     display: flex;
     flex-direction: column;
@@ -102,11 +103,13 @@
 .card .back h3 {
     font-size: 30px;
     margin: 20px auto;
+    padding: 0 10px;
     letter-spacing: 2px;
 }
 
 .card .back p {
     letter-spacing: 1px;
+    padding: 0 10px;
 }
 
 .card:hover .front {
@@ -127,7 +130,7 @@
 
 .filter-buttons button {
     display: inline-block;
-    padding: 15px 30px;
+    padding: 10px 30px;
     font-size: 18px;
     font-weight: bold;
     text-align: center;

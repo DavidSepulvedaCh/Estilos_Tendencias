@@ -5,9 +5,9 @@ import { HomeComponent } from './components/home/home.component';
 import { ProductsComponent } from './components/products/products.component';
 import { WorksComponent } from "./components/works/works.component";
 import { ContactComponent } from './components/contact/contact.component';
-import { CreateComponent } from './components/create/create.component';
+import { CreateComponent } from './components/auth/create/create.component';
 import { DashboardComponent } from "./components/dashboard/dashboard.component";
-import { RegisterComponent } from "./components/register/register.component";
+import { RegisterComponent } from "./components/auth/register/register.component";
 
 const appRoutes: Routes = [
     { path: "", component: HomeComponent },

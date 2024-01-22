@@ -69,6 +69,12 @@
     margin: 10px;
     color: #fff;
     font-weight: 600;
+    transition: transform 0.2s;
+}
+
+.btns_contact a:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 2px 5px #8d8d8d;
 }
 
 .btns_contact i {

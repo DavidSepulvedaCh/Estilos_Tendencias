@@ -26,6 +26,11 @@ export class AppComponent implements OnInit {
     return this.router.url.includes('/admin');
   }
 
+  isActive(route: string): boolean {
+    return this.router.isActive(route, true);
+  }
+
+
   @HostListener('window:scroll', ['$event'])
   onWindowScroll() {
     const header = document.querySelector('header');

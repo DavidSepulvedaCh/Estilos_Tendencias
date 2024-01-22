@@ -12,6 +12,8 @@ import { AuthService } from 'src/app/services/auth.service';
 export class CreateComponent implements OnInit {
   loginForm!: FormGroup;
   public username = "";
+  showForgotPasswordModal = false;
+  forgotPasswordEmail: string = '';
 
   constructor(
     private formBuilder: FormBuilder,
@@ -50,5 +52,18 @@ export class CreateComponent implements OnInit {
         }
       );
     }
+  }
+
+
+  openForgotPasswordModal() {
+    this.showForgotPasswordModal = true;
+    console.log(this.showForgotPasswordModal);
+  }
+
+  closeForgotPasswordModal() {
+    this.showForgotPasswordModal = false;
+  }
+
+  sendPasswordRecoveryEmail() {
   }
 }

@@ -81,6 +81,24 @@ header #btnLogin:hover {
     box-shadow: 0 0 5px rgb(255, 255, 255);
 }
 
+header ul li a.active {
+    position: relative;
+}
+
+header ul li a.active::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #97979788;
+    transition: width 0.3s ease-in-out;
+}
+
+header #btnLogin.active {
+    border-color: #97979788;
+}
 
 
 /* LOGO */
@@ -238,7 +256,7 @@ header #logo a:hover {
 }
 
 #whatsapp:hover {
-    background: linear-gradient(135deg, #25d366, #25d366);
+    background: linear-gradient(135deg, #56f18f, #25d366, #0da143);
     color: #fff;
 }
 

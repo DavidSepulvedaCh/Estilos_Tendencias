@@ -3,10 +3,10 @@
         <ul>
 
             <li id="logo"><a href="#"><img [src]="logoBanner" alt="Logo"></a></li>
-            <li><a [routerLink]="['/home']">INICIO</a></li>
-            <li><a [routerLink]="['/products']">PRODUCTOS</a></li>
-            <li><a [routerLink]="['/services']">SERVICIOS</a></li>
-            <li><a [routerLink]="['/contact']">CONTACTO</a></li>
+            <li><a [routerLink]="['/home']" [class.active]="isActive('/home')">INICIO</a></li>
+            <li><a [routerLink]="['/products']" [class.active]="isActive('/products')">PRODUCTOS</a></li>
+            <li><a [routerLink]="['/services']" [class.active]="isActive('/services')">SERVICIOS</a></li>
+            <li><a [routerLink]="['/contact']" [class.active]="isActive('/contact')">CONTACTO</a></li>
         </ul>
         <a href="" id="btnLogin" [routerLink]="['/login']">Ingresar</a>
     </header>
@@ -38,7 +38,7 @@
         <div class="footer-content">
             <div class="footer-info">
                 <p id="name">💈 Estilos & Tendencias 💈</p>
-                <p id="role">Salon de belleza y Barberia</p>
+                <p id="role">Salón de Belleza y Barberia</p>
             </div>
             <div class="footer-links">
                 <a target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
@@ -48,7 +48,7 @@
             </div>
         </div>
         <div class="footer-copyright">
-            <p>&copy; Desarrollado por: @DavidSepulvedaCh 2024. Todos los derechos reservados.</p>
+            <p>&copy; Desarrollado por: @DavidSepulvedaCh 👨‍💻 2024. Todos los derechos reservados.</p>
         </div>
     </footer>
 </ng-container>
