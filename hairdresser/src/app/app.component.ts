@@ -1,5 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
+import { AuthGuard } from "./services/authGuard.service";
 
 
 @Component({
@@ -13,14 +14,15 @@ export class AppComponent implements OnInit {
   isLoading: boolean = true;
 
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private auth: AuthGuard) { }
 
-  // Simula la carga de imágenes
   ngOnInit() {
     setTimeout(() => {
       this.isLoading = false;
-    }, 10000); // Simula un tiempo de carga
+    }, 10000);
   }
+
+
 
   isInAdminPanel(): boolean {
     return this.router.url.includes('/admin');

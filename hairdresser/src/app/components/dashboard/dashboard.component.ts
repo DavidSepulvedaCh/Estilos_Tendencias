@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'dashboard',
@@ -9,7 +11,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class DashboardComponent implements OnInit {
   username = "";
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
     this.authService.getUserInfo().subscribe(
@@ -23,5 +25,10 @@ export class DashboardComponent implements OnInit {
       }
     );
 
+  }
+
+  logOut(): void {
+    this.authService.logOut();
+    this.router.navigate(['/']);
   }
 }

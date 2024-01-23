@@ -14,12 +14,15 @@ export class CreateComponent implements OnInit {
   public username = "";
   showForgotPasswordModal = false;
   forgotPasswordEmail: string = '';
-
+  emailValue = '';
+  passwordValue = '';
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private router: Router
   ) { }
+
+
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -30,29 +33,19 @@ export class CreateComponent implements OnInit {
 
   onSubmit() {
     if (this.loginForm.valid) {
-      const formData = this.loginForm.value;
-
-      this.authService.login(formData).subscribe(
-        (response) => {
-          this.authService.saveToken(response.tokenUsuario);
-
-          this.authService.getUserInfo().subscribe(
-            (userInfo) => {
-              this.username = userInfo.username;
-            },
-            (error) => {
-            }
-          );
-
-          window.alert("Login exitoso");
+      console.log("correo ", this.emailValue);
+      this.authService.login(this.emailValue, this.passwordValue).subscribe(
+        (response: any) => {
           this.router.navigate(['/admin-panel']);
         },
-        (error) => {
-          window.alert("Error al ingresar");
+        (error: any) => {
+          console.error('Error en la solicitud de inicio de sesión:', error);
+          window.alert("Error al iniciar sesión");
         }
       );
     }
   }
+
 
 
   openForgotPasswordModal() {

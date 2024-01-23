@@ -1,64 +1,97 @@
-.container {
-    display: flex;
-    height: 100vh;
-}
-
 .sidebar {
-    background-color: #000;
+    background-color: #292b2c;
     color: #fff;
     width: 250px;
-    padding: 20px;
+    height: 97%;
+    position: fixed;
     display: flex;
     flex-direction: column;
+    overflow-y: auto;
+    padding-top: 20px;
+    transition: width 0.3s ease;
+
+
+    .sidebar-header {
+        text-align: center;
+        margin-bottom: 20px;
+
+        .logo {
+            max-width: 80px;
+            margin-bottom: 10px;
+        }
+
+        .user-info {
+            h3 {
+                margin: 0;
+                font-size: 1.5rem;
+            }
+
+            p {
+                margin: 5px 0 0;
+                font-size: 0.9rem;
+                color: #9c7822;
+            }
+        }
+    }
+
+    .menu {
+        list-style: none;
+        padding: 0;
+        margin-bottom: auto;
+
+        li {
+            margin-bottom: 10px;
+
+            a {
+                color: #fff;
+                text-decoration: none;
+                display: flex;
+                align-items: center;
+                padding: 10px;
+                border-radius: 5px;
+                transition: background-color 0.3s;
+
+                &:hover {
+                    background-color: #333;
+                }
+
+                i {
+                    margin-right: 10px;
+                }
+            }
+
+            &.active a {
+                background-color: #333;
+            }
+        }
+    }
+
+    .logout {
+        text-align: center;
+
+        a {
+            color: #fff;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            transition: color 0.3s;
+            margin: 25px auto;
+
+            &:hover {
+                cursor: pointer;
+                color: #9c7822;
+            }
+
+            i {
+                margin-right: 10px;
+            }
+        }
+    }
 }
 
-.sidebar-header {
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-.logo {
-    max-width: 100px;
-    margin-bottom: 10px;
-}
-
-.sidebar ul.menu {
-    list-style: none;
-    padding: 0;
-    margin-bottom: auto;
-}
-
-.sidebar ul.menu li {
-    margin-bottom: 10px;
-}
-
-.sidebar ul.menu li a {
-    color: #fff;
-    text-decoration: none;
-}
-
-.sidebar ul.menu li a:hover {
-    text-decoration: underline;
-}
-
-.logout {
-    text-align: center;
-}
-
-.logout a {
-    color: #fff;
-    text-decoration: none;
-}
-
-.logout a:hover {
-    text-decoration: underline;
-}
-
-#nombreUsuario {
-    color: #9c7822;
-    font-weight: bold;
-}
-
-.main-content {
-    margin: 30px;
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+    .sidebar {
+        width: 20%;
+    }
 }

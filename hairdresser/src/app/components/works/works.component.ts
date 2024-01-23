@@ -1,48 +1,38 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { WorkService } from 'src/app/services/work.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-works',
   templateUrl: './works.component.html',
   styleUrls: ['./works.component.css']
 })
-export class WorksComponent {
+export class WorksComponent implements OnInit {
 
-  /* Este JSON es provisional mientras que se integra en el back */
+  services: any[] = [];
+  filteredServices: any[] = [];
 
-  services = [
-    {
-      name: 'Corte de Cabello Mujer',
-      description: 'Corte de pelo moderno y personalizado para damas.',
-      imageUrl: 'https://images.unsplash.com/photo-1613966582880-80a7327b250f?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      gender: 'mujer'
-    },
-    {
-      name: 'Cepillado de Cabello Mujer',
-      description: 'Cepillado de cabello para damas.',
-      imageUrl: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?q=80&w=1469&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      gender: 'mujer'
-    },
-    {
-      name: 'Corte de cabello Hombre',
-      description: 'Corte de pelo moderno y personalizado para caballeros.',
-      imageUrl: 'https://images.unsplash.com/photo-1590540179937-484393bfd879?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      gender: 'hombre'
-    },
-    {
-      name: 'Perfilación de barba',
-      description: 'Corte de barba para caballeros.',
-      imageUrl: 'https://images.unsplash.com/photo-1503951914875-452162b0f3f1?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      gender: 'hombre'
-    },
-  ];
+  constructor(private workService: WorkService, private router: Router) { }
 
-  filteredServices = this.services;
+  ngOnInit(): void {
+    this.workService.getWorks().subscribe(
+      response => {
+        this.services = response.Works;
+        this.filteredServices = this.services;
+      },
+      error => {
+        console.error('Error al obtener los services.', error);
+      }
+    );
+  }
 
-  filterServices(gender: string) {
-    if (gender === 'mujer' || gender === 'hombre') {
-      this.filteredServices = this.services.filter(service => service.gender === gender);
+  filterServices(category: string) {
+    if (category === 'woman' || category === 'man') {
+      this.filteredServices = this.services.filter(service => service.category === category);
     } else {
       this.filteredServices = this.services;
     }
   }
+
 }

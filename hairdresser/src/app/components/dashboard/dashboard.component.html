@@ -1,21 +1,33 @@
-<div class="container">
-    <aside class="sidebar">
-        <div class="sidebar-header">
-            <img src="../../../../assets/css/img/logo2.png" alt="Logo de la empresa" class="logo">
-            <h3>Estilos & Tendencias</h3>
-            <p>Bienvenido, <span id="nombreUsuario">{{username}}</span></p>
+<!-- sidebar.component.html -->
+
+<aside class="sidebar">
+    <div class="sidebar-header">
+        <img src="../../../../assets/css/img/logo2.png" alt="Logo de la empresa" class="logo">
+        <div class="user-info">
+            <h3>{{username}}</h3>
+            <p>Bienvenido</p>
         </div>
-        <ul class="menu">
-            <li><a href="#">Inicio</a></li>
-            <li><a href="#">Usuarios</a></li>
-            <li><a href="#">Configuración</a></li>
-        </ul>
-        <div class="logout">
-            <a href="#">Cerrar sesión</a>
-        </div>
-    </aside>
-    <main class="main-content">
-        <h1>Panel de Administración</h1>
-        <p>Bienvenido al panel de administración. Aquí puedes gestionar diferentes aspectos de la página.</p>
-    </main>
-</div>
+    </div>
+    <ul class="menu">
+        <li routerLinkActive="active">
+            <a routerLink="/">
+                <i class="fas fa-home"></i> Inicio
+            </a>
+        </li>
+        <li routerLinkActive="active">
+            <a routerLink="/usuarios">
+                <i class="fas fa-users"></i> Usuarios
+            </a>
+        </li>
+        <li routerLinkActive="active">
+            <a routerLink="/configuracion">
+                <i class="fas fa-cogs"></i> Configuración
+            </a>
+        </li>
+    </ul>
+    <div class="logout">
+        <a (click)="logOut()">
+            <i class="fas fa-sign-out-alt"></i> Cerrar sesión
+        </a>
+    </div>
+</aside>

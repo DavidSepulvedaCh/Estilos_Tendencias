@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { Observable, catchError, of, tap } from 'rxjs';
 import { environment } from '../../environments/environment';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
+
 export class AuthService {
     private apiUrl = environment.apiUrl;
 
@@ -13,9 +16,25 @@ export class AuthService {
         return this.http.post<any>(`${this.apiUrl}/user/register`, userData);
     }
 
-    login(userData: any): Observable<any> {
-        return this.http.post<any>(`${this.apiUrl}/user/login`, userData);
+    login(email: string, password: string): Observable<any> {
+        const data = {
+            email: email,
+            password: password
+        };
+        console.log(data);
+        return this.http.post<any>(`${this.apiUrl}/user/login`, data).pipe(
+            tap(response => {
+                if (response) {
+                    this.setCredentials(email, response.tokenUsuario);
+                }
+            }),
+            catchError(error => {
+                console.error('Error en la solicitud de inicio de sesión:', error);
+                throw error;
+            })
+        );
     }
+
 
     getUserInfo(): Observable<any> {
         const token = this.getToken();
@@ -34,7 +53,19 @@ export class AuthService {
         localStorage.setItem('token', token);
     }
 
-    getToken(): string | null {
-        return localStorage.getItem('token');
+    getToken(): string {
+        return localStorage.getItem('token') || '';
+    }
+
+    setCredentials(correo: string, token: string): void {
+        localStorage.setItem('token', token);
+    }
+
+    isLoggedIn(): boolean {
+        return this.getToken() !== '';
+    }
+
+    logOut() {
+        localStorage.removeItem('token');
     }
 }
