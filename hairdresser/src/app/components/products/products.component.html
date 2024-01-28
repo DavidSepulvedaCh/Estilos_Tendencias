@@ -26,9 +26,12 @@
     <div class="products">
         <div *ngFor="let product of filteredProducts()" class="product">
             <img [src]="product.image" alt="{{ product.name }}">
-            <h2>{{ product.name }}</h2>
-            <p class="description">{{ product.description }}</p>
-            <p class="price">$ {{ product.price }} COP</p>
+            <p id="name">{{ product.name }}</p>
+            <p id="description">{{ product.description }}</p>
+            <p id="price">$ {{ product.price }} COP</p>
+            <button class="add-to-cart">
+                Agregar al carro <i class="fas fa-shopping-cart"></i>
+            </button>
         </div>
     </div>
 

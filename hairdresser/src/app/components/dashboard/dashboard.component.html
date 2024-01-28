@@ -1,33 +1,43 @@
-<!-- sidebar.component.html -->
-
-<aside class="sidebar">
-    <div class="sidebar-header">
-        <img src="../../../../assets/css/img/logo2.png" alt="Logo de la empresa" class="logo">
-        <div class="user-info">
-            <h3>{{username}}</h3>
-            <p>Bienvenido</p>
+<div class="container">
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <img src="../../../../assets/css/img/logo2.png" alt="Logo de la empresa" class="logo">
+            <div class="user-info">
+                <h3>{{username}}</h3>
+                <p>Bienvenido</p>
+            </div>
         </div>
-    </div>
-    <ul class="menu">
-        <li routerLinkActive="active">
-            <a routerLink="/">
-                <i class="fas fa-home"></i> Inicio
+        <ul class="menu">
+            <li routerLinkActive="active">
+                <a>
+                    <i class="fas fa-home"></i> Inicio
+                </a>
+            </li>
+            <li [routerLink]="['/admin-panel/users-list']" routerLinkActive="router-link-active">
+                <a>
+                    <i class="fas fa-users"></i> Usuarios
+                </a>
+            </li>
+            <li routerLinkActive="active">
+                <a>
+                    <i class="fas fa-cogs"></i> Configuración
+                </a>
+            </li>
+            <li [routerLink]="['/admin-panel/products-list']" routerLinkActive="router-link-active">
+                <a><i class="fa fa-product-hunt"></i> Productos</a>
+            </li>
+            <li [routerLink]="['/admin-panel/create-product']" routerLinkActive="router-link-active">
+                <a><i class="fa fa-product-hunt"></i> Crear Producto</a>
+            </li>
+        </ul>
+        <div class="logout">
+            <a (click)="logOut()">
+                <i class="fas fa-sign-out-alt"></i> Cerrar sesión
             </a>
-        </li>
-        <li routerLinkActive="active">
-            <a routerLink="/usuarios">
-                <i class="fas fa-users"></i> Usuarios
-            </a>
-        </li>
-        <li routerLinkActive="active">
-            <a routerLink="/configuracion">
-                <i class="fas fa-cogs"></i> Configuración
-            </a>
-        </li>
-    </ul>
-    <div class="logout">
-        <a (click)="logOut()">
-            <i class="fas fa-sign-out-alt"></i> Cerrar sesión
-        </a>
-    </div>
-</aside>
+        </div>
+    </aside>
+
+    <main class="content">
+        <ng-content></ng-content>
+    </main>
+</div>

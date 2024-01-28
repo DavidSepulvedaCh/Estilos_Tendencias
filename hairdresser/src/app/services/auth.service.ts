@@ -19,7 +19,7 @@ export class AuthService {
     login(email: string, password: string): Observable<any> {
         const data = {
             email: email,
-            password: password
+            password: password,
         };
         console.log(data);
         return this.http.post<any>(`${this.apiUrl}/user/login`, data).pipe(

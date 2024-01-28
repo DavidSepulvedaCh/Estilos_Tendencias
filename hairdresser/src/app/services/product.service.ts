@@ -1,22 +1,45 @@
 import { Injectable } from "@angular/core";
 import { Product } from "../models/product";
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpResponse } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
 import { environment } from '../../environments/environment';
+import { AuthService } from "./auth.service";
 
-
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class ProductService {
     private apiURL = environment.apiUrl;
 
     public Products: Array<Product>;
 
-    constructor(private http: HttpClient) {
+    constructor(private http: HttpClient, private authService: AuthService) {
         this.Products = [];
     }
 
-    getProducts(): Observable<Product> {
-        return this.http.get<Product>(`${this.apiURL}/product/getProducts`);
+    addProduct(productData: FormData): Observable<any> {
+        const options = {
+            headers: {
+                'Authorization': this.authService.getToken(),
+            }
+        };
+
+        return this.http.post<any>(`${this.apiURL}/product/save-product`, productData, options);
     }
+
+    getProducts(): Observable<Product[]> {
+        return this.http.get<Product[]>(`${this.apiURL}/product/getProducts`);
+    }
+
+    // ProductService
+    updateProduct(id: string, params: any): Observable<Product> {
+        const options = {
+            headers: {
+                'Authorization': this.authService.getToken()
+            }
+        };
+        return this.http.put<Product>(`${this.apiURL}/product/update-product/${id}`, params, options);
+    }
+
 
 }

@@ -48,7 +48,8 @@ export class RegisterComponent implements OnInit {
         name: this.registerForm.value.nombre,
         lastName: this.registerForm.value.apellido,
         email: this.registerForm.value.correo,
-        password: this.registerForm.value.clave
+        password: this.registerForm.value.clave,
+        role: 'user'
       };
 
       // Llamar al servicio para el registro

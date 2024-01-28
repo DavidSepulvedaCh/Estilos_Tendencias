@@ -19,7 +19,13 @@ export class ProductsComponent implements OnInit {
     this._productService.getProducts().subscribe(
       (data: any) => {
         if (data && data.Products && Array.isArray(data.Products)) {
-          this.products = data.Products;
+          this.products = data.Products.map((product: any) => ({
+            name: product.name,
+            description: product.description,
+            category: product.category,
+            price: product.price,
+            image: product.image,
+          }));
           console.log(this.products);
           this.uniqueCategories = this.getUniqueCategories();
         } else {
@@ -46,7 +52,6 @@ export class ProductsComponent implements OnInit {
       : this.products.filter(product => product.category === this.activeCategory);
   }
 
-  // Función para obtener categorías únicas
   getUniqueCategories(): string[] {
     const categoriesSet = new Set<string>();
     if (Array.isArray(this.products)) {

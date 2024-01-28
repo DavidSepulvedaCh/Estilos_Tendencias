@@ -1,0 +1,20 @@
+<dashboard>
+    <h2 class="title">A continuación la lista de los usuarios registrados en la Base de Datos.</h2>
+    <div class="users">
+        <div class="user-card" *ngFor="let user of users">
+            <div class="user-info">
+                <img src="https://www.w3schools.com/w3images/avatar2.png" alt="User Image">
+                <p id="name">{{ user.name }} {{user.lastName}} </p>
+                <p id="email">{{ user.email }}</p>
+                <p id="role">{{user.role}}</p>
+            </div>
+
+            <div class="user-actions">
+                <button id="btnUpdate" (click)="updateUser(user)">Actualizar</button>
+                <button id="btnLock" (click)="blockUser(user)">Bloquear</button>
+                <button id="btnDelete" (click)="deleteUser(user)">Eliminar</button>
+            </div>
+        </div>
+    </div>
+
+</dashboard>

@@ -1,0 +1,26 @@
+<dashboard>
+
+    <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+        <label for="nombre">Nombre del Producto:</label>
+        <input type="text" id="nombre" formControlName="name" required>
+
+        <label for="descripcion">Descripción:</label>
+        <textarea id="descripcion" formControlName="description" required></textarea>
+
+        <label for="precio">Precio:</label>
+        <input type="text" id="precio" formControlName="price" required>
+
+        <label for="stock">Stock:</label>
+        <input type="text" id="stock" formControlName="stock" required>
+
+        <label for="categoria">Categoría:</label>
+        <input type="text" formControlName="category">
+
+        <label for="imagen">Imagen:</label>
+        <input type="file" formControlName="imagen" name="imagen" (change)="onFileSelected($event)">
+
+        <button type="submit">Registrar Producto</button>
+    </form>
+
+
+</dashboard>

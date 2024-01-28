@@ -1,1 +1,47 @@
-<p>products-list works!</p>
+<dashboard>
+    <h2 class="title">A continuación la lista de los productos registrados en la Base de Datos.</h2>
+    <div class="products">
+        <div *ngFor="let product of products" class="product-card">
+            <div class="product-info">
+                <img [src]="product.image" alt="product Image">
+                <p id="name"> {{product.name}} </p>
+                <p id="price">${{product.price}} COP</p>
+                <!-- <p id="stock">{{product.stock}} Unidades</p> -->
+            </div>
+            <div class="product-actions">
+                <button id="btnUpdate" (click)="updateProduct(product)">Actualizar</button>
+                <button id="btnLock" (click)="blockProduct(product)">Bloquear</button>
+                <button id="btnDelete" (click)="deleteProduct(product)">Eliminar</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" [class.active]="isUpdateModalVisible" (click)="closeUpdateModal()">
+        <div class="update-product-modal" (click)="$event.stopPropagation()">
+            <h2>Actualizar Producto</h2>
+            <form>
+                <label for="name">Nombre:</label>
+                <input id="name" [(ngModel)]="selectedProduct.name" name="name" required>
+
+                <label for="price">Precio:</label>
+                <input id="price" [(ngModel)]="selectedProduct.price" name="price" required>
+
+                <label for="description">Descripción:</label>
+                <textarea id="description" [(ngModel)]="selectedProduct.description" name="description"
+                    required></textarea>
+
+                <label for="stock">Stock:</label>
+                <input id="stock" type="number" [(ngModel)]="selectedProduct.stock" name="stock" required>
+
+                <label for="image">Imagen:</label>
+                <input type="file" id="image" accept="image/*">
+
+
+                <div class="btns">
+                    <button type="submit" (click)="updateProductInList(selectedProduct)">Actualizar</button>
+                    <button type="button" (click)="closeUpdateModal()">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</dashboard>

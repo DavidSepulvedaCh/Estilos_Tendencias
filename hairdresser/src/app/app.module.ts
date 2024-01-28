@@ -18,6 +18,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AuthService } from './services/auth.service';
 import { RegisterComponent } from './components/auth/register/register.component';
 import { ProductsListComponent } from './components/admin/products/products-list/products-list.component';
+import { ClientsListComponent } from './components/admin/clients/clients-list/clients-list.component';
+import { CreateProductComponent } from './components/admin/products/create-product/create-product.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import { ProductsListComponent } from './components/admin/products/products-list
     DashboardComponent,
     RegisterComponent,
     ProductsListComponent,
+    ClientsListComponent,
+    CreateProductComponent,
 
   ],
   imports: [

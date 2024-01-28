@@ -1,0 +1,86 @@
+.title {
+    margin: 25px 10px;
+}
+
+.users {
+    max-width: 800px;
+    margin: auto;
+}
+
+.user-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: box-shadow 0.3s ease;
+}
+
+.user-card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+}
+
+.user-info img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.user-info #name,
+#email,
+#role {
+    font-size: 18px;
+    margin: auto 10px;
+}
+
+.user-info #email {
+    font-weight: 300;
+}
+
+.user-info #role {
+    font-weight: 500;
+}
+
+.user-info #name {
+    font-weight: 600;
+}
+
+
+.user-actions {
+    display: flex;
+    align-items: center;
+}
+
+.user-actions button {
+    margin-left: 10px;
+    padding: 8px 12px;
+    cursor: pointer;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+}
+
+.user-actions #btnUpdate {
+    background-color: #36f446;
+}
+
+.user-actions #btnLock {
+    background-color: #ff9800;
+}
+
+.user-actions #btnDelete {
+    background-color: #f44336;
+}
