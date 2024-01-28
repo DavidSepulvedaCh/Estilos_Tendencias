@@ -54,6 +54,7 @@ jobs:
         
       - name: Debug Info
         run: |
+          echo "Backend URL: ${{ secrets.BACKEND_URL }}"
           ls -la $GITHUB_WORKSPACE/hairdresser/src/environments/
           
       # Build app production
