@@ -8,6 +8,8 @@ const ProductSchema = Schema({
     description: String,
     category: String,
     image: String,
+    imageExtension: String,
+    stock: Number,
     price: Number
 });
 

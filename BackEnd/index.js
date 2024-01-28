@@ -2,9 +2,12 @@
 
 const mongoose = require("mongoose");
 const app = require('./app');
+const cors = require("cors");
 require('dotenv').config();
 
+
 const port = process.env.PORT || 3000;
+app.use(cors());
 app.set('port', port);
 
 mongoose.Promise = global.Promise;

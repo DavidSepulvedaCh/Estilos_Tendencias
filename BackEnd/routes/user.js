@@ -8,6 +8,8 @@ const { verificarToken } = require('../middlewares/auth');
 router.post('/register', UserController.register);
 router.post('/login', UserController.login);
 
+router.get('/users', UserController.getAllUsers);
+
 // Rutas para recuperar contraseña
 router.put('/forgot-pass', UserController.forgotPassword);
 

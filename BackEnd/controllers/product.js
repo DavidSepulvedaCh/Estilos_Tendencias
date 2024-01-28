@@ -1,24 +1,60 @@
 'use strict';
 
 const Product = require('../models/product');
+const fs = require('fs');
+
+function formatProductForFrontend(product) {
+    return {
+        name: product.name,
+        description: product.description,
+        category: product.category,
+        price: product.price,
+        image: "data:image/" + product.imageExtension + ";base64," + product.image,
+    };
+}
 
 var controller = {
 
     saveProduct: async function (req, res) {
 
-        var params = req.body;
+        console.log(req.file);
+
+        // Verificar que los campos obligatorios estén presentes
+        if (!req.body.name || !req.body.category || !req.body.description) {
+            return res.status(400).send({ "message": "Los campos son obligatorios." });
+        }
+
+        console.log(req.body);
+
         var product = new Product();
-        product.name = params.name;
-        product.description = params.description;
-        product.category = params.category;
-        product.price = params.price;
-        product.image = null;
+        product.name = req.body.name;
+        product.description = req.body.description;
+        product.category = req.body.category;
+        product.price = req.body.price;
+
+        // Verificar si se envió un archivo
+        if (req.file) {
+            try {
+                const imageBuffer = req.file.buffer;
+                const imageBase64 = imageBuffer.toString('base64');
+
+                product.image = imageBase64;
+                product.imageExtension = req.file.mimetype.split('/')[1];
+
+            } catch (err) {
+                console.error("Error al leer la imagen:", err);
+                return res.status(500).send({ "message": "Error al leer la imagen." });
+            }
+        } else {
+            console.error("No se ha subido ningún archivo");
+            // Puedes enviar un mensaje de error al usuario o manejar la situación como prefieras
+        }
 
         try {
             const productStored = await product.save();
-            //this.uploadImage;
             return res.status(200).send({ "message": "Producto registrado exitosamente", "product": productStored });
         } catch (err) {
+            console.error("Error al registrar el producto:", err);
             return res.status(500).send({ "message": "Error al registrar el producto." });
         }
     },
@@ -31,7 +67,10 @@ var controller = {
             if (!product) {
                 return res.status(404).send({ "message": "Producto no encontrado" });
             }
-            return res.status(200).send({ "Product": product });
+
+            const formattedProduct = formatProductForFrontend(product);
+
+            return res.status(200).send({ "Product": formattedProduct });
         } catch (e) {
             return res.status(500).send({ "message": "Error al obtener el producto" });
         }
@@ -40,18 +79,24 @@ var controller = {
     getAllProducts: async function (req, res) {
         try {
             const products = await Product.find();
-            return res.status(200).send({ "Products": products });
+            const formattedProducts = products.map(formatProductForFrontend);
+
+            return res.status(200).send({ "Products": formattedProducts });
         } catch (e) {
             return res.status(500).send({ "message": "Error al obtener los productos." });
         }
     },
 
+
+
     updateProduct: async function (req, res) {
         const productID = req.params.id;
         const paramsUpdate = req.body;
+
         try {
             await Product.findByIdAndUpdate(productID, paramsUpdate);
-            return res.status(200).send({ "Message": "Producto actualizado exitosamente.", "product": paramsUpdate });
+            const updatedProduct = await Product.findById(productID);
+            return res.status(200).send({ "Message": "Producto actualizado exitosamente.", "product": updatedProduct });
         } catch (e) {
             return res.status(500).send({ "message": "Error al actualizar el producto." });
         }
@@ -71,34 +116,6 @@ var controller = {
             return res.status(500).send({ "message": "Error al eliminar el producto." });
         }
     },
-
-    uploadImage: async function (req, res) {
-        const productID = req.params.id;
-        var fileName = 'img no subida...';
-        try {
-            if (req.file) {
-                var filePath = req.file.path;
-                var fileSplit = filePath.split('\\');
-                fileName = fileSplit[fileSplit.length - 1];
-
-                const productUp = await Product.findByIdAndUpdate(productID, { "image": fileName }, { new: true });
-                if (!productUp) {
-                    return res.status(404).send({ "message": "No existe producto." });
-                }
-
-                return res.status(200).send({
-                    "message": "Imagen subida correctamente.",
-                    "product": productUp
-                });
-            } else {
-                return res.status(200).send({
-                    "message": fileName
-                });
-            }
-        } catch (e) {
-            return res.status(500).send({ "message": e.message });
-        }
-    }
 }
 
 

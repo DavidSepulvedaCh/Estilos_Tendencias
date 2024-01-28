@@ -11,7 +11,7 @@ const JWT_SECRET = process.env.JWT_SECRET;
 
 const controller = {
     register: async function (req, res) {
-        const { name, lastName, email, password } = req.body;
+        const { name, lastName, email, role, password } = req.body;
 
         try {
             const hashedPassword = await bcrypt.hash(password, 10);
@@ -20,7 +20,8 @@ const controller = {
                 name: name,
                 lastName: lastName,
                 email: email,
-                password: hashedPassword
+                password: hashedPassword,
+                role: role
             });
 
             const userRegister = await user.save();
@@ -93,8 +94,6 @@ const controller = {
             } else {
                 throw new Error("Ocurrió un error al enviar el correo.");
             }
-
-            return res.status(200).send({ message: 'Se ha enviado un enlace de restablecimiento a tu correo.' });
         } catch (error) {
             return res.status(500).send({ message: "Ocurrió un error al iniciar el proceso de restablecimiento de contraseña." });
         }
@@ -120,6 +119,14 @@ const controller = {
             return res.status(200).send({ message: 'Contraseña cambiada exitosamente.' });
         } catch (error) {
             return res.status(500).send({ message: "Ocurrió un error al cambiar la contraseña." });
+        }
+    },
+    getAllUsers: async function (req, res) {
+        try {
+            const users = await User.find().select('-password').exec();
+            return res.status(200).send({ users });
+        } catch (error) {
+            return res.status(500).send({ message: "Ocurrió un error al obtener los usuarios.", error: error.message });
         }
     }
 
