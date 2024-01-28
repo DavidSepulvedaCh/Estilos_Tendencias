@@ -8,11 +8,16 @@ const transporter = nodemailer.createTransport({
     auth: {
         user: process.env.EMAIL,
         pass: process.env.PASSWORD_EMAIL,
-    }
+    },
+    connectionTimeout: 10000,
+    socketTimeout: 10000,
 });
+
 
 transporter.verify().then(() => {
     console.log("Servicio de correo listo!");
+}).catch(err => {
+    console.error("Error al iniciar el servicio de correo:", err);
 });
 
 module.exports = transporter;
