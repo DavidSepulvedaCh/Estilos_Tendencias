@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 const morgan = require('morgan');
-const cors = require('cors'); // Importar cors
+const cors = require('cors');
 
 
 // Archivos de rutas
@@ -10,7 +10,7 @@ const product_routes = require('./routes/product');
 const user_routes = require('./routes/user');
 const shopping_routes = require('./routes/shopping');
 const works_routes = require('./routes/work');
-const payment_routes = require('./routes/payment');
+/* const payment_routes = require('./routes/payment'); */
 
 // Middlewares
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -33,6 +33,6 @@ app.use('/api/product', product_routes);
 app.use('/api/user', user_routes);
 app.use('/api/shopping', shopping_routes);
 app.use('/api/work', works_routes);
-app.use('/api/payment', payment_routes);
+/* app.use('/api/payment', payment_routes); */
 
 module.exports = app;
