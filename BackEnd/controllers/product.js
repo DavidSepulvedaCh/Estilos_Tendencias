@@ -1,53 +1,62 @@
 'use strict';
 
 const Product = require('../models/product');
-const fs = require('fs');
+const sharp = require('sharp');
+
 
 function formatProductForFrontend(product) {
     return {
+        id: product.id,
         name: product.name,
         description: product.description,
         category: product.category,
         price: product.price,
+        stock: product.stock,
         image: "data:image/" + product.imageExtension + ";base64," + product.image,
     };
+}
+
+async function processImage(imageBuffer) {
+    try {
+        const compressedImageBuffer = await sharp(imageBuffer)
+            .resize({ width: 800, height: 600 })
+            .jpeg({ quality: 70 })
+            .toBuffer();
+
+        const imageBase64 = compressedImageBuffer.toString('base64');
+
+        return { image: imageBase64 };
+    } catch (err) {
+        throw new Error("Error al procesar la imagen.");
+    }
 }
 
 var controller = {
 
     saveProduct: async function (req, res) {
 
-        console.log(req.file);
-
-        // Verificar que los campos obligatorios estén presentes
         if (!req.body.name || !req.body.category || !req.body.description) {
             return res.status(400).send({ "message": "Los campos son obligatorios." });
         }
-
-        console.log(req.body);
 
         var product = new Product();
         product.name = req.body.name;
         product.description = req.body.description;
         product.category = req.body.category;
         product.price = req.body.price;
+        product.stock = req.body.stock;
 
-        // Verificar si se envió un archivo
         if (req.file) {
             try {
-                const imageBuffer = req.file.buffer;
-                const imageBase64 = imageBuffer.toString('base64');
-
-                product.image = imageBase64;
+                const { image } = await processImage(req.file.buffer);
+                product.image = image;
                 product.imageExtension = req.file.mimetype.split('/')[1];
 
             } catch (err) {
-                console.error("Error al leer la imagen:", err);
                 return res.status(500).send({ "message": "Error al leer la imagen." });
             }
         } else {
-            console.error("No se ha subido ningún archivo");
-            // Puedes enviar un mensaje de error al usuario o manejar la situación como prefieras
+            return res.status(400).send({ "message": "No se subio ninguna imagen." });
         }
 
         try {
@@ -87,15 +96,27 @@ var controller = {
         }
     },
 
-
-
     updateProduct: async function (req, res) {
+        console.log('llego al update');
         const productID = req.params.id;
         const paramsUpdate = req.body;
-
+        console.log(paramsUpdate);
         try {
+            let updatedProduct;
+            if (req.file) {
+                try {
+                    const { image } = await processImage(req.file.buffer);
+                    paramsUpdate.image = image;
+                    paramsUpdate.imageExtension = req.file.mimetype.split('/')[1];
+                } catch (err) {
+                    console.log('error sin imagen')
+                    return res.status(500).send({ "message": "Error al procesar la nueva imagen." });
+                }
+            }
+
             await Product.findByIdAndUpdate(productID, paramsUpdate);
-            const updatedProduct = await Product.findById(productID);
+            updatedProduct = await Product.findById(productID);
+
             return res.status(200).send({ "Message": "Producto actualizado exitosamente.", "product": updatedProduct });
         } catch (e) {
             return res.status(500).send({ "message": "Error al actualizar el producto." });
