@@ -68,7 +68,8 @@ jobs:
 
       # Route file renaming
       - name: Rename index for routing
-        run: mv dist/angular-poc/index.html dist/angular-poc/404.html
+        run: mv hairdresser/dist/hairdresser/index.html hairdresser/dist/hairdresser/404.html
+        
       # Deploy to GitPages
       - name: deploy to pages
         uses: crazy-max/ghaction-github-pages@v4.0.0
