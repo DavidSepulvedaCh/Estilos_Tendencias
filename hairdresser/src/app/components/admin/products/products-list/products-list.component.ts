@@ -10,13 +10,16 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class ProductsListComponent implements OnInit {
   public products: Product[] = [];
+  selectedImage: File | null = null;
+  changed: boolean = false;
+
   selectedProduct: Product = {
+    id: '',
     name: '',
     price: 0,
     description: '',
     stock: 0,
     image: '',
-    id: '',
     brand: '',
     category: ''
   };
@@ -56,12 +59,28 @@ export class ProductsListComponent implements OnInit {
     this.isUpdateModalVisible = false;
   }
 
+  onImageSelected(event: any): void {
+    const file = event.target.files[0];
+    this.selectedImage = file;
+    this.changed = true;
+  }
 
   updateProductInList(updatedProduct: any) {
-    this._productService.updateProduct(updatedProduct._id, updatedProduct).subscribe(
-      (data: any) => {
-        if (data && data.product) {
-          this.updateProductInList(data.product);
+    const formData = new FormData();
+    formData.append('name', updatedProduct.name);
+    formData.append('description', updatedProduct.description);
+    formData.append('price', updatedProduct.price);
+    formData.append('stock', updatedProduct.stock);
+    formData.append('category', updatedProduct.category);
+    if (this.changed == true) {
+      formData.append('imagen', this.selectedImage!);
+    }
+
+    this._productService.updateProduct(updatedProduct.id, formData).subscribe(
+      (response: any) => {
+        if (response && response.product) {
+          window.alert('Producto actualizado correctamente');
+          window.location.reload();
         } else {
           console.error('La estructura de datos de la API no coincide con la esperada');
         }
@@ -73,7 +92,4 @@ export class ProductsListComponent implements OnInit {
     );
   }
 
-
 }
-
-

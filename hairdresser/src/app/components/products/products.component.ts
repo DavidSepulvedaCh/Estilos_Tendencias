@@ -12,6 +12,7 @@ export class ProductsComponent implements OnInit {
 
   public products: Product[] = [];
   public uniqueCategories: string[] = [];
+  public loading: boolean = true;
 
   constructor(private _productService: ProductService) { }
 
@@ -26,17 +27,19 @@ export class ProductsComponent implements OnInit {
             price: product.price,
             image: product.image,
           }));
-          console.log(this.products);
           this.uniqueCategories = this.getUniqueCategories();
+          this.loading = false;
         } else {
           console.error('La estructura de datos de la API no coincide con la esperada');
         }
       },
       (error) => {
         console.error('Error al obtener los productos:', error);
+        this.loading = false; // Cambia a false en caso de error
       }
     );
   }
+
 
   activeCategory: string | null = null;
   activeId: boolean = false;

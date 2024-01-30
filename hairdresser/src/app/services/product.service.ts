@@ -31,15 +31,19 @@ export class ProductService {
         return this.http.get<Product[]>(`${this.apiURL}/product/getProducts`);
     }
 
-    // ProductService
-    updateProduct(id: string, params: any): Observable<Product> {
+    updateProduct(id: string, params: FormData): Observable<Product> {
         const options = {
             headers: {
-                'Authorization': this.authService.getToken()
+                'Authorization': this.authService.getToken(),
             }
         };
+
+        console.log("FormData values:");
+        params.forEach((value, key) => {
+            console.log(key, value);
+        });
+
         return this.http.put<Product>(`${this.apiURL}/product/update-product/${id}`, params, options);
     }
-
 
 }

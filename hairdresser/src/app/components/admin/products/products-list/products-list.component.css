@@ -79,18 +79,13 @@
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.7);
-    /* Fondo negro semi-transparente */
     backdrop-filter: blur(8px);
-    /* Efecto de desenfoque */
     z-index: 999;
-    /* Debe ser inferior al z-index del modal para que esté detrás */
     display: none;
-    /* Inicialmente oculto */
 }
 
 .modal-overlay.active {
     display: block;
-    /* Mostrar cuando está activo */
 }
 
 .update-product-modal {
@@ -105,7 +100,6 @@
     padding: 20px;
     z-index: 1000;
     max-width: 400px;
-    /* Ajusta según sea necesario */
     width: 100%;
 }
 
@@ -124,6 +118,12 @@
     padding: 8px;
     margin: 0 auto 10px auto;
     justify-content: center;
+}
+
+#stockP {
+    font-size: 18px;
+    margin-left: 15px;
+    font-weight: 600;
 }
 
 .update-product-modal textarea {

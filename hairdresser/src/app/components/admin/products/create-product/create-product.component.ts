@@ -11,6 +11,8 @@ import { ProductService } from 'src/app/services/product.service';
 export class CreateProductComponent {
   productForm: FormGroup;
   selectedFile: File | null = null;
+  selectedImage: string | null = null;
+
 
   constructor(private formBuilder: FormBuilder, private _productService: ProductService) {
     this.productForm = this.formBuilder.group({
@@ -26,6 +28,14 @@ export class CreateProductComponent {
 
   onFileSelected(event: any): void {
     this.selectedFile = event.target.files[0];
+
+    if (this.selectedFile) {
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        this.selectedImage = e.target.result;
+      };
+      reader.readAsDataURL(this.selectedFile);
+    }
   }
 
 
@@ -46,12 +56,14 @@ export class CreateProductComponent {
       formData.append('category', productData.category);
       formData.append('imagen', this.selectedFile!);
 
-      // Imprimir FormData
       this.printFormData(formData);
 
       this._productService.addProduct(formData).subscribe(
         (data) => {
           console.log(data);
+          window.alert('Producto creado correctamente.');
+          this.productForm.reset();
+          this.selectedImage = null;
         },
         (error) => {
           console.log('Error al realizar la solicitud:', error);

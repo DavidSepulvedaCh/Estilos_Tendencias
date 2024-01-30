@@ -24,6 +24,9 @@
         </p>
     </div>
     <div class="products">
+        <div *ngIf="loading" class="loader-container">
+            <div class="loader"></div>
+        </div>
         <div *ngFor="let product of filteredProducts()" class="product">
             <img [src]="product.image" alt="{{ product.name }}">
             <p id="name">{{ product.name }}</p>

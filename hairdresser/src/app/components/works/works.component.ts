@@ -12,6 +12,8 @@ export class WorksComponent implements OnInit {
 
   services: any[] = [];
   filteredServices: any[] = [];
+  public loading: boolean = true;
+
 
   constructor(private workService: WorkService, private router: Router) { }
 
@@ -20,6 +22,7 @@ export class WorksComponent implements OnInit {
       response => {
         this.services = response.Works;
         this.filteredServices = this.services;
+        this.loading = false;
       },
       error => {
         console.error('Error al obtener los services.', error);

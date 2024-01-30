@@ -1,26 +1,37 @@
 <dashboard>
-
-    <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
-        <label for="nombre">Nombre del Producto:</label>
-        <input type="text" id="nombre" formControlName="name" required>
-
-        <label for="descripcion">Descripción:</label>
-        <textarea id="descripcion" formControlName="description" required></textarea>
-
-        <label for="precio">Precio:</label>
-        <input type="text" id="precio" formControlName="price" required>
-
-        <label for="stock">Stock:</label>
-        <input type="text" id="stock" formControlName="stock" required>
-
-        <label for="categoria">Categoría:</label>
-        <input type="text" formControlName="category">
-
-        <label for="imagen">Imagen:</label>
-        <input type="file" formControlName="imagen" name="imagen" (change)="onFileSelected($event)">
-
-        <button type="submit">Registrar Producto</button>
-    </form>
-
-
+    <div class="container">
+        <h2 class="title">Formulario de Registro de Producto</h2>
+        <form class="form-product" [formGroup]="productForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="nombre">Nombre del Producto:</label>
+                <input type="text" id="nombre" formControlName="name" required class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="descripcion">Descripción:</label>
+                <textarea id="descripcion" formControlName="description" required class="form-control"></textarea>
+            </div>
+            <div class="form-group price-stock-group">
+                <div class="price-input">
+                    <label for="precio">Precio:</label>
+                    <input type="number" id="precio" formControlName="price" required class="form-control">
+                </div>
+                <div class="stock-input">
+                    <label for="stock">Stock:</label>
+                    <input type="number" id="stock" formControlName="stock" required class="form-control">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="categoria">Categoría:</label>
+                <input type="text" formControlName="category" class="form-control">
+            </div>
+            <div class="form-group image-group">
+                <label for="imagen">Imagen:</label>
+                <input type="file" formControlName="imagen" name="imagen" (change)="onFileSelected($event)">
+                <div class="preview-container" *ngIf="selectedImage">
+                    <img [src]="selectedImage" alt="Producto seleccionado">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Registrar Producto</button>
+        </form>
+    </div>
 </dashboard>

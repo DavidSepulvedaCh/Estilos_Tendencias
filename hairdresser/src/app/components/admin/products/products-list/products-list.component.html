@@ -6,7 +6,7 @@
                 <img [src]="product.image" alt="product Image">
                 <p id="name"> {{product.name}} </p>
                 <p id="price">${{product.price}} COP</p>
-                <!-- <p id="stock">{{product.stock}} Unidades</p> -->
+                <p id="stockP">{{product.stock}} Unidades</p>
             </div>
             <div class="product-actions">
                 <button id="btnUpdate" (click)="updateProduct(product)">Actualizar</button>
@@ -34,8 +34,7 @@
                 <input id="stock" type="number" [(ngModel)]="selectedProduct.stock" name="stock" required>
 
                 <label for="image">Imagen:</label>
-                <input type="file" id="image" accept="image/*">
-
+                <input type="file" id="image" accept="image/*" (change)="onImageSelected($event)">
 
                 <div class="btns">
                     <button type="submit" (click)="updateProductInList(selectedProduct)">Actualizar</button>
