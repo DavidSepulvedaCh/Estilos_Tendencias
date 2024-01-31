@@ -13,7 +13,17 @@ const controller = {
     register: async function (req, res) {
         const { name, lastName, email, password } = req.body;
 
+        if (!name || !lastName || !email || !role || !password) {
+            return res.status(400).send({ message: 'Todos los campos son requeridos.' });
+        }
+
         try {
+            const existingUser = await User.findOne({ email });
+
+            if (existingUser) {
+                return res.status(400).send({ message: 'El correo ya está registrado.' });
+            }
+
             const hashedPassword = await bcrypt.hash(password, 10);
 
             const user = new User({
@@ -29,7 +39,7 @@ const controller = {
             return res.status(200).send({ message: 'Usuario registrado exitosamente', tokenUsuario: token });
         } catch (err) {
             console.error('Error:', err);
-            return res.status(500).send({ message: 'Error al registrar el usuario.', err });
+            return res.status(500).send({ message: 'Error al registrar el usuario.', error: err });
         }
     },
 
@@ -38,7 +48,6 @@ const controller = {
         const { email, password } = req.body;
         try {
             const user = await User.findOne({ email });
-
             if (!user || !(await bcrypt.compare(password, user.password))) {
                 return res.status(401).send({ message: 'Credenciales inválidas' });
             }

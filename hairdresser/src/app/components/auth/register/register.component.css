@@ -1,0 +1,112 @@
+/* Estilos generales */
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background:
+        linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+        url('../../../../assets/css/img/banner_login.jpg');
+    background-size: cover;
+    color: #fff;
+}
+
+.centered-form {
+    max-width: 600px;
+    padding: 30px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    margin-top: 70px;
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-group {
+    flex: 1;
+    margin: 10px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+
+button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    background-color: #34383a;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.links {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.links a {
+    color: #333;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.links span {
+    color: #000;
+    font-weight: 500;
+}
+
+.links a:hover {
+    text-decoration: underline;
+}
+
+
+.error-message {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 1000;
+    color: #fff;
+    background-color: #e74c3c;
+    padding: 10px 12px;
+    border-radius: 5px;
+    font-size: 14px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: top 0.5s ease;
+}
+
+
+.error-message.password-mismatch {
+    background-color: #f39c12;
+}
+
+.error-message.stack {
+    top: auto;
+    bottom: 15px;
+    transition: bottom 0.5s ease;
+}
