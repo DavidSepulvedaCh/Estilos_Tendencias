@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router'; // Importa Router
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -58,5 +58,15 @@ export class CreateComponent implements OnInit {
   }
 
   sendPasswordRecoveryEmail() {
+    this.authService.forgotPassword(this.forgotPasswordEmail).subscribe(
+      (response: any) => {
+        this.closeForgotPasswordModal();
+        window.alert("Se ha enviado un correo para recuperar tu contraseña");
+      },
+      (error: any) => {
+        console.error('Error en la solicitud de recuperación de contraseña:', error);
+        window.alert("Error al enviar el correo para recuperar tu contraseña");
+      }
+    );
   }
 }

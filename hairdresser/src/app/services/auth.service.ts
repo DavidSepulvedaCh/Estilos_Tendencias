@@ -49,6 +49,27 @@ export class AuthService {
         return this.http.post<any>(`${this.apiUrl}/user/information`, {}, { headers });
     }
 
+    forgotPassword(email: string): Observable<any> {
+        return this.http.put<any>(`${this.apiUrl}/user/forgot-password`, { email });
+    }
+
+    resetPassword(token: string, newPassword: string): Observable<any> {
+        const headers = new HttpHeaders({
+            'Authorization': `${token}`
+        });
+
+        const data = { newPassword };
+        return this.http.put<any>(`${this.apiUrl}/user/new-password`, data, { headers }).pipe(
+            tap(response => {
+                if (response) {
+                    this.logOut();
+                }
+            }),
+        );
+    }
+
+
+
     saveToken(token: string): void {
         localStorage.setItem('token', token);
     }

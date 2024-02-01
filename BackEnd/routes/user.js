@@ -11,11 +11,10 @@ router.post('/login', UserController.login);
 router.get('/users', UserController.getAllUsers);
 
 // Rutas para recuperar contraseña
-router.put('/forgot-pass', UserController.forgotPassword);
-
+router.put('/forgot-password', UserController.forgotPassword);
+router.put('/new-password', UserController.newPassword);
 
 router.use(verificarToken);
-router.put('/new-pass', UserController.newPassword);
 router.post('/information', UserController.userInformation);
 
 module.exports = router;

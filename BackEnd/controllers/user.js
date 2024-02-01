@@ -29,13 +29,11 @@ const controller = {
 
             return res.status(200).send({ message: 'Usuario registrado exitosamente' });
         } catch (err) {
-            console.error('Error:', err);
             return res.status(500).send({ message: 'Error al registrar el usuario.', err });
         }
     },
 
     login: async function (req, res) {
-        console.log(req.body);
         const { email, password } = req.body;
         try {
             const user = await User.findOne({ email });
@@ -48,7 +46,6 @@ const controller = {
 
             return res.status(200).send({ message: 'Login exitoso', tokenUsuario: token });
         } catch (err) {
-            console.error('Error al intentar iniciar sesión:', err);
             return res.status(500).send({ message: 'Error al intentar iniciar sesión', error: err });
         }
 
@@ -86,7 +83,7 @@ const controller = {
             user.resetPasswordToken = token;
             await user.save();
 
-            let verificationLink = `enlaceFront`;
+            let verificationLink = `${process.env.URL_PASSWORD_RESET}?token=${token}`;
             const emailSent = await EmailService.sendPasswordResetEmail(email, verificationLink);
 
             if (emailSent) {
@@ -114,6 +111,7 @@ const controller = {
 
             const hashedNewPassword = await bcrypt.hash(newPassword, 10);
             user.password = hashedNewPassword;
+            user.resetPasswordToken = null;
             await user.save();
 
             return res.status(200).send({ message: 'Contraseña cambiada exitosamente.' });

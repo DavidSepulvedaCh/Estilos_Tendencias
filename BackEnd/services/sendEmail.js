@@ -4,8 +4,8 @@ const EmailService = {
     sendPasswordResetEmail: async function (email, verificationLink) {
         try {
             await transporter.sendMail({
-                from: email,
-                to: 'luxuaauto@gmail.com',
+                from: 'Estilos.tendencias@example.com',
+                to: email,
                 subject: "Restaurar Contraseña - Estilos & Tendencias",
                 text: "Restablece tu contraseña en Estilos & Tendencias",
                 html: `

@@ -20,6 +20,7 @@ import { RegisterComponent } from './components/auth/register/register.component
 import { ProductsListComponent } from './components/admin/products/products-list/products-list.component';
 import { ClientsListComponent } from './components/admin/clients/clients-list/clients-list.component';
 import { CreateProductComponent } from './components/admin/products/create-product/create-product.component';
+import { PasswordRecoveryComponent } from './components/auth/password-recovery/password-recovery.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { CreateProductComponent } from './components/admin/products/create-produ
     ProductsListComponent,
     ClientsListComponent,
     CreateProductComponent,
+    PasswordRecoveryComponent,
 
   ],
   imports: [
