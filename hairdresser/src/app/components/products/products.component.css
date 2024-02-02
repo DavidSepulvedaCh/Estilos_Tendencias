@@ -94,14 +94,14 @@
     padding: 20px;
     text-align: center;
     transition: transform 0.2s, box-shadow 0.2s;
-    width: calc(30% - 20px);
+    width: 18%;
     cursor: pointer;
-    margin: 10px 0;
+    margin: 10px;
 }
 
 @media screen and (max-width: 768px) {
     .product {
-        width: calc(50% - 50px);
+        width: calc(40% - 10px);
     }
 }
 
