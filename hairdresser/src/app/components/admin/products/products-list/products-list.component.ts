@@ -12,6 +12,7 @@ export class ProductsListComponent implements OnInit {
   public products: Product[] = [];
   selectedImage: File | null = null;
   changed: boolean = false;
+  confirmDelete: boolean = false;
 
   selectedProduct: Product = {
     id: '',
@@ -52,9 +53,6 @@ export class ProductsListComponent implements OnInit {
   blockProduct(product: Product): void {
   }
 
-  deleteProduct(product: Product): void {
-  }
-
   closeUpdateModal() {
     this.isUpdateModalVisible = false;
   }
@@ -90,6 +88,27 @@ export class ProductsListComponent implements OnInit {
         console.error('Error al actualizar el producto:', error);
       }
     );
+  }
+
+  deleteProduct(product: Product) {
+    this._productService.deleteProduct(product.id).subscribe(
+      (response: any) => {
+        if (response && response.message) {
+          window.alert('Producto eliminado correctamente');
+          window.location.reload();
+        } else {
+          console.error('La estructura de datos de la API no coincide con la esperada');
+        }
+      },
+      (error) => {
+        window.alert('Error al eliminar el producto');
+        console.error('Error al eliminar el producto:', error);
+      }
+    );
+  }
+
+  showDeleteConfirmation() {
+    this.confirmDelete = true;
   }
 
 }

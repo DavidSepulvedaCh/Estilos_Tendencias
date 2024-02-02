@@ -167,3 +167,45 @@
     flex-direction: column;
     align-items: center;
 }
+
+.delete-confirmation {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    max-width: 400px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    display: none;
+}
+
+.delete-confirmation p {
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+.delete-confirmation button {
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.delete-confirmation button:first-child {
+    background-color: #e74c3c;
+    color: #fff;
+}
+
+.delete-confirmation button:last-child {
+    background-color: #333;
+    color: #fff;
+}
+
+.delete-confirmation.active {
+    display: block;
+}

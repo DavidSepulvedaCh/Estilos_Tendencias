@@ -10,11 +10,19 @@
             </div>
             <div class="product-actions">
                 <button id="btnUpdate" (click)="updateProduct(product)">Actualizar</button>
-                <button id="btnLock" (click)="blockProduct(product)">Bloquear</button>
-                <button id="btnDelete" (click)="deleteProduct(product)">Eliminar</button>
+                <button id="btnDelete" (click)="showDeleteConfirmation()">Eliminar</button>
             </div>
         </div>
     </div>
+
+
+    <div *ngIf="confirmDelete" class="delete-confirmation" [class.active]="confirmDelete">
+        <p>¿Estás seguro de que deseas eliminar este producto?</p>
+        <button (click)="deleteProduct(selectedProduct)">Sí</button>
+        <button (click)="confirmDelete = false">No</button>
+    </div>
+
+
 
     <div class="modal-overlay" [class.active]="isUpdateModalVisible" (click)="closeUpdateModal()">
         <div class="update-product-modal" (click)="$event.stopPropagation()">

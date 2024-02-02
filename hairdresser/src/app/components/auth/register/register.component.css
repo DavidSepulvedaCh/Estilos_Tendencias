@@ -15,8 +15,9 @@
     max-width: 600px;
     padding: 30px;
     border-radius: 10px;
-    background-color: rgba(255, 255, 255, 0.9);
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.733);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.575);
+    backdrop-filter: blur(10px);
     margin-top: 70px;
 }
 
@@ -37,6 +38,12 @@ label {
     color: #333;
 }
 
+h2 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
 input[type="text"],
 input[type="email"],
 input[type="password"] {
@@ -44,6 +51,7 @@ input[type="password"] {
     padding: 10px;
     border-radius: 5px;
     border: 1px solid #ccc;
+    background: #f3f3f3;
     box-sizing: border-box;
 }
 
@@ -52,9 +60,10 @@ button {
     padding: 12px;
     border: none;
     border-radius: 5px;
-    background-color: #3498db;
+    background-color: #585858;
     color: #fff;
     font-size: 16px;
+    font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
@@ -84,8 +93,16 @@ button:disabled {
     text-decoration: underline;
 }
 
+#login {
+    color: #333;
+    font-weight: 500;
 
-/* Agrega estilos generales para los mensajes de error */
+    span {
+        font-weight: 500;
+    }
+}
+
+/* Mensajes Error */
 .error-message {
     position: absolute;
     top: 80px;
@@ -101,7 +118,6 @@ button:disabled {
     transition: top 0.5s ease;
 }
 
-/* Agrega estilos específicos para el mensaje de campos de confirmación no coincidentes */
 .error-message.password-mismatch {
     background-color: #f39c12;
 }

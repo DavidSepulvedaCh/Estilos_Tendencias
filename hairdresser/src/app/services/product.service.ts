@@ -46,4 +46,14 @@ export class ProductService {
         return this.http.put<Product>(`${this.apiURL}/product/update-product/${id}`, params, options);
     }
 
+    deleteProduct(id: string): Observable<any> {
+        const options = {
+            headers: {
+                'Authorization': this.authService.getToken(),
+            }
+        };
+
+        return this.http.delete<any>(`${this.apiURL}/product/delete-product/${id}`, options);
+    }
+
 }

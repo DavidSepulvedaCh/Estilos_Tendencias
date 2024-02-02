@@ -14,7 +14,6 @@
     padding-top: 20px;
     transition: width 0.3s ease;
 
-
     .sidebar-header {
         text-align: center;
         margin-bottom: 20px;
@@ -38,12 +37,14 @@
         }
     }
 
+
+
     .menu {
         list-style: none;
         padding: 0;
         margin-bottom: auto;
 
-        li {
+        .menu-item {
             margin-bottom: 10px;
 
             a {
@@ -63,7 +64,29 @@
                 i {
                     margin-right: 10px;
                 }
+
+                .sub-menu {
+                    list-style: none;
+                    padding-left: 20px;
+
+                    li {
+
+                        a {
+                            padding: 8px;
+                            border-radius: 3px;
+                            margin: 5px 0 0 15px;
+                        }
+                    }
+                }
             }
+
+            #chevron {
+                margin-left: auto;
+            }
+        }
+
+        .active {
+            background-color: #333;
         }
     }
 
@@ -96,7 +119,8 @@
     padding: 20px;
 }
 
-/* Responsive styles */
+
+
 @media screen and (max-width: 768px) {
     .sidebar {
         width: 20%;

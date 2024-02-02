@@ -10,8 +10,10 @@ import { Router } from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
   username = "";
+  openMenus: { [key: string]: boolean } = {};
 
   constructor(private authService: AuthService, private router: Router) { }
+
 
   ngOnInit(): void {
     this.authService.getUserInfo().subscribe(
@@ -25,6 +27,14 @@ export class DashboardComponent implements OnInit {
       }
     );
 
+  }
+
+  toggleMenu(menu: string): void {
+    this.openMenus[menu] = !this.openMenus[menu];
+  }
+
+  isMenuOpen(menu: string): boolean {
+    return this.openMenus[menu];
   }
 
   logOut(): void {

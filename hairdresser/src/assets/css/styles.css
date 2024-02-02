@@ -264,7 +264,29 @@ header #logo a:hover {
 }
 
 
+
 @media (max-width: 768px) {
+
+    header ul {
+        position: static;
+        background: transparent;
+        display: flex;
+    }
+
+    header ul li {
+        width: auto;
+        text-align: center;
+    }
+
+    header ul li a {
+        padding: 10px 15px;
+        /* Adjust as needed */
+    }
+
+    header #btnLogin {
+        margin: auto;
+    }
+
     .footer-content {
         padding: 0 20px;
     }

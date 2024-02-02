@@ -117,27 +117,31 @@
 @media screen and (max-width: 868px) {
     #banner {
         padding: 80px 20px;
-        /* Ajusta el padding para dispositivos más pequeños */
     }
 
     #about .container {
         flex-direction: column;
-        /* Cambia a disposición de columna para dispositivos más pequeños */
         align-items: center;
     }
 
     #about #picture {
         width: 100%;
-        /* Ocupa el ancho completo para dispositivos más pequeños */
     }
 
     #about .information-instagram .post {
-        width: 100%;
-        /* Ocupa el ancho completo para dispositivos más pequeños */
+        width: 45%;
     }
 
     #about .information-instagram .user-info img {
-        margin-right: 0;
-        /* Elimina el margen derecho para dispositivos más pequeños */
+        margin: auto 15px auto 0;
     }
+}
+
+@media screen and (max-width: 558px) {
+
+
+    #about .information-instagram .post {
+        width: 100%;
+    }
+
 }

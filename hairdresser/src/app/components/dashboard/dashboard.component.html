@@ -8,26 +8,36 @@
             </div>
         </div>
         <ul class="menu">
-            <li routerLinkActive="active">
+            <li class="menu-item" [class.active]="isMenuOpen('home')" (click)="toggleMenu('home')">
                 <a>
                     <i class="fas fa-home"></i> Inicio
                 </a>
             </li>
-            <li [routerLink]="['/admin-panel/users-list']" routerLinkActive="router-link-active">
+            <li class="menu-item" [routerLink]="['/admin-panel/users-list']" routerLinkActive="router-link-active">
                 <a>
                     <i class="fas fa-users"></i> Usuarios
                 </a>
             </li>
-            <li routerLinkActive="active">
+            <li class="menu-item" [class.active]="isMenuOpen('config')" (click)="toggleMenu('config')">
                 <a>
                     <i class="fas fa-cogs"></i> Configuración
                 </a>
             </li>
-            <li [routerLink]="['/admin-panel/products-list']" routerLinkActive="router-link-active">
-                <a><i class="fa fa-product-hunt"></i> Productos</a>
-            </li>
-            <li [routerLink]="['/admin-panel/create-product']" routerLinkActive="router-link-active">
-                <a><i class="fa fa-product-hunt"></i> Crear Producto</a>
+            <li class="menu-item" [class.active]="isMenuOpen('products')" (click)="toggleMenu('products')">
+                <a>
+                    <i class="fa fa-product-hunt"></i> Productos
+                    <i class="fas"
+                        [ngClass]="{'fa-chevron-down': isMenuOpen('products'), 'fa-chevron-right': !isMenuOpen('products')}"
+                        id="chevron"></i>
+                </a>
+                <ul class="sub-menu" *ngIf="isMenuOpen('products')">
+                    <li [routerLink]="['/admin-panel/products-list']" routerLinkActive="router-link-active">
+                        <a>Lista de Productos</a>
+                    </li>
+                    <li [routerLink]="['/admin-panel/create-product']" routerLinkActive="router-link-active">
+                        <a>Crear Producto</a>
+                    </li>
+                </ul>
             </li>
         </ul>
         <div class="logout">

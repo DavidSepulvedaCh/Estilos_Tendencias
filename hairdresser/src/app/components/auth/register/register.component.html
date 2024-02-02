@@ -1,5 +1,6 @@
 <section class="content">
     <form [formGroup]="registerForm" (ngSubmit)="onRegisterSubmit()" class="centered-form">
+        <h2>Registro de Usuario</h2>
         <div class="form-row">
             <div class="form-group">
                 <label for="nombre">Nombre:</label>
@@ -39,8 +40,8 @@
             <button type="submit" [disabled]="registerForm.invalid">Registrarse</button>
         </div>
         <div class="form-group links">
-            <p>
-                <span>¿Ya tienes una cuenta?</span> <a [routerLink]="['/login']">Inicia sesión aquí</a>
+            <p id="login">
+                ¿Ya tienes una cuenta? <a [routerLink]="['/login']"><span>Inicia sesión aquí</span></a>
             </p>
         </div>
     </form>

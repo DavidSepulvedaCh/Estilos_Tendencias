@@ -46,4 +46,10 @@ export class AppComponent implements OnInit {
       }
     }
   }
+
+  toggleMenu() {
+    const menu = document.querySelector('header ul');
+    menu!.classList.toggle('show');
+  }
+
 }
