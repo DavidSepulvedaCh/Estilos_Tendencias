@@ -2,7 +2,6 @@ import { Component, HostListener, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { AuthGuard } from "./services/authGuard.service";
 
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

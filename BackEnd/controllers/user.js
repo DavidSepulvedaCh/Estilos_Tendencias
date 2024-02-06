@@ -119,6 +119,7 @@ const controller = {
             return res.status(500).send({ message: "Ocurrió un error al cambiar la contraseña." });
         }
     },
+
     getAllUsers: async function (req, res) {
         try {
             const users = await User.find().select('-password').exec();
@@ -126,8 +127,21 @@ const controller = {
         } catch (error) {
             return res.status(500).send({ message: "Ocurrió un error al obtener los usuarios.", error: error.message });
         }
-    }
+    },
 
+    deleteUser: async function (req, res) {
+        const { id } = req.params;
+        console.log(id);
+        try {
+            const user = await User.findByIdAndDelete(id);
+            if (!user) {
+                return res.status(404).send({ message: 'Usuario no encontrado.' });
+            }
+            return res.status(200).send({ success: true, message: 'Usuario eliminado exitosamente.' });
+        } catch (error) {
+            return res.status(500).send({ message: "Ocurrió un error al eliminar el usuario.", error: error.message });
+        }
+    }
 
 };
 

@@ -97,7 +97,6 @@ var controller = {
     },
 
     updateProduct: async function (req, res) {
-        console.log('llego al update');
         const productID = req.params.id;
         const paramsUpdate = req.body;
         console.log(paramsUpdate);

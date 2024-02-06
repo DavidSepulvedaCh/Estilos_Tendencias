@@ -16,5 +16,6 @@ router.put('/new-password', UserController.newPassword);
 
 router.use(verificarToken);
 router.post('/information', UserController.userInformation);
+router.delete('/delete-user/:id', UserController.deleteUser);
 
 module.exports = router;

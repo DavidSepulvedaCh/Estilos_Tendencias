@@ -11,6 +11,8 @@ import { User } from '../../../../models/user';
 export class ClientsListComponent implements OnInit {
 
   public users: User[] = [];
+  showModal = false;
+  userToDelete: User | undefined;
 
   constructor(private _userService: UserService) { }
 
@@ -37,6 +39,36 @@ export class ClientsListComponent implements OnInit {
   }
 
   deleteUser(user: User): void {
+    const userId = user._id;
+    this._userService.deleteUser(userId).subscribe(
+      (data: any) => {
+        if (data && data.success) {
+          console.log('Usuario eliminado:', data.user);
+          this.users = this.users.filter((u) => u._id !== data.user._id);
+        } else {
+          console.error('La estructura de datos de la API no coincide con la esperada');
+        }
+      },
+      (error) => {
+        console.error('Error al eliminar el usuario:', error);
+      }
+    );
+  }
+
+  deleteUserConfirmed(): void {
+    if (this.userToDelete) {
+      this.deleteUser(this.userToDelete);
+    }
+    this.closeModal();
+  }
+
+  closeModal() {
+    this.showModal = false;
+  }
+
+  openModal(user: User) {
+    this.userToDelete = user;
+    this.showModal = true;
   }
 
 }

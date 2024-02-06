@@ -11,7 +11,17 @@
 
             <div class="user-actions">
                 <button id="btnLock" (click)="blockUser(user)">Bloquear</button>
-                <button id="btnDelete" (click)="deleteUser(user)">Eliminar</button>
+                <button id="btnDelete" (click)="openModal(user)">Eliminar</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" *ngIf="showModal">
+        <div class="modal-content">
+            <p>¿Estás seguro que deseas eliminar al usuario {{ userToDelete?.name }} ?</p>
+            <div class="btns">
+                <button id="btnYes" (click)="deleteUserConfirmed()">Sí</button>
+                <button id="btnNo" (click)="closeModal()">No</button>
             </div>
         </div>
     </div>
