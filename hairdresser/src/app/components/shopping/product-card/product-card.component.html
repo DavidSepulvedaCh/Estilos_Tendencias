@@ -1,0 +1,23 @@
+<div class="card">
+    <div class="image">
+        <img [src]="product.image" alt="{{product.name}}">
+    </div>
+    <div class="info">
+        <div class="name-description">
+            <h2>{{product.name}}</h2>
+            <p>{{product.description}}</p>
+            <button>Eliminar</button>
+            <button>Guardar</button>
+        </div>
+
+
+    </div>
+    <div class="quantity-buttons">
+        <label for="">Cantidad</label>
+        <input type="number" min="1" max="10" value="1">
+
+    </div>
+    <div class="price">
+        <p>${{product.price}} COP</p>
+    </div>
+</div>

@@ -13,104 +13,97 @@
     overflow-y: auto;
     padding-top: 20px;
     transition: width 0.3s ease;
+}
 
-    .sidebar-header {
-        text-align: center;
-        margin-bottom: 20px;
+.sidebar .sidebar-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
 
-        .logo {
-            max-width: 80px;
-            margin-bottom: 10px;
-        }
+.sidebar .sidebar-header .logo {
+    max-width: 80px;
+    margin-bottom: 10px;
+}
 
-        .user-info {
-            h3 {
-                margin: 0;
-                font-size: 1.5rem;
-            }
+.sidebar .sidebar-header .user-info h3 {
+    margin: 0;
+    font-size: 1.5rem;
+}
 
-            p {
-                margin: 5px 0 0;
-                font-size: 0.9rem;
-                color: #9c7822;
-            }
-        }
-    }
+.sidebar .sidebar-header .user-info p {
+    margin: 5px 0 0;
+    font-size: 0.9rem;
+    color: #9c7822;
+}
 
+.sidebar .menu {
+    list-style: none;
+    padding: 0;
+    margin-bottom: auto;
+}
 
+.sidebar .menu .menu-item {
+    margin-bottom: 10px;
+}
 
-    .menu {
-        list-style: none;
-        padding: 0;
-        margin-bottom: auto;
+.sidebar .menu .menu-item a {
+    color: #fff;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
 
-        .menu-item {
-            margin-bottom: 10px;
+.sidebar .menu .menu-item a:hover {
+    cursor: pointer;
+    background-color: #333;
+}
 
-            a {
-                color: #fff;
-                text-decoration: none;
-                display: flex;
-                align-items: center;
-                padding: 10px;
-                border-radius: 5px;
-                transition: background-color 0.3s;
+.sidebar .menu .menu-item a i {
+    margin-right: 10px;
+}
 
-                &:hover {
-                    cursor: pointer;
-                    background-color: #333;
-                }
+.sidebar .menu .menu-item a .sub-menu {
+    list-style: none;
+    padding-left: 20px;
+}
 
-                i {
-                    margin-right: 10px;
-                }
+.sidebar .menu .menu-item a .sub-menu li a {
+    padding: 8px;
+    border-radius: 3px;
+    margin: 5px 0 0 15px;
+}
 
-                .sub-menu {
-                    list-style: none;
-                    padding-left: 20px;
+.sidebar .menu .menu-item #chevron {
+    margin-left: auto;
+}
 
-                    li {
+.sidebar .menu .active {
+    background-color: #333;
+}
 
-                        a {
-                            padding: 8px;
-                            border-radius: 3px;
-                            margin: 5px 0 0 15px;
-                        }
-                    }
-                }
-            }
+.sidebar .logout {
+    text-align: center;
+}
 
-            #chevron {
-                margin-left: auto;
-            }
-        }
+.sidebar .logout a {
+    color: #fff;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    transition: color 0.3s;
+    margin: 25px auto;
+}
 
-        .active {
-            background-color: #333;
-        }
-    }
+.sidebar .logout a:hover {
+    cursor: pointer;
+    color: #9c7822;
+}
 
-    .logout {
-        text-align: center;
-
-        a {
-            color: #fff;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            transition: color 0.3s;
-            margin: 25px auto;
-
-            &:hover {
-                cursor: pointer;
-                color: #9c7822;
-            }
-
-            i {
-                margin-right: 10px;
-            }
-        }
-    }
+.sidebar .logout a i {
+    margin-right: 10px;
 }
 
 .content {
@@ -118,8 +111,6 @@
     margin-left: 250px;
     padding: 20px;
 }
-
-
 
 @media screen and (max-width: 768px) {
     .sidebar {

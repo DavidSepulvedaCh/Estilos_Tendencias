@@ -1,0 +1,10 @@
+svg {
+    color: #fff;
+    margin: auto 10px;
+    cursor: pointer;
+}
+
+.btns-right {
+    display: flex;
+    margin-left: auto;
+}

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/models/product';
 import { ProductService } from 'src/app/services/product.service';
+import { CarshoppingService } from 'src/app/services/carshopping.service';
 
 @Component({
   selector: 'products',
@@ -11,10 +12,12 @@ import { ProductService } from 'src/app/services/product.service';
 export class ProductsComponent implements OnInit {
 
   public products: Product[] = [];
+  public productsCount: number = 0;
   public uniqueCategories: string[] = [];
   public loading: boolean = true;
+  public car: Product[] = [];
 
-  constructor(private _productService: ProductService) { }
+  constructor(private _productService: ProductService, private _carShoppingService: CarshoppingService) { }
 
   ngOnInit(): void {
     this._productService.getProducts().subscribe(
@@ -35,7 +38,7 @@ export class ProductsComponent implements OnInit {
       },
       (error) => {
         console.error('Error al obtener los productos:', error);
-        this.loading = false; // Cambia a false en caso de error
+        this.loading = false;
       }
     );
   }
@@ -65,5 +68,18 @@ export class ProductsComponent implements OnInit {
       });
     }
     return Array.from(categoriesSet);
+  }
+
+  addToCart(product: Product): void {
+    this.car.push(product);
+    this._carShoppingService.addCarshopping(product).subscribe(
+      (data: any) => {
+        console.log('Producto añadido al carrito:', data);
+
+      },
+      (error) => {
+        console.error('Error al añadir producto al carrito:', error);
+      }
+    );
   }
 }

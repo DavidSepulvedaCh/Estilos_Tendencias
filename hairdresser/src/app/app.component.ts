@@ -1,6 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { AuthGuard } from "./services/authGuard.service";
+import { CarshoppingService } from './services/carshopping.service';
 
 @Component({
   selector: 'app-root',
@@ -11,17 +12,19 @@ export class AppComponent implements OnInit {
   title = 'Estilos & Tendencias';
   logoBanner = 'https://res.cloudinary.com/dwfh4s7tu/image/upload/v1705770522/logo2_gwgtgz.png';
   isLoading: boolean = true;
+  cartItemCount: number = 0;
 
-
-  constructor(private router: Router, private auth: AuthGuard) { }
+  constructor(private router: Router, private auth: AuthGuard, private carShoppingService: CarshoppingService) { }
 
   ngOnInit() {
     setTimeout(() => {
       this.isLoading = false;
     }, 10000);
+
+    this.carShoppingService.carItemCount$.subscribe(count => {
+      this.cartItemCount = count;
+    });
   }
-
-
 
   isInAdminPanel(): boolean {
     return this.router.url.includes('/admin');
@@ -30,7 +33,6 @@ export class AppComponent implements OnInit {
   isActive(route: string): boolean {
     return this.router.isActive(route, true);
   }
-
 
   @HostListener('window:scroll', ['$event'])
   onWindowScroll() {
@@ -50,5 +52,4 @@ export class AppComponent implements OnInit {
     const menu = document.querySelector('header ul');
     menu!.classList.toggle('show');
   }
-
 }

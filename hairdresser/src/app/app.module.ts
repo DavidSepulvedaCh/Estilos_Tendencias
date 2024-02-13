@@ -21,6 +21,8 @@ import { ProductsListComponent } from './components/admin/products/products-list
 import { ClientsListComponent } from './components/admin/clients/clients-list/clients-list.component';
 import { CreateProductComponent } from './components/admin/products/create-product/create-product.component';
 import { PasswordRecoveryComponent } from './components/auth/password-recovery/password-recovery.component';
+import { ProductCardComponent } from './components/shopping/product-card/product-card.component';
+import { CartshoppingComponent } from './components/shopping/cartshopping/cartshopping.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +38,8 @@ import { PasswordRecoveryComponent } from './components/auth/password-recovery/p
     ClientsListComponent,
     CreateProductComponent,
     PasswordRecoveryComponent,
+    ProductCardComponent,
+    CartshoppingComponent,
 
   ],
   imports: [

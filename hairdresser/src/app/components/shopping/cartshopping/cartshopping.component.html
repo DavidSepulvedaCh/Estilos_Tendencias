@@ -1,0 +1,34 @@
+<section class="banner">
+    <div class="textBanner">
+        <h1>Carrito de Compras</h1>
+        <p>Aquí encontrarás los productos que has añadido a tu carrito.</p>
+    </div>
+</section>
+
+<section class="content">
+    <div class="row1">
+        <div class="cards" *ngFor="let product of products">
+            <app-product-card [product]="product"></app-product-card>
+        </div>
+    </div>
+
+    <div class="row2">
+        <h3>Resumen de tu compra:</h3>
+        <table class="summary-table">
+            <tr>
+                <td>Productos:</td>
+                <td class="right-align">${{total}} COP</td>
+            </tr>
+            <tr>
+                <td>Envío:</td>
+                <td class="right-align">$11.500 COP</td>
+            </tr>
+            <tr>
+                <td>Total:</td>
+                <td class="right-align">${{total + 11500}} COP</td>
+        </table>
+        <div class="button">
+            <button (click)="onComprar()">Continuar la compra</button>
+        </div>
+    </div>
+</section>

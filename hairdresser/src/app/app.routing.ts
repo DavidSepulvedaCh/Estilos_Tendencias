@@ -13,6 +13,7 @@ import { ProductsListComponent } from "./components/admin/products/products-list
 import { ClientsListComponent } from "./components/admin/clients/clients-list/clients-list.component";
 import { CreateProductComponent } from "./components/admin/products/create-product/create-product.component";
 import { PasswordRecoveryComponent } from "./components/auth/password-recovery/password-recovery.component";
+import { CartshoppingComponent } from "./components/shopping/cartshopping/cartshopping.component";
 
 const appRoutes: Routes = [
     { path: "", component: HomeComponent },
@@ -26,6 +27,7 @@ const appRoutes: Routes = [
     { path: "admin-panel/users-list", component: ClientsListComponent, canActivate: [AuthGuard] },
     { path: "admin-panel/create-product", component: CreateProductComponent, canActivate: [AuthGuard] },
     { path: "password-recovery", component: PasswordRecoveryComponent },
+    { path: "carshopping", component: CartshoppingComponent/* , canActivate: [AuthGuard] */ },
     { path: "**", component: HomeComponent }
 ];
 

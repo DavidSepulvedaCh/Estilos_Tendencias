@@ -99,6 +99,22 @@ header #btnLogin.active {
     border-color: #97979788;
 }
 
+.cart-icon-container {
+    position: relative;
+    margin: auto 20px;
+}
+
+.cart-item-count {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: #494949;
+    color: white;
+    border-radius: 50%;
+    padding: 4px 8px;
+    font-size: 12px;
+}
+
 
 /* LOGO */
 
