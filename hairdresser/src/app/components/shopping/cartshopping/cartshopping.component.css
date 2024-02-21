@@ -35,6 +35,31 @@
     width: calc(70% - 40px);
 }
 
+.empty {
+    text-align: center;
+    margin: 20px auto;
+    font-weight: bold;
+}
+
+.empty p {
+    font-size: 1.5em;
+}
+
+.empty button {
+    padding: 10px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    background: #585858;
+    color: #fff;
+    cursor: pointer;
+    margin: 20px auto 5px auto;
+}
+
+.empty button:hover {
+    background: #757575;
+}
+
 
 .cards {
     flex-wrap: wrap;

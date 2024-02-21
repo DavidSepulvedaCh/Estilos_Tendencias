@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Product } from 'src/app/models/product';
+import { CarshoppingService } from 'src/app/services/carshopping.service';
 
 @Component({
   selector: 'app-product-card',
@@ -9,17 +10,21 @@ import { Product } from 'src/app/models/product';
 export class ProductCardComponent {
   @Input() product!: Product;
 
-  @Output() onEliminar = new EventEmitter();
-  @Output() onGuardar = new EventEmitter();
+  @Output() onDelete = new EventEmitter<string>();
+  @Output() onSave = new EventEmitter<Product>();
+  @Output() onChange = new EventEmitter<Product>();
 
-  constructor() { }
+  constructor(private _carShoppingService: CarshoppingService) { }
 
-  eliminar() {
-    this.onEliminar.emit(this.product);
+  delete() {
+    this.onDelete.emit(this.product.id);
   }
 
-  guardar() {
-    this.onGuardar.emit(this.product);
+  save() {
+    this.onSave.emit(this.product);
   }
 
+  change() {
+    this.onChange.emit(this.product);
+  }
 }

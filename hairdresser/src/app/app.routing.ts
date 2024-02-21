@@ -27,7 +27,7 @@ const appRoutes: Routes = [
     { path: "admin-panel/users-list", component: ClientsListComponent, canActivate: [AuthGuard] },
     { path: "admin-panel/create-product", component: CreateProductComponent, canActivate: [AuthGuard] },
     { path: "password-recovery", component: PasswordRecoveryComponent },
-    { path: "carshopping", component: CartshoppingComponent/* , canActivate: [AuthGuard] */ },
+    { path: "carshopping", component: CartshoppingComponent, canActivate: [AuthGuard] },
     { path: "**", component: HomeComponent }
 ];
 

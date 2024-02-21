@@ -23,7 +23,9 @@ export class ProductsComponent implements OnInit {
     this._productService.getProducts().subscribe(
       (data: any) => {
         if (data && data.Products && Array.isArray(data.Products)) {
+          console.log('Productos obtenidos:', data.Products);
           this.products = data.Products.map((product: any) => ({
+            id: product.id,
             name: product.name,
             description: product.description,
             category: product.category,
@@ -35,12 +37,14 @@ export class ProductsComponent implements OnInit {
         } else {
           console.error('La estructura de datos de la API no coincide con la esperada');
         }
+
       },
       (error) => {
         console.error('Error al obtener los productos:', error);
         this.loading = false;
       }
     );
+
   }
 
 
@@ -71,15 +75,6 @@ export class ProductsComponent implements OnInit {
   }
 
   addToCart(product: Product): void {
-    this.car.push(product);
-    this._carShoppingService.addCarshopping(product).subscribe(
-      (data: any) => {
-        console.log('Producto añadido al carrito:', data);
-
-      },
-      (error) => {
-        console.error('Error al añadir producto al carrito:', error);
-      }
-    );
+    this._carShoppingService.addCarshopping(product);
   }
 }

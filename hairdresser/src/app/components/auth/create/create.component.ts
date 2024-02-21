@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { AuthGuard } from 'src/app/services/authGuard.service';
 
 @Component({
   selector: 'create',
@@ -16,13 +17,14 @@ export class CreateComponent implements OnInit {
   forgotPasswordEmail: string = '';
   emailValue = '';
   passwordValue = '';
+
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute,
+    private auth: AuthGuard
   ) { }
-
-
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -33,20 +35,18 @@ export class CreateComponent implements OnInit {
 
   onSubmit() {
     if (this.loginForm.valid) {
-      console.log("correo ", this.emailValue);
       this.authService.login(this.emailValue, this.passwordValue).subscribe(
         (response: any) => {
-          this.router.navigate(['/admin-panel']);
+          const route = this.auth.redirectUrl;
+          console.log(route);
+          this.router.navigate([route]);
         },
         (error: any) => {
-          console.error('Error en la solicitud de inicio de sesión:', error);
           window.alert("Error al iniciar sesión");
         }
       );
     }
   }
-
-
 
   openForgotPasswordModal() {
     this.showForgotPasswordModal = true;

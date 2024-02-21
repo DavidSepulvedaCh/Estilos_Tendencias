@@ -22,7 +22,8 @@ export class ProductsListComponent implements OnInit {
     stock: 0,
     image: '',
     brand: '',
-    category: ''
+    category: '',
+    quantity: 0
   };
 
   isUpdateModalVisible = false;

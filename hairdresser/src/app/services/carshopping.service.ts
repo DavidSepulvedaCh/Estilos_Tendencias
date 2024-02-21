@@ -1,37 +1,46 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { environment } from "../../environments/environment";
-import { BehaviorSubject, Observable } from "rxjs";
-
-import { AuthService } from "./auth.service";
+import { BehaviorSubject } from "rxjs";
+import { Product } from "../models/product";
 
 @Injectable({
     providedIn: "root",
 })
-
 export class CarshoppingService {
-    private apiUrl = environment.apiUrl;
     private carItemCountSubject = new BehaviorSubject<number>(0);
     carItemCount$ = this.carItemCountSubject.asObservable();
+    products: Product[] = [];
 
-    constructor(private http: HttpClient, private authService: AuthService) { }
+    constructor() { }
 
-    getCarshopping(): Observable<any> {
-        return this.http.get<any>(`${this.apiUrl}/carshopping`);
-    }
-
-    addCarshopping(carshoppingData: any): Observable<any> {
-        const currentCount = this.carItemCountSubject.value;
-        this.carItemCountSubject.next(currentCount + 1);
-        const options = {
-            headers: {
-                Authorization: this.authService.getToken(),
-            },
+    addCarshopping(product: Product): void {
+        const existingProduct = this.products.find((p) => p.id === product.id);
+        if (existingProduct) {
+            existingProduct.quantity += 1;
+        } else {
+            const newProduct = { ...product, quantity: 1 };
+            this.products.push(newProduct);
         }
-        return this.http.post<any>(`${this.apiUrl}/`, carshoppingData, options);
+        this.updateItemCount();
     }
 
-    deleteCarshopping(id: string): Observable<any> {
-        return this.http.delete<any>(`${this.apiUrl}/carshopping/${id}`);
+    deleteCarshopping(id: string): void {
+        const index = this.products.findIndex((product) => product.id === id);
+        if (index !== -1) {
+            this.products.splice(index, 1);
+            console.log("Producto eliminado.", this.products);
+            this.updateItemCount();
+        }
+    }
+
+    updateQuantity(id: string, quantity: number): void {
+        const product = this.products.find((p) => p.id === id);
+        if (product) {
+            product.quantity = quantity;
+            this.updateItemCount();
+        }
+    }
+
+    private updateItemCount(): void {
+        this.carItemCountSubject.next(this.products.length);
     }
 }
