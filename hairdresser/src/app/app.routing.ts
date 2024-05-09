@@ -21,7 +21,7 @@ const appRoutes: Routes = [
     { path: "services", component: WorksComponent },
     { path: "contact", component: ContactComponent },
     { path: "login", component: CreateComponent },
-    { path: "admin-panel", component: DashboardComponent, canActivate: [AuthGuard] },
+    { path: "admin-panel", component: DashboardComponent, canActivate: [AuthGuard], data: { roles: ['admin'] } },
     { path: "register", component: RegisterComponent },
     { path: "admin-panel/products-list", component: ProductsListComponent, canActivate: [AuthGuard] },
     { path: "admin-panel/users-list", component: ClientsListComponent, canActivate: [AuthGuard] },

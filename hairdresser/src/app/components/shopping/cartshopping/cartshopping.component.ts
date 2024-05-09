@@ -37,7 +37,6 @@ export class CartshoppingComponent implements OnInit {
   actualizarCantidad(producto: Product) {
     console.log('Producto actualizado:', producto);
     this._carShoppingService.updateQuantity(producto.id, producto.quantity);
-
     this.calculateTotal();
   }
 

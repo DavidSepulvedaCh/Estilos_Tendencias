@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 
-
 @Component({
   selector: 'dashboard',
   templateUrl: './dashboard.component.html',
@@ -13,7 +12,6 @@ export class DashboardComponent implements OnInit {
   openMenus: { [key: string]: boolean } = {};
 
   constructor(private authService: AuthService, private router: Router) { }
-
 
   ngOnInit(): void {
     this.authService.getUserInfo().subscribe(
@@ -26,7 +24,6 @@ export class DashboardComponent implements OnInit {
         console.error('Ocurrió un error al obtener la información del usuario.');
       }
     );
-
   }
 
   toggleMenu(menu: string): void {
@@ -35,6 +32,10 @@ export class DashboardComponent implements OnInit {
 
   isMenuOpen(menu: string): boolean {
     return this.openMenus[menu];
+  }
+
+  isActive(route: string): boolean {
+    return this.router.url === route;
   }
 
   logOut(): void {
