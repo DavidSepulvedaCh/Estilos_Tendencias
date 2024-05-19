@@ -34,7 +34,7 @@ export class IconRegistryService {
         name: 'shopping-cart-filled', url: 'Estilos_Tendencias/hairdresser/src/assets/svg/shopping-cart-filled.svg',
       },
       {
-        name: 'shopping-cart', url: 'Estilos_Tendencias/hairdresser/src/assets/svg/shopping-cart.svg',
+        name: 'shopping-cart', url: 'hairdresser/src/assets/svg/shopping-cart.svg',
       },
       {
         name: 'lock-access-off', url: 'Estilos_Tendencias/hairdresser/src/assets/svg/lock-access-off.svg',
