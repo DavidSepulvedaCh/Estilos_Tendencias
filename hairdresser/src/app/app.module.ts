@@ -4,8 +4,7 @@ import { routing, appRoutingProviders } from './app.routing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-
-
+import { MatIconModule } from '@angular/material/icon';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -40,7 +39,6 @@ import { CartshoppingComponent } from './components/shopping/cartshopping/cartsh
     PasswordRecoveryComponent,
     ProductCardComponent,
     CartshoppingComponent,
-
   ],
   imports: [
     BrowserModule,
@@ -48,13 +46,11 @@ import { CartshoppingComponent } from './components/shopping/cartshopping/cartsh
     routing,
     ReactiveFormsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MatIconModule,
   ],
-  providers: [
-    appRoutingProviders,
-    AuthService
-  ],
+  providers: [appRoutingProviders, AuthService],
   bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class AppModule { }
+export class AppModule {}

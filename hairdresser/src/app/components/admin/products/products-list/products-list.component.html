@@ -9,20 +9,22 @@
                 <p id="stockP">{{product.stock}} Unidades</p>
             </div>
             <div class="product-actions">
-                <button id="btnUpdate" (click)="updateProduct(product)">Actualizar</button>
-                <button id="btnDelete" (click)="showDeleteConfirmation()">Eliminar</button>
+                <button id="btnUpdate" (click)="updateProduct(product)" data-tooltip="Editar">
+                    <mat-icon svgIcon="edit"></mat-icon>
+                </button>
+                <button id="btnDelete" (click)="showDeleteConfirmation()" data-tooltip="Eliminar">
+                    <mat-icon svgIcon="delete"></mat-icon>
+                </button>
             </div>
         </div>
     </div>
 
-
-    <div *ngIf="confirmDelete" class="delete-confirmation" [class.active]="confirmDelete">
+    <div *ngIf="confirmDelete" class="modal-overlay active" (click)="confirmDelete = false"></div>
+    <div *ngIf="confirmDelete" class="delete-confirmation active">
         <p>¿Estás seguro de que deseas eliminar este producto?</p>
         <button (click)="deleteProduct(selectedProduct)">Sí</button>
         <button (click)="confirmDelete = false">No</button>
     </div>
-
-
 
     <div class="modal-overlay" [class.active]="isUpdateModalVisible" (click)="closeUpdateModal()">
         <div class="update-product-modal" (click)="$event.stopPropagation()">

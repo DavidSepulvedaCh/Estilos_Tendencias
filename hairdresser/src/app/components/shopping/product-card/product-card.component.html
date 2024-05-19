@@ -6,8 +6,8 @@
         <div class="name-description">
             <h2>{{product.name}}</h2>
             <p>{{product.description}}</p>
-            <button (click)="delete()">Eliminar</button>
-            <button (click)="save()">Guardar</button>
+            <button id="btnDelete" (click)="delete()"><mat-icon svgIcon="delete"></mat-icon></button>
+            <button id="btnSave" (click)="save()"><mat-icon svgIcon="save"></mat-icon></button>
         </div>
 
 

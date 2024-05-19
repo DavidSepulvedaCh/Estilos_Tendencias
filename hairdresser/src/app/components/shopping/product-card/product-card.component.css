@@ -1,119 +1,137 @@
 .card {
-    display: flex;
-    align-items: center;
-    background: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s;
-    width: 100%;
-    margin: 0 auto 10px auto;
+  display: flex;
+  align-items: center;
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  margin: 0 auto 10px auto;
+  perspective: 1000px;
+  transition: all 0.3s;
+}
+
+.card:hover {
+  transform: rotateY(calc(var(--rotate-factor, 0deg) * 1deg))
+    rotateX(calc(var(--rotate-factor, 0deg) * 1deg));
 }
 
 .card .image {
-    margin-right: 20px;
+  margin-right: 20px;
 }
 
 .card img {
-    width: 100px;
-    height: 100px;
-    border-radius: 10px;
-    object-fit: cover;
+  width: 100px;
+  height: 100px;
+  border-radius: 10px;
+  object-fit: cover;
 }
 
 .card .info {
-    flex-grow: 0.5;
+  flex-grow: 0.5;
 }
 
 .card .name-description {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .card .name-description h2 {
-    font-size: 1.5em;
-    margin: 0;
-    font-weight: bold;
-    color: #333;
+  font-size: 1.5em;
+  margin: 0;
+  font-weight: bold;
+  color: #333;
 }
 
 .card .name-description p {
-    margin: 5px 0;
-    color: #666;
+  margin: 5px 0;
+  color: #666;
 }
 
 .card .quantity-buttons {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .card .quantity-buttons label {
-    margin-right: 10px;
-    color: #666;
+  margin-right: 10px;
+  color: #666;
 }
 
 .card .quantity-buttons input {
-    padding: 5px 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    width: 50px;
-    text-align: center;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 50px;
+  text-align: center;
 }
 
 .card {
-    display: flex;
-    align-items: center;
-    margin-left: 10px;
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
 }
 
 .card button {
-    padding: 5px;
-    font-size: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.3s;
-    margin-right: 5px;
+  padding: 5px;
+  font-size: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-right: 5px;
+}
+
+.card #btnDelete {
+  background: #f44336;
+  border: none;
+  color: #fff;
+}
+
+.card #btnSave {
+  background: #36f446;
+  color: #fff;
+  border: none;
 }
 
 .card button:hover {
-    background: #ddd;
+  background: #ddd;
 }
 
 .card .price {
-    margin-left: auto;
-    text-align: right;
-    color: #444;
+  margin-left: auto;
+  text-align: right;
+  color: #444;
 }
 
 @media screen and (max-width: 480px) {
-    .banner h1 {
-        font-size: 2em;
-        margin: 50px auto 10px auto;
-    }
+  .banner h1 {
+    font-size: 2em;
+    margin: 50px auto 10px auto;
+  }
 
-    .card img {
-        width: 80px;
-        height: 80px;
-    }
+  .card img {
+    width: 80px;
+    height: 80px;
+  }
 
-    .card .name-description h2 {
-        font-size: 1.2em;
-    }
+  .card .name-description h2 {
+    font-size: 1.2em;
+  }
 
-    .card .name-description p {
-        font-size: 0.9em;
-    }
+  .card .name-description p {
+    font-size: 0.9em;
+  }
 
-    .card .quantity-buttons input {
-        width: 40px;
-    }
+  .card .quantity-buttons input {
+    width: 40px;
+  }
 
-    .card button {
-        padding: 3px;
-        font-size: 12px;
-    }
+  .card button {
+    padding: 3px;
+    font-size: 12px;
+  }
 
-    .card .price {
-        font-size: 0.9em;
-    }
+  .card .price {
+    font-size: 0.9em;
+  }
 }

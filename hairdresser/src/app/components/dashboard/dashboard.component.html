@@ -9,17 +9,17 @@
         </div>
         <ul class="menu">
             <li class="menu-item" [class.active]="isMenuOpen('home')" (click)="toggleMenu('home')">
-                <a> <i class="fas fa-home"></i> Inicio </a>
+                <a> <mat-icon svgIcon="home"></mat-icon> Inicio </a>
             </li>
             <li class="menu-item" [class.active]="isActive('/admin-panel/users-list')">
-                <a [routerLink]="['/admin-panel/users-list']"> <i class="fas fa-users"></i> Usuarios </a>
+                <a [routerLink]="['/admin-panel/users-list']"> <mat-icon svgIcon="users"></mat-icon> Usuarios </a>
             </li>
             <li class="menu-item" [class.active]="isMenuOpen('config')" (click)="toggleMenu('config')">
-                <a> <i class="fas fa-cogs"></i> Configuración </a>
+                <a> <mat-icon svgIcon="settings"></mat-icon> Configuración </a>
             </li>
             <li class="menu-item" [class.active]="isMenuOpen('products')" (click)="toggleMenu('products')">
                 <a>
-                    <i class="fa fa-product-hunt"></i> Productos
+                    <mat-icon svgIcon="products"></mat-icon> Productos
                     <i class="fas" [ngClass]="{
                         'fa-chevron-down': isMenuOpen('products'),
                         'fa-chevron-right': !isMenuOpen('products')
@@ -36,7 +36,7 @@
             </li>
             <li class="menu-item" [class.active]="isMenuOpen('services')" (click)="toggleMenu('services')">
                 <a>
-                    <i class="fas fa-concierge-bell"></i> Servicios
+                    <mat-icon svgIcon="services"></mat-icon> Servicios
                     <i class="fas" [ngClass]="{
                         'fa-chevron-down': isMenuOpen('services'),
                         'fa-chevron-right': !isMenuOpen('services')
@@ -56,7 +56,7 @@
         </ul>
         <div class="logout">
             <a (click)="logOut()">
-                <i class="fas fa-sign-out-alt"></i> Cerrar sesión
+                <mat-icon svgIcon="logout"></mat-icon> Cerrar sesión
             </a>
         </div>
     </aside>
