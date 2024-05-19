@@ -16,28 +16,37 @@ export class IconRegistryService {
 
   private registerIcons() {
     const icons = [
-      { name: 'home', url: 'Estilos_Tendencias/hairdresser/src/assets/svg/home.svg' },
-      { name: 'users', url: 'Estilos_Tendencias/hairdresser/src/assets/svg/users.svg' },
-      { name: 'settings', url: 'Estilos_Tendencias/hairdresser/src/assets/svg/settings.svg' },
-      { name: 'products', url: 'Estilos_Tendencias/hairdresser/src/assets/svg/store.svg' },
-      { name: 'services', url: 'Estilos_Tendencias/hairdresser/src/assets/svg/collage.svg' },
-      { name: 'logout', url: 'Estilos_Tendencias/hairdresser/src/assets/svg/logout.svg' },
-      { name: 'save', url: 'Estilos_Tendencias/hairdresser/src/assets/svg/save.svg' },
-      { name: 'edit', url: 'Estilos_Tendencias/hairdresser/src/assets/svg/edit.svg' },
-      { name: 'delete', url: 'Estilos_Tendencias/hairdresser/src/assets/svg/trash.svg' },
-      { name: 'lock-access', url: 'Estilos_Tendencias/hairdresser/src/assets/svg/lock-access.svg' },
-      { name: 'user-delete', url: 'Estilos_Tendencias/hairdresser/src/assets/svg/user-delete.svg' },
-      { name: 'facebook', url: 'Estilos_Tendencias/hairdresser/src/assets/svg/facebook.svg' },
-      { name: 'instagram', url: 'Estilos_Tendencias/hairdresser/src/assets/svg/instagram.svg' },
-      { name: 'github', url: 'Estilos_Tendencias/hairdresser/src/assets/svg/github.svg' },
+      { name: 'home', url: 'src/assets/svg/home.svg' },
+      { name: 'users', url: 'src/assets/svg/users.svg' },
+      { name: 'settings', url: 'src/assets/svg/settings.svg' },
+      { name: 'products', url: 'src/assets/svg/store.svg' },
+      { name: 'services', url: 'src/assets/svg/collage.svg' },
+      { name: 'logout', url: 'src/assets/svg/logout.svg' },
+      { name: 'save', url: 'src/assets/svg/save.svg' },
+      { name: 'edit', url: 'src/assets/svg/edit.svg' },
+      { name: 'delete', url: 'src/assets/svg/trash.svg' },
       {
-        name: 'shopping-cart-filled', url: 'Estilos_Tendencias/hairdresser/src/assets/svg/shopping-cart-filled.svg',
+        name: 'lock-access',
+        url: 'src/assets/svg/lock-access.svg',
       },
       {
-        name: 'shopping-cart', url: 'hairdresser/src/assets/svg/shopping-cart.svg',
+        name: 'user-delete',
+        url: 'src/assets/svg/user-delete.svg',
+      },
+      { name: 'facebook', url: 'src/assets/svg/facebook.svg' },
+      { name: 'instagram', url: 'src/assets/svg/instagram.svg' },
+      { name: 'github', url: 'src/assets/svg/github.svg' },
+      {
+        name: 'shopping-cart-filled',
+        url: 'src/assets/svg/shopping-cart-filled.svg',
       },
       {
-        name: 'lock-access-off', url: 'Estilos_Tendencias/hairdresser/src/assets/svg/lock-access-off.svg',
+        name: 'shopping-cart',
+        url: 'src/assets/svg/shopping-cart.svg',
+      },
+      {
+        name: 'lock-access-off',
+        url: 'src/assets/svg/lock-access-off.svg',
       },
     ];
 
