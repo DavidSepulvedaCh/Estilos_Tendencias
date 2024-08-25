@@ -1,0 +1,48 @@
+<dashboard>
+    <h2 class="title">A continuación la lista de los servicios registrados en la Base de Datos.</h2>
+    <div class="services">
+        <div *ngFor="let service of services" class="service-card">
+            <div class="service-info">
+                <img [src]="service.image" alt="product Image">
+                <p id="name"> {{service.name}} </p>
+                <p id="category">{{service.category}}</p>
+            </div>
+            <div class="service-actions">
+                <button id="btnUpdate" (click)="updateService(service)" data-tooltip="Editar">
+                    <mat-icon svgIcon="edit"></mat-icon>
+                </button>
+                <button id="btnDelete" (click)="showDeleteConfirmation(service)" data-tooltip="Eliminar">
+                    <mat-icon svgIcon="delete"></mat-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="confirmDelete" class="modal-overlay active" (click)="confirmDelete = false"></div>
+    <div *ngIf="confirmDelete" class="delete-confirmation active">
+        <p>¿Estás seguro de que deseas eliminar este servicio?</p>
+        <button (click)="deleteService(selectedService)">Sí</button>
+        <button (click)="confirmDelete = false">No</button>
+    </div>
+
+    <div class="modal-overlay" [class.active]="isUpdateModalVisible" (click)="closeUpdateModal()">
+        <div class="update-service-modal" (click)="$event.stopPropagation()">
+            <h2>Actualizar Servicio</h2>
+            <form>
+                <label for="name">Nombre:</label>
+                <input id="name" [(ngModel)]="selectedService.name" name="name" required>
+
+                <label for="description">Descripción:</label>
+                <textarea id="description" [(ngModel)]="selectedService.description" name="description"
+                    required></textarea>
+                <label for="image">Imagen:</label>
+                <input type="file" id="image" accept="image/*" (change)="onImageSelected($event)">
+
+                <div class="btns">
+                    <button type="submit" (click)="updateServiceInList(selectedService)">Actualizar</button>
+                    <button type="button" (click)="closeUpdateModal()">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</dashboard>

@@ -1,0 +1,235 @@
+.title {
+  margin: 25px 10px;
+}
+
+.services {
+  max-width: 800px;
+  margin: auto;
+}
+
+.service-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.service-info {
+  display: flex;
+  align-items: center;
+}
+
+.service-info img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+
+.service-info #name {
+  font-size: 18px;
+  font-weight: 600;
+  margin: auto 10px;
+}
+
+.service-actions {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.service-actions button {
+  margin-left: 10px;
+  padding: 8px 12px;
+  cursor: pointer;
+  color: #000;
+  background-color: #dedede;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.service-actions button::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.75);
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 3px;
+  white-space: nowrap;
+  font-size: 13px;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  pointer-events: none;
+  visibility: hidden;
+  margin-bottom: 3px;
+}
+
+.service-actions button:hover::after {
+  opacity: 1;
+  visibility: visible;
+}
+
+.service-actions #btnUpdate:hover {
+  color: #fff;
+  background-color: #007bff;
+}
+
+.service-actions #btnDelete:hover {
+  color: #fff;
+  background-color: #ff0000;
+}
+
+/* Estilos del Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  z-index: 999;
+  display: none;
+}
+
+.modal-overlay.active {
+  display: block;
+}
+
+.update-service-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  z-index: 1000;
+  max-width: 400px;
+  width: 100%;
+}
+
+.update-service-modal h2 {
+  margin-bottom: 15px;
+}
+
+.update-service-modal label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.update-service-modal input,
+.update-service-modal textarea {
+  width: 90%;
+  padding: 8px;
+  margin: 0 auto 10px auto;
+  justify-content: center;
+  font-size: 16px;
+}
+
+#stockP {
+  font-size: 18px;
+  margin-left: 15px;
+  font-weight: 600;
+}
+
+.update-service-modal textarea {
+  height: 60px;
+  resize: none;
+}
+
+.update-service-modal button {
+  padding: 8px 12px;
+  cursor: pointer;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+}
+
+.update-service-modal button:first-child {
+  background-color: #2bbe37;
+  margin-right: 10px;
+}
+
+.update-service-modal button:last-child {
+  background-color: #ff0000;
+}
+
+.btns {
+  justify-content: center;
+  text-align: center;
+  display: flex;
+  margin: 10px auto;
+}
+
+.btns button {
+  margin: 10px 0;
+}
+
+.update-service-modal form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.delete-confirmation {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  max-width: 400px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  display: none;
+}
+
+.delete-confirmation p {
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
+.delete-confirmation button {
+  padding: 10px 20px;
+  margin: 5px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.delete-confirmation button:last-child {
+  background-color: #ff0000;
+  color: #fff;
+}
+
+.delete-confirmation.active {
+  display: block;
+  z-index: 1001;
+}
