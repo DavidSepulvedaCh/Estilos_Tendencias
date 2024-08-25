@@ -1,59 +1,102 @@
-import { Injectable } from "@angular/core";
-import { BehaviorSubject, Observable, catchError } from "rxjs";
-import { Product } from "../models/product";
-import { environment } from "src/environments/environment";
-import { HttpClient } from "@angular/common/http";
+import { Injectable } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { BehaviorSubject, Observable, catchError, throwError } from 'rxjs';
+import { Product } from '../models/product';
+import { environment } from 'src/environments/environment';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
-    providedIn: "root",
+  providedIn: 'root',
 })
 export class CarshoppingService {
-    private carItemCountSubject = new BehaviorSubject<number>(0);
-    carItemCount$ = this.carItemCountSubject.asObservable();
-    products: Product[] = [];
-    private apiUrl = environment.apiUrl;
+  private carItemCountSubject = new BehaviorSubject<number>(0);
+  carItemCount$ = this.carItemCountSubject.asObservable();
+  products: Product[] = [];
+  public car: Product[] = [];
+  private apiUrl = environment.apiUrl;
 
-    constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private _snackBar: MatSnackBar) {}
 
-    getProducts(): Observable<Product[]> {
-        return this.http.get<Product[]>(`${this.apiUrl}/shopping/car-shopping`).pipe(
-            catchError(error => {
-                console.error('Error getting products: ', error);
-                throw error;
-            })
-        );
+  getProducts(email: string): Observable<Product[]> {
+    return this.http
+      .post<Product[]>(`${this.apiUrl}/shopping/car-shopping`, { email })
+      .pipe(
+        catchError((error) => {
+          console.error('Error getting products: ', error);
+          return throwError(error);
+        })
+      );
+  }
+
+  addToCart(product: Product): void {
+    const existingProduct = this.car.find((p) => p.id === product.id);
+    if (existingProduct) {
+      existingProduct.quantity += 1;
+    } else {
+      const newProduct = { ...product, quantity: 1 };
+      this.car.push(newProduct);
+      console.log('carro: ', this.car);
     }
+    this.updateItemCount();
+    this._snackBar.open('Producto agregado al carrito con éxito', 'Cerrar', {
+      duration: 3000,
+    });
+  }
 
-    addCarshopping(product: Product): void {
-        const existingProduct = this.products.find((p) => p.id === product.id);
-        if (existingProduct) {
-            existingProduct.quantity += 1;
-        } else {
-            const newProduct = { ...product, quantity: 1 };
-            this.products.push(newProduct);
-        }
-        this.updateItemCount();
-    }
+  saveCart(email: string): Observable<any> {
+    const cartData = this.products.map((product) => ({
+      id: product.id,
+      quantity: product.quantity,
+    }));
+    return this.http
+      .post(`${this.apiUrl}/shopping/save-cart`, { email, cart: cartData })
+      .pipe(
+        catchError((error) => {
+          console.error('Error saving cart: ', error);
+          return throwError(error);
+        })
+      );
+  }
 
-    deleteCarshopping(id: string): void {
-        const index = this.products.findIndex((product) => product.id === id);
-        if (index !== -1) {
-            this.products.splice(index, 1);
-            console.log("Producto eliminado.", this.products);
-            this.updateItemCount();
-        }
-    }
+  deleteCarshopping(
+    productID: string,
+    email: string,
+    isAll: boolean = false
+  ): Observable<any> {
+    return this.http
+      .post(`${this.apiUrl}/shopping/delete-product`, {
+        productID,
+        email,
+        isAll,
+      })
+      .pipe(
+        catchError((error) => {
+          console.error('Error deleting product from cart: ', error);
+          return throwError(error);
+        })
+      );
+  }
 
-    updateQuantity(id: string, quantity: number): void {
-        console.log("Actualizando cantidad de producto.");
-        const product = this.products.find((p) => p.id === id);
-        if (product) {
-            product.quantity = quantity;
-            this.updateItemCount();
-        }
-    }
+  updateQuantity(
+    productID: string,
+    quantity: number,
+    email: string
+  ): Observable<any> {
+    return this.http
+      .post(`${this.apiUrl}/shopping/update-quantity`, {
+        productID,
+        quantity,
+        email,
+      })
+      .pipe(
+        catchError((error) => {
+          console.error('Error updating product quantity: ', error);
+          return throwError(error);
+        })
+      );
+  }
 
-    private updateItemCount(): void {
-        this.carItemCountSubject.next(this.products.length);
-    }
+  updateItemCount(): void {
+    this.carItemCountSubject.next(this.car.length);
+  }
 }

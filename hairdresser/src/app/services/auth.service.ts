@@ -21,7 +21,6 @@ export class AuthService {
             email: email,
             password: password,
         };
-        console.log(data);
         return this.http.post<any>(`${this.apiUrl}/user/login`, data).pipe(
             tap(response => {
                 if (response) {

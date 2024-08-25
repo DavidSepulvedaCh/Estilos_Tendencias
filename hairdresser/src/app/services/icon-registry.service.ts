@@ -16,37 +16,37 @@ export class IconRegistryService {
 
   private registerIcons() {
     const icons = [
-      { name: 'home', url: 'src/assets/svg/home.svg' },
-      { name: 'users', url: 'src/assets/svg/users.svg' },
-      { name: 'settings', url: 'src/assets/svg/settings.svg' },
-      { name: 'products', url: 'src/assets/svg/store.svg' },
-      { name: 'services', url: 'src/assets/svg/collage.svg' },
-      { name: 'logout', url: 'src/assets/svg/logout.svg' },
-      { name: 'save', url: 'src/assets/svg/save.svg' },
-      { name: 'edit', url: 'src/assets/svg/edit.svg' },
-      { name: 'delete', url: 'src/assets/svg/trash.svg' },
+      { name: 'home', url: '../../../../assets/svg/home.svg' },
+      { name: 'users', url: '../../../../assets/svg/users.svg' },
+      { name: 'settings', url: '../../../../assets/svg/settings.svg' },
+      { name: 'products', url: '../../../../assets/svg/store.svg' },
+      { name: 'services', url: '../../../../assets/svg/collage.svg' },
+      { name: 'logout', url: '../../../../assets/svg/logout.svg' },
+      { name: 'save', url: '../../../../assets/svg/save.svg' },
+      { name: 'edit', url: '../../../../assets/svg/edit.svg' },
+      { name: 'delete', url: '../../../../assets/svg/trash.svg' },
       {
         name: 'lock-access',
-        url: 'src/assets/svg/lock-access.svg',
+        url: '../../../../assets/svg/lock-access.svg',
       },
       {
         name: 'user-delete',
-        url: 'src/assets/svg/user-delete.svg',
+        url: '../../../../assets/svg/user-delete.svg',
       },
-      { name: 'facebook', url: 'src/assets/svg/facebook.svg' },
-      { name: 'instagram', url: 'src/assets/svg/instagram.svg' },
-      { name: 'github', url: 'src/assets/svg/github.svg' },
+      { name: 'facebook', url: '../../../../assets/svg/facebook.svg' },
+      { name: 'instagram', url: '../../../../assets/svg/instagram.svg' },
+      { name: 'github', url: '../../../../assets/svg/github.svg' },
       {
         name: 'shopping-cart-filled',
-        url: 'src/assets/svg/shopping-cart-filled.svg',
+        url: '../../../../assets/svg/shopping-cart-filled.svg',
       },
       {
         name: 'shopping-cart',
-        url: 'src/assets/svg/shopping-cart.svg',
+        url: '../../../../assets/svg/shopping-cart.svg',
       },
       {
         name: 'lock-access-off',
-        url: 'src/assets/svg/lock-access-off.svg',
+        url: '../../../../assets/svg/lock-access-off.svg',
       },
     ];
 
