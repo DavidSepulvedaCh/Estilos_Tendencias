@@ -66,7 +66,7 @@ var controller ={
             const post = await Post.find();
             const formattedpost = post.map(formatPostForFrontend);
 
-            return res.status(200).send({ "posts": formattedpost });
+            return res.status(200).send({ "Posts": formattedpost });
         } catch (e) {
             return res.status(500).send({ "message": "Error al obtener las publicaciones." });
         }
