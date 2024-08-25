@@ -3,7 +3,8 @@
 
 Este proyecto consiste en una aplicación web para una peluquería, que muestra información sobre la peluquería, los servicios que ofrece, productos disponibles y más. Además, incluye un panel de administración y un carrito de compras. **Actualmente se encuentra en desarrollo.** [MEAN STACK] <br>
 
-[![davidsepulvedach-github-io-Estilos-Tendencias.png](https://i.postimg.cc/wTxBCfTc/davidsepulvedach-github-io-Estilos-Tendencias.png)](https://postimg.cc/kDZ98ySB)
+![1 1](https://github.com/DavidSepulvedaCh/Estilos_Tendencias/assets/116600515/becf378b-6d42-4e8e-8b41-30aebbcafbc4)
+![3 3](https://github.com/DavidSepulvedaCh/Estilos_Tendencias/assets/116600515/c52e30aa-ac36-46e7-a8bc-e129b7d1d34a)
 
 ## Tecnologías Utilizadas 
 
