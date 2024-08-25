@@ -9,13 +9,14 @@
     <div class="row1">
         <div class="cards" *ngIf="products.length > 0">
             <app-product-card *ngFor="let product of products" [product]="product" (onDelete)="eliminarProducto($event)"
-                (onSave)="guardarProducto($event)" (onChange)="actualizarCantidad($event)">
-            </app-product-card>
+                (onChange)="actualizarCantidad($event)"></app-product-card>
         </div>
 
         <div *ngIf="products.length === 0" class="empty">
             <p>🛒 No hay productos en el carrito actualmente. 🛒</p>
-            <button [routerLink]="['/products']" routerLinkActive="router-link-active">Ir a comprar</button>
+            <button [routerLink]="['/products']" routerLinkActive="router-link-active">
+                Ir a comprar
+            </button>
         </div>
     </div>
 
@@ -24,15 +25,15 @@
         <table class="summary-table">
             <tr>
                 <td>Productos:</td>
-                <td class="right-align">${{subtotal}} COP</td>
+                <td class="right-align">${{ subtotal }} COP</td>
             </tr>
             <tr *ngIf="subtotal > 0">
                 <td>Envío:</td>
-                <td class="right-align">{{envio}} COP</td>
+                <td class="right-align">{{ envio }} COP</td>
             </tr>
             <tr>
                 <td>Total:</td>
-                <td class="right-align">${{total}} COP</td>
+                <td class="right-align">${{ total }} COP</td>
             </tr>
         </table>
         <div class="btnBuy">

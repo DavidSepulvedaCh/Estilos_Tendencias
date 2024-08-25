@@ -129,8 +129,9 @@
 }
 
 .slider p {
-  font-size: 25px;
-  font-weight: 600;
+  font-size: 15px;
+  font-weight: 300;
+  text-align: center;
 }
 .brands {
   overflow: hidden;
@@ -146,12 +147,13 @@
 
 .brands-slide {
   display: inline-block;
-  animation: 20s slide infinite linear;
+  animation: 25s slide infinite linear;
 }
 
 .brands-slide img {
-  height: 50px;
+  height: 80px;
   margin: 0 40px;
+  object-fit: contain;
 }
 
 @media screen and (max-width: 868px) {

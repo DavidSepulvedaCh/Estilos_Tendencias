@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProductService } from 'src/app/services/product.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'create-product',
@@ -14,7 +15,7 @@ export class CreateProductComponent {
   selectedImage: string | null = null;
 
 
-  constructor(private formBuilder: FormBuilder, private _productService: ProductService) {
+  constructor(private formBuilder: FormBuilder, private _productService: ProductService, private _snackBar: MatSnackBar) {
     this.productForm = this.formBuilder.group({
       name: ['', Validators.required],
       description: ['', Validators.required],
@@ -44,7 +45,9 @@ export class CreateProductComponent {
       const productData = this.productForm.value;
 
       if (!productData.name || !productData.category || !productData.description) {
-        console.log('Los campos son obligatorios.');
+        this._snackBar.open('Ingrese todos los campos obligatorios', 'Cerrar', {
+          duration: 3000,
+        });
         return;
       }
 
@@ -61,12 +64,16 @@ export class CreateProductComponent {
       this._productService.addProduct(formData).subscribe(
         (data) => {
           console.log(data);
-          window.alert('Producto creado correctamente.');
+          this._snackBar.open('¡Producto creado exitosamente!', 'Cerrar', {
+            duration: 5000,
+          });
           this.productForm.reset();
           this.selectedImage = null;
         },
         (error) => {
-          console.log('Error al realizar la solicitud:', error);
+          this._snackBar.open('Error al realizar la solicitud.', 'Cerrar', {
+            duration: 3000,
+          });
         }
       );
     }
@@ -79,6 +86,4 @@ export class CreateProductComponent {
     });
     console.log(data);
   }
-
-
 }

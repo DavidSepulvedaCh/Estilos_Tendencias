@@ -9,13 +9,10 @@
             <button id="btnDelete" (click)="delete()"><mat-icon svgIcon="delete"></mat-icon></button>
             <button id="btnSave" (click)="save()"><mat-icon svgIcon="save"></mat-icon></button>
         </div>
-
-
     </div>
     <div class="quantity-buttons">
-        <label for="" (change)="change()">Cantidad</label>
-        <input type="number" min="1" max="10" value="{{product.quantity}}" (change)="save()">
-
+        <label for="">Cantidad</label>
+        <input type="number" min="1" max="10" [value]="product.quantity" (change)="updateQuantity($event)">
     </div>
     <div class="price">
         <p>${{product.price}} COP</p>

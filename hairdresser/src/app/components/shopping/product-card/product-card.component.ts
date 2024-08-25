@@ -7,8 +7,8 @@ import {
   Renderer2,
   OnInit,
 } from '@angular/core';
+import { MatIconModule } from '@angular/material/icon';
 import { Product } from 'src/app/models/product';
-import { CarshoppingService } from 'src/app/services/carshopping.service';
 
 @Component({
   selector: 'app-product-card',
@@ -16,6 +16,14 @@ import { CarshoppingService } from 'src/app/services/carshopping.service';
   styleUrls: ['./product-card.component.css'],
 })
 export class ProductCardComponent implements OnInit {
+  @Input() product!: Product;
+
+  @Output() onDelete = new EventEmitter<string>();
+  @Output() onSave = new EventEmitter<Product>();
+  @Output() onChange = new EventEmitter<Product>();
+
+  constructor(private el: ElementRef, private renderer: Renderer2) {}
+
   ngOnInit() {
     const cardElement = this.el.nativeElement.querySelector('.card');
 
@@ -50,18 +58,6 @@ export class ProductCardComponent implements OnInit {
     this.renderer.setStyle(cardElement, 'transform', 'none');
   }
 
-  @Input() product!: Product;
-
-  @Output() onDelete = new EventEmitter<string>();
-  @Output() onSave = new EventEmitter<Product>();
-  @Output() onChange = new EventEmitter<Product>();
-
-  constructor(
-    private _carShoppingService: CarshoppingService,
-    private el: ElementRef,
-    private renderer: Renderer2
-  ) {}
-
   delete() {
     this.onDelete.emit(this.product.id);
   }
@@ -70,7 +66,10 @@ export class ProductCardComponent implements OnInit {
     this.onSave.emit(this.product);
   }
 
-  change() {
+  updateQuantity(event: Event) {
+    const inputElement = event.target as HTMLInputElement;
+    this.product.quantity = +inputElement.value;
     this.onChange.emit(this.product);
+    console.log('producto0', this.product);
   }
 }
