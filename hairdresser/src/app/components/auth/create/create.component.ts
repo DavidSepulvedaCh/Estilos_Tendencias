@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
-import { AuthGuard } from 'src/app/services/authGuard.service';
+import { AuthGuard } from 'src/app/guards/authGuard.service';
 
 @Component({
   selector: 'create',
@@ -38,7 +38,7 @@ export class CreateComponent implements OnInit {
       this.authService.login(this.emailValue, this.passwordValue).subscribe(
         (response: any) => {
           const route = this.auth.redirectUrl;
-          console.log(route);
+          console.log('rutaa:', route);
           this.router.navigate([route]);
         },
         (error: any) => {

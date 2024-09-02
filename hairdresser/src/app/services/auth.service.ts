@@ -34,7 +34,6 @@ export class AuthService {
         );
     }
 
-
     getUserInfo(): Observable<any> {
         const token = this.getToken();
 
@@ -45,7 +44,7 @@ export class AuthService {
             'Authorization': `${token}`
         });
 
-        return this.http.post<any>(`${this.apiUrl}/user/information`, {}, { headers });
+        return this.http.get<any>(`${this.apiUrl}/user/information`, { headers });
     }
 
     forgotPassword(email: string): Observable<any> {
@@ -80,8 +79,9 @@ export class AuthService {
     }
 
     isLoggedIn(): boolean {
-        return this.getToken() !== '';
+        return !!this.getToken();
     }
+
 
     logOut() {
         localStorage.removeItem('token');

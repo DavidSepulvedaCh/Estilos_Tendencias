@@ -8,7 +8,7 @@ import { ContactComponent } from './components/contact/contact.component';
 import { CreateComponent } from './components/auth/create/create.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { RegisterComponent } from './components/auth/register/register.component';
-import { AuthGuard } from './services/authGuard.service';
+import { AuthGuard } from './guards/authGuard.service';
 import { ProductsListComponent } from './components/admin/products/products-list/products-list.component';
 import { ClientsListComponent } from './components/admin/clients/clients-list/clients-list.component';
 import { CreateProductComponent } from './components/admin/products/create-product/create-product.component';

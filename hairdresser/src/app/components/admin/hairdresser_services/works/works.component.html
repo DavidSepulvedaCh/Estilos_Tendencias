@@ -17,18 +17,13 @@
         </div>
 
         <div class="cardsContainer">
-            <div *ngIf="loading" class="loader-container">
-                <div class="loader"></div>
-            </div>
             <ng-container *ngFor="let service of filteredServices">
                 <div class="card">
-                    <div class="face front">
-                        <img [src]="service.image" alt="{{ service.name }}" />
-                        <h3 id="name">{{ service.name }}</h3>
-                    </div>
-                    <div class="face back">
-                        <h3>{{service.name}}</h3>
-                        <p>{{ service.description }}</p>
+                    <img [src]="service.image" alt="{{service.image}}" class="card-image">
+                    <div class="card-content">
+                        <h2 class="card-title">{{service.name}}</h2>
+                        <p>{{service.description}}</p>
+                        <a href="#" class="btn">Agendar</a>
                     </div>
                 </div>
             </ng-container>

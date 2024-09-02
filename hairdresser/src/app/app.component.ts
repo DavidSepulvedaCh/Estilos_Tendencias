@@ -1,6 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
-import { AuthGuard } from './services/authGuard.service';
+import { AuthGuard } from './guards/authGuard.service';
 import { CarshoppingService } from './services/carshopping.service';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -23,7 +23,7 @@ export class AppComponent implements OnInit {
     private auth: AuthGuard,
     private carShoppingService: CarshoppingService,
     private iconRegistryService: IconRegistryService
-  ) {}
+  ) { }
 
   ngOnInit() {
     setTimeout(() => {
@@ -57,8 +57,4 @@ export class AppComponent implements OnInit {
     }
   }
 
-  toggleMenu() {
-    const menu = document.querySelector('header ul');
-    menu!.classList.toggle('show');
-  }
 }
