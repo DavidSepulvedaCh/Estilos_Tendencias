@@ -24,6 +24,11 @@ export class SupplierService {
       },
     };
 
+    console.log('FormData values:');
+    supplierData.forEach((value, key) => {
+      console.log(key, value);
+    });
+
     return this.http.post<any>(
       `${this.apiURL}/supplier/save-supplier`,
       supplierData,

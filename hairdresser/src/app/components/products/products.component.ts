@@ -22,7 +22,7 @@ export class ProductsComponent implements OnInit {
     private _productService: ProductService,
     private _carShoppingService: CarshoppingService,
     private _snackBar: MatSnackBar
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this._productService.getProducts().subscribe(
@@ -64,8 +64,8 @@ export class ProductsComponent implements OnInit {
     return this.activeCategory === null
       ? this.products
       : this.products.filter(
-          (product) => product.category === this.activeCategory
-        );
+        (product) => product.category === this.activeCategory
+      );
   }
 
   getUniqueCategories(): string[] {
@@ -95,19 +95,4 @@ export class ProductsComponent implements OnInit {
     }); */
   }
 
-  saveCart(): void {
-    this._carShoppingService.saveCart(this.email).subscribe(
-      () => {
-        this._snackBar.open('Carrito guardado con éxito', 'Cerrar', {
-          duration: 3000,
-        });
-      },
-      (error) => {
-        this._snackBar.open('Error al guardar el carrito', 'Cerrar', {
-          duration: 3000,
-        });
-        console.error('Error guardando el carrito:', error);
-      }
-    );
-  }
 }

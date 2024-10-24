@@ -15,7 +15,8 @@
                 <a [routerLink]="['/admin-panel/users-list']"> <mat-icon svgIcon="users"></mat-icon> Usuarios </a>
             </li>
             <li class="menu-item" [class.active]="isMenuOpen('config')" (click)="toggleMenu('config')">
-                <a> <mat-icon svgIcon="settings"></mat-icon> Configuración </a>
+                <a [routerLink]="['/admin-panel/proovedors']"> <mat-icon svgIcon="settings"></mat-icon> Configuración
+                </a>
             </li>
             <li class="menu-item" [class.active]="isMenuOpen('products')" (click)="toggleMenu('products')">
                 <a>

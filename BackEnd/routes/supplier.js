@@ -15,7 +15,7 @@ router.get('/get-suppliers', SupplierController.getAllSuppliers);
 
 // Rutas protegidas (requieren autenticación)
 router.use(verificarToken);
-router.post('/save-supplier', upload.single('imagen'), SupplierController.saveSupplier);
+router.post('/save-supplier', upload.single('image'), SupplierController.saveSupplier);
 router.delete('/delete-supplier/:id', SupplierController.deleteSupplier);
 
 

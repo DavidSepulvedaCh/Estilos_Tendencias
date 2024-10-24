@@ -30,7 +30,7 @@ async function processImage(imageBuffer) {
 
 var controller ={
     saveSupplier: async function (req, res) {
-
+        console.log(req.body);
         if (!req.body.name || !req.body.category ) {
             return res.status(400).send({ "message": "Los campos son obligatorios." });
         }

@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable, catchError, throwError } from 'rxjs';
 import { Product } from '../models/product';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root',
@@ -15,7 +16,7 @@ export class CarshoppingService {
   public car: Product[] = [];
   private apiUrl = environment.apiUrl;
 
-  constructor(private http: HttpClient, private _snackBar: MatSnackBar) {}
+  constructor(private http: HttpClient, private _snackBar: MatSnackBar, private authService: AuthService) { }
 
   getProducts(email: string): Observable<Product[]> {
     return this.http
@@ -43,32 +44,31 @@ export class CarshoppingService {
     });
   }
 
-  saveCart(email: string): Observable<any> {
-    const cartData = this.products.map((product) => ({
-      id: product.id,
-      quantity: product.quantity,
-    }));
+  saveCart(product: { id: string; quantity: number }): Observable<any> {
+    const body = {
+      productID: product.id,
+      quantity: product.quantity
+    };
+
+    const options = {
+      headers: {
+        Authorization: this.authService.getToken()
+      },
+    };
+
     return this.http
-      .post(`${this.apiUrl}/shopping/save-cart`, { email, cart: cartData })
+      .post<any>(`${this.apiUrl}/shopping/save-product`, body, options)
       .pipe(
         catchError((error) => {
-          console.error('Error saving cart: ', error);
+          console.error('Error saving product to cart: ', error);
           return throwError(error);
         })
       );
   }
 
-  deleteCarshopping(
-    productID: string,
-    email: string,
-    isAll: boolean = false
-  ): Observable<any> {
+  deleteCarshopping(productID: string, email: string, isAll: boolean = false): Observable<any> {
     return this.http
-      .post(`${this.apiUrl}/shopping/delete-product`, {
-        productID,
-        email,
-        isAll,
-      })
+      .post(`${this.apiUrl}/shopping/delete-product`, { productID, email, isAll })
       .pipe(
         catchError((error) => {
           console.error('Error deleting product from cart: ', error);
@@ -77,11 +77,7 @@ export class CarshoppingService {
       );
   }
 
-  updateQuantity(
-    productID: string,
-    quantity: number,
-    email: string
-  ): Observable<any> {
+  updateQuantity(productID: string, quantity: number, email: string): Observable<any> {
     return this.http
       .post(`${this.apiUrl}/shopping/update-quantity`, {
         productID,

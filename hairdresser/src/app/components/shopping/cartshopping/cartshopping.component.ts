@@ -9,10 +9,7 @@ import { CarshoppingService } from 'src/app/services/carshopping.service';
   styleUrls: ['./cartshopping.component.css'],
 })
 export class CartshoppingComponent implements OnInit {
-  constructor(
-    private _carShoppingService: CarshoppingService,
-    private _snackBar: MatSnackBar
-  ) {}
+  constructor(private _carShoppingService: CarshoppingService, private _snackBar: MatSnackBar) { }
 
   products: Product[] = [];
   subtotal: number = 0;
@@ -37,21 +34,27 @@ export class CartshoppingComponent implements OnInit {
     }
   }
 
-  guardarProducto() {
-    this._carShoppingService.saveCart(this.email).subscribe(
-      () => {
-        this._snackBar.open('Carrito guardado con éxito', 'Cerrar', {
+  guardarProducto(product: { id: string; quantity: number }): void {
+    const formattedProduct = {
+      id: product.id,
+      quantity: product.quantity,
+    };
+
+    console.log('Guardando producto en el carrito:', formattedProduct.id, formattedProduct.quantity);
+    this._carShoppingService.saveCart(formattedProduct).subscribe(
+      (response) => {
+        this._snackBar.open('Producto guardado con éxito', 'Cerrar', {
           duration: 3000,
         });
       },
       (error) => {
-        this._snackBar.open('Error al guardar el carrito', 'Cerrar', {
+        this._snackBar.open('Error al guardar el producto', 'Cerrar', {
           duration: 3000,
         });
-        console.error('Error guardando el carrito:', error);
       }
     );
   }
+
 
   actualizarCantidad(producto: Product) {
     const productToUpdate = this.products.find((p) => p.id === producto.id);
@@ -66,8 +69,7 @@ export class CartshoppingComponent implements OnInit {
 
   calculateTotal() {
     this.subtotal = this.products.reduce(
-      (acc, p) => acc + p.price * p.quantity,
-      0
+      (acc, p) => acc + p.price * p.quantity, 0
     );
     this.envio = this.subtotal > 120000 ? 0 : 12500;
     this.total = this.subtotal + this.envio;

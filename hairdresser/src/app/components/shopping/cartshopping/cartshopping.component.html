@@ -8,8 +8,8 @@
 <section class="content">
     <div class="row1">
         <div class="cards" *ngIf="products.length > 0">
-            <app-product-card *ngFor="let product of products" [product]="product" (onDelete)="eliminarProducto($event)"
-                (onChange)="actualizarCantidad($event)"></app-product-card>
+            <product-card *ngFor="let product of products" [product]="product" (onDelete)="eliminarProducto($event)"
+                (onChange)="actualizarCantidad($event)" (onSave)="guardarProducto($event)"></product-card>
         </div>
 
         <div *ngIf="products.length === 0" class="empty">
@@ -39,5 +39,6 @@
         <div class="btnBuy">
             <button (click)="onComprar()">Continuar la compra</button>
         </div>
+        <p id="note">¡Por comprar mayores a $120.000 COP, el envio es GRATIS!</p>
     </div>
 </section>

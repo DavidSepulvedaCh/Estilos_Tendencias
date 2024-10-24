@@ -1,17 +1,9 @@
-import {
-  Component,
-  Input,
-  Output,
-  EventEmitter,
-  ElementRef,
-  Renderer2,
-  OnInit,
-} from '@angular/core';
+import { Component, Input, Output, EventEmitter, ElementRef, Renderer2, OnInit } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { Product } from 'src/app/models/product';
 
 @Component({
-  selector: 'app-product-card',
+  selector: 'product-card',
   templateUrl: './product-card.component.html',
   styleUrls: ['./product-card.component.css'],
 })
@@ -19,10 +11,10 @@ export class ProductCardComponent implements OnInit {
   @Input() product!: Product;
 
   @Output() onDelete = new EventEmitter<string>();
-  @Output() onSave = new EventEmitter<Product>();
+  @Output() onSave = new EventEmitter<{ id: string; quantity: number }>();
   @Output() onChange = new EventEmitter<Product>();
 
-  constructor(private el: ElementRef, private renderer: Renderer2) {}
+  constructor(private el: ElementRef, private renderer: Renderer2) { }
 
   ngOnInit() {
     const cardElement = this.el.nativeElement.querySelector('.card');
@@ -63,8 +55,9 @@ export class ProductCardComponent implements OnInit {
   }
 
   save() {
-    this.onSave.emit(this.product);
+    this.onSave.emit({ id: this.product.id, quantity: this.product.quantity });
   }
+
 
   updateQuantity(event: Event) {
     const inputElement = event.target as HTMLInputElement;

@@ -23,6 +23,10 @@ export class ProductService {
                 'Authorization': this.authService.getToken(),
             }
         };
+        console.log('FormData values:');
+        productData.forEach((value, key) => {
+            console.log(key, value);
+        });
 
         return this.http.post<any>(`${this.apiURL}/product/save-product`, productData, options);
     }
