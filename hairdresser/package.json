@@ -23,6 +23,7 @@
     "@angular/router": "^16.1.0",
     "@types/googlemaps": "^3.43.3",
     "appsettings-json-reader": "^2.0.2",
+    "hairdresser": "file:",
     "rxjs": "~7.8.0",
     "swiper": "^11.0.6",
     "tailwindcss-animated": "^1.0.1",

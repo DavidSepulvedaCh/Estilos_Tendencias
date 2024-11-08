@@ -26,6 +26,7 @@ import { ProductCardComponent } from './components/shopping/product-card/product
 import { CartshoppingComponent } from './components/shopping/cartshopping/cartshopping.component';
 import { ListServicesComponent } from './components/admin/hairdresser_services/list-services/list-services.component';
 import { CreateServiceComponent } from './components/admin/hairdresser_services/create-service/create-service.component';
+import { EmailVerificationSuccessComponent } from './components/email-verification-success/email-verification-success.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { CreateServiceComponent } from './components/admin/hairdresser_services/
     CartshoppingComponent,
     ListServicesComponent,
     CreateServiceComponent,
+    EmailVerificationSuccessComponent,
   ],
   imports: [
     BrowserModule,

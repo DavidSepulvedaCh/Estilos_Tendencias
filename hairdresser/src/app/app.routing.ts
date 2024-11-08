@@ -16,6 +16,7 @@ import { PasswordRecoveryComponent } from './components/auth/password-recovery/p
 import { CartshoppingComponent } from './components/shopping/cartshopping/cartshopping.component';
 import { ListServicesComponent } from './components/admin/hairdresser_services/list-services/list-services.component';
 import { CreateServiceComponent } from './components/admin/hairdresser_services/create-service/create-service.component';
+import { EmailVerificationSuccessComponent } from './components/email-verification-success/email-verification-success.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -29,6 +30,7 @@ const appRoutes: Routes = [
   { path: 'admin-panel/users-list', component: ClientsListComponent, canActivate: [AuthGuard] },
   { path: 'admin-panel/create-product', component: CreateProductComponent, canActivate: [AuthGuard] },
   { path: 'password-recovery', component: PasswordRecoveryComponent },
+  { path: 'email-success', component: EmailVerificationSuccessComponent },
   { path: 'carshopping', component: CartshoppingComponent, canActivate: [AuthGuard] },
   { path: 'admin-panel/list-services', component: ListServicesComponent, canActivate: [AuthGuard] },
   { path: 'admin-panel/create-service', component: CreateServiceComponent, canActivate: [AuthGuard] },

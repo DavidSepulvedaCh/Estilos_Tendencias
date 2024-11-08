@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
   alertCount = 0;
+  registrationSuccess = false;
 
   constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) { }
 
@@ -38,12 +39,10 @@ export class RegisterComponent implements OnInit {
         this.registerForm.value.clave !== this.registerForm.value.confirmarClave
       ) {
         console.error('Los campos de confirmación no coinciden');
-        // Muestra un mensaje de error específico si los campos de confirmación no coinciden
         this.registerForm.setErrors({ passwordMismatch: true });
         return;
       }
 
-      // Construir el objeto con la estructura requerida
       const registerData = {
         name: this.registerForm.value.nombre,
         lastName: this.registerForm.value.apellido,
@@ -52,11 +51,10 @@ export class RegisterComponent implements OnInit {
         role: 'user'
       };
 
-      // Llamar al servicio para el registro
       this.authService.register(registerData).subscribe(
         (response) => {
           console.log('Registro exitoso', response);
-          this.router.navigate(['/login']);
+          this.registrationSuccess = true;
         },
         (error) => {
           console.error('Error durante el registro', error);
@@ -64,12 +62,10 @@ export class RegisterComponent implements OnInit {
       );
 
     } else {
-      // Formulario inválido, puedes mostrar un mensaje de error o realizar alguna acción.
       console.error('Formulario inválido');
     }
   }
 
-  // Validación personalizada para comprobar si los campos de confirmación coinciden
   passwordConfirming(c: AbstractControl): { passwordMismatch: boolean } | null {
     const claveControl = c.get('clave');
     const confirmarClaveControl = c.get('confirmarClave');
@@ -79,5 +75,4 @@ export class RegisterComponent implements OnInit {
     }
     return null;
   }
-
 }

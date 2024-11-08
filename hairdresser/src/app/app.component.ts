@@ -36,8 +36,10 @@ export class AppComponent implements OnInit {
   }
 
   isInAdminPanel(): boolean {
-    return this.router.url.includes('/admin');
+    const adminRoutes = ['/admin', '/dashboard', 'email-success'];
+    return adminRoutes.some(route => this.router.url.includes(route));
   }
+
 
   isActive(route: string): boolean {
     return this.router.isActive(route, true);

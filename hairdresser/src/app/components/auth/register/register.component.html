@@ -1,5 +1,5 @@
 <section class="content">
-    <form [formGroup]="registerForm" (ngSubmit)="onRegisterSubmit()" class="centered-form">
+    <form *ngIf="!registrationSuccess" [formGroup]="registerForm" (ngSubmit)="onRegisterSubmit()" class="centered-form">
         <h2>Registro de Usuario</h2>
         <div class="form-row">
             <div class="form-group">
@@ -40,33 +40,13 @@
             <button type="submit" [disabled]="registerForm.invalid">Registrarse</button>
         </div>
         <div class="form-group links">
-            <p id="login">
-                ¿Ya tienes una cuenta? <a [routerLink]="['/login']"><span>Inicia sesión aquí</span></a>
-            </p>
+            <p id="login"> ¿Ya tienes una cuenta? </p>
+            <a [routerLink]="['/login']">Inicia sesión aquí</a>
         </div>
     </form>
+
+    <div *ngIf="registrationSuccess" class="confirmation-message">
+        <h2>Registro Exitoso</h2>
+        <p>Por favor, revisa tu correo electrónico para completar el registro.</p>
+    </div>
 </section>
-
-
-<div class="error-message" *ngIf="registerForm.get('correo')?.hasError('email') && registerForm.get('correo')?.touched">
-    Correo electrónico inválido
-</div>
-<div class="error-message"
-    *ngIf="registerForm.get('confirmarCorreo')?.hasError('email') && registerForm.get('confirmarCorreo')?.touched">
-    Confirmación de correo electrónico inválida
-</div>
-<div class="error-message"
-    *ngIf="registerForm.get('clave')?.hasError('minlength') && registerForm.get('clave')?.touched">
-    La clave debe tener al menos 6 caracteres
-</div>
-<div class="error-message"
-    *ngIf="registerForm.get('confirmarClave')?.hasError('minlength') && registerForm.get('confirmarClave')?.touched">
-    La confirmación de la clave debe tener al menos 6 caracteres
-</div>
-<div class="error-message" *ngIf="!registerForm.get('aceptarTyC')?.value && registerForm.get('aceptarTyC')?.touched">
-    Debes aceptar los Términos y Condiciones
-</div>
-<div class="error-message password-mismatch"
-    *ngIf="registerForm.hasError('passwordMismatch') && (registerForm.get('confirmarClave')?.touched || registerForm.get('confirmarCorreo')?.touched)">
-    Los campos de confirmación no coinciden
-</div>

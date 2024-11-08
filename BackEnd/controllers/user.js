@@ -22,14 +22,29 @@ const controller = {
         email: email,
         password: hashedPassword,
         role: role,
+        isVerified: false,
       });
 
       const userRegister = await user.save();
       const token = generateToken(userRegister._id, userRegister.email);
 
-      return res
-        .status(200)
-        .send({ message: "Usuario registrado exitosamente" });
+      const verificationLink = `${process.env.URL_VERIFICATION_EMAIL}/${token}`;
+
+      const emailSent = await EmailService.sedEmailVerifyRegister(
+        email,
+        verificationLink
+      );
+
+      if (!emailSent) {
+        return res
+          .status(500)
+          .send({ message: "Error al enviar el correo de verificación." });
+      }
+
+      return res.status(200).send({
+        message:
+          "Usuario registrado exitosamente. Por favor, verifica tu correo electrónico.",
+      });
     } catch (err) {
       return res
         .status(500)
@@ -39,22 +54,32 @@ const controller = {
 
   login: async function (req, res) {
     const { email, password } = req.body;
-    try {
-      const user = await User.findOne({ email });
 
-      if (!user || !(await bcrypt.compare(password, user.password))) {
-        return res.status(401).send({ message: "Credenciales inválidas" });
+    try {
+      const user = await User.findOne({ email: email });
+
+      if (!user) {
+        return res.status(400).send({ message: "Usuario no encontrado." });
+      }
+
+      if (!user.isVerified) {
+        return res.status(400).send({
+          message:
+            "Por favor, verifica tu correo electrónico antes de iniciar sesión.",
+        });
+      }
+
+      const isMatch = await bcrypt.compare(password, user.password);
+
+      if (!isMatch) {
+        return res.status(400).send({ message: "Contraseña incorrecta." });
       }
 
       const token = generateToken(user._id, user.email);
 
-      return res
-        .status(200)
-        .send({ message: "Login exitoso", tokenUsuario: token });
+      return res.status(200).send({ tokenUsuario: token });
     } catch (err) {
-      return res
-        .status(500)
-        .send({ message: "Error al intentar iniciar sesión", error: err });
+      return res.status(500).send({ message: "Error al iniciar sesión.", err });
     }
   },
 
