@@ -143,6 +143,7 @@ const controller = {
   newPassword: async function (req, res) {
     const { newPassword } = req.body;
     const token = req.headers.authorization;
+
     if (!newPassword) {
       return res
         .status(400)
@@ -150,16 +151,15 @@ const controller = {
     }
 
     try {
-      const user = await User.findOne({ resetPasswordToken: token });
+      const decoded = jwt.verify(token, JWT_SECRET);
+      const user = await User.findById(decoded.userId);
+
       if (!user) {
-        return res
-          .status(404)
-          .send({ message: "El token es inválido o ha expirado." });
+        return res.status(404).send({ message: "Usuario no encontrado." });
       }
 
       const hashedNewPassword = await bcrypt.hash(newPassword, 10);
       user.password = hashedNewPassword;
-      user.resetPasswordToken = null;
       await user.save();
 
       return res
@@ -168,7 +168,7 @@ const controller = {
     } catch (error) {
       return res
         .status(500)
-        .send({ message: "Ocurrió un error al cambiar la contraseña." });
+        .send({ message: "El token es inválido o ha expirado." });
     }
   },
 
