@@ -40,31 +40,18 @@ export class SupplierService {
     return this.http.get<Supplier[]>(`${this.apiURL}/supplier/get-suppliers`);
   }
 
-  /* updateSupplier(id: string, params: FormData): Observable<Supplier> {
-        const options = {
-            headers: {
-                'Authorization': this.authService.getToken(),
-            }
-        };
 
-        console.log("FormData values:");
-        params.forEach((value, key) => {
-            console.log(key, value);
-        });
-
-        return this.http.put<Supplier>(`${this.apiURL}/supplier/update-Supplier/${id}`, params, options);
-    } */
-
-  deleteSupplier(id: string): Observable<any> {
+  deleteSupplier(id: string): Observable<void> {
     const options = {
       headers: {
         Authorization: this.authService.getToken(),
       },
     };
 
-    return this.http.delete<any>(
+    return this.http.delete<void>(
       `${this.apiURL}/supplier/delete-supplier/${id}`,
       options
     );
   }
+
 }

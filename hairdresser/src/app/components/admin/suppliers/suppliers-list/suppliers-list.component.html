@@ -1,0 +1,24 @@
+<dashboard>
+    <h2 class="title">A continuación la lista de los proveedores registrados en la Base de Datos.</h2>
+    <div class="suppliers">
+        <div *ngFor="let supplier of suppliers" class="supplier-card">
+            <div class="supplier-info">
+                <img [src]="supplier.image" alt="supplier Image">
+                <p id="name"> {{supplier.name}} </p>
+                <p id="stockP">{{supplier.category}}</p>
+            </div>
+            <div class="supplier-actions">
+                <button id="btnDelete" (click)="showDeleteConfirmation(supplier)" data-tooltip="Eliminar">
+                    <mat-icon svgIcon="delete"></mat-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="confirmDelete" class="modal-overlay active" (click)="confirmDelete = false"></div>
+    <div *ngIf="confirmDelete" class="delete-confirmation active">
+        <p>¿Estás seguro de que deseas eliminar este proveedor?</p>
+        <button (click)="deleteSupplier()">Sí</button>
+        <button (click)="confirmDelete = false">No</button>
+    </div>
+</dashboard>

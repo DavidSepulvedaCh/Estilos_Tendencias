@@ -53,6 +53,24 @@
                     </li>
                 </ul>
             </li>
+            <li class="menu-item" [class.active]="isMenuOpen('suppliers')" (click)="toggleMenu('suppliers')">
+                <a>
+                    <mat-icon svgIcon="suppliers"></mat-icon> Proveedores
+                    <i class="fas" [ngClass]="{
+                        'fa-chevron-down': isMenuOpen('suppliers'),
+                        'fa-chevron-right': !isMenuOpen('suppliers')
+                    }" id="chevron">
+                    </i>
+                </a>
+                <ul class="sub-menu" *ngIf="isMenuOpen('suppliers')">
+                    <li [routerLink]="['/admin-panel/suppliers-list']" routerLinkActive="router-link-active">
+                        <a>Lista de Proveedores</a>
+                    </li>
+                    <li [routerLink]="['/admin-panel/create-supplier']" routerLinkActive="router-link-active">
+                        <a>Crear Proveedor</a>
+                    </li>
+                </ul>
+            </li>
 
         </ul>
         <div class="logout">

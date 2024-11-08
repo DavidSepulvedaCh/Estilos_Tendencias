@@ -1,0 +1,27 @@
+<dashboard>
+    <div class="container">
+        <h2 class="title">Formulario de Registro de Proveedor</h2>
+        <form class="form-product" [formGroup]="supplierForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="nombre">Nombre del Proveedor:</label>
+                <input type="text" id="nombre" formControlName="name" required class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="category">Categoria del Proveedor:</label>
+                <select id="category" formControlName="category" class="form-control">
+                    <option value="1">Maquillaje</option>
+                    <option value="2">Electrodomesticos</option>
+                    <option value="3">Peluqueria</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="imagen">Logo del Proveedor:</label>
+                <input type="file" formControlName="imagen" name="imagen" (change)="onFileSelected($event)">
+                <div class="preview-container" *ngIf="selectedImage">
+                    <img [src]="selectedImage" alt="Proveedor seleccionado">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Registrar Proveedor</button>
+        </form>
+    </div>
+</dashboard>

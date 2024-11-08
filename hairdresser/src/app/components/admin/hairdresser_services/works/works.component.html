@@ -17,6 +17,9 @@
         </div>
 
         <div class="cardsContainer">
+            <div *ngIf="loading" class="loader-container">
+                <div class="loader"></div>
+            </div>
             <ng-container *ngFor="let service of filteredServices">
                 <div class="card">
                     <img [src]="service.image" alt="{{service.image}}" class="card-image">

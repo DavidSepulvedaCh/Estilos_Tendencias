@@ -27,6 +27,8 @@ import { CartshoppingComponent } from './components/shopping/cartshopping/cartsh
 import { ListServicesComponent } from './components/admin/hairdresser_services/list-services/list-services.component';
 import { CreateServiceComponent } from './components/admin/hairdresser_services/create-service/create-service.component';
 import { EmailVerificationSuccessComponent } from './components/email-verification-success/email-verification-success.component';
+import { CreateSuppliersComponent } from './components/admin/suppliers/create-suppliers/create-suppliers.component';
+import { SuppliersListComponent } from './components/admin/suppliers/suppliers-list/suppliers-list.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +49,8 @@ import { EmailVerificationSuccessComponent } from './components/email-verificati
     ListServicesComponent,
     CreateServiceComponent,
     EmailVerificationSuccessComponent,
+    CreateSuppliersComponent,
+    SuppliersListComponent,
   ],
   imports: [
     BrowserModule,
